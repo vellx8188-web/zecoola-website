@@ -54,12 +54,20 @@ const Navbar: React.FC = () => {
              {/* Custom SVG Logo Fallback (Matches the ZECOOLA ZA Logo) */}
              <div className="hidden w-full h-full flex items-center justify-center bg-white">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full p-1">
-                   {/* Orange Ring Segment */}
-                   <path d="M85 20 A 45 45 0 1 0 85 80" stroke="#FF6B00" strokeWidth="8" strokeLinecap="round" fill="none" />
-                   {/* Z shape */}
-                   <path d="M30 35 L 70 35 L 30 65 L 70 65" stroke="#FF6B00" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-                   {/* Crossbar for A feel */}
-                   <path d="M45 50 L 55 50" stroke="#FF6B00" strokeWidth="6" />
+                   {/* Orange Ring */}
+                   <circle cx="50" cy="50" r="45" stroke="#FF6B00" strokeWidth="6" />
+                   
+                   {/* Stylized ZA Monogram */}
+                   <g stroke="#FF6B00" strokeWidth="7" strokeLinecap="square" strokeLinejoin="miter">
+                     {/* Top Bar of Z */}
+                     <path d="M32 35 L68 35" />
+                     {/* Diagonal Z */}
+                     <path d="M68 35 L32 65" />
+                     {/* Bottom Bar of Z */}
+                     <path d="M32 65 L68 65" />
+                     {/* The 'A' Crossbar effect */}
+                     <path d="M42 50 L58 50" strokeWidth="6" />
+                   </g>
                 </svg>
              </div>
            </div>
