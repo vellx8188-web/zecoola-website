@@ -13,14 +13,16 @@ const getPlaceholder = (text: string, size = '800x600') =>
 
 export const CONTENT: ContentData = {
   // ==============================================================================
-  // GLOBAL CONFIGURATION
+  // 核心配置 (GLOBAL CONFIGURATION)
   // ==============================================================================
   
-  // 方式 1: 将您的图片重命名为 logo.png 并直接放入项目根目录 (public 文件夹内也可以)
+  // 关于更换 LOGO 的两种方法：
+  // 方法 A (推荐): 在 GitHub 上的 public 文件夹里上传一个叫 logo.png 的图片。
+  // 方法 B (懒人): 如果您有 Logo 的网络链接(以http开头)，直接替换下面的 '/logo.png'。
   logo: '/logo.png', 
 
   // ==============================================================================
-  // EMAIL CONFIGURATION
+  // 邮件配置 (EMAIL CONFIGURATION)
   // ==============================================================================
   emailJS: {
     serviceId: 'service_icrvr8v',
