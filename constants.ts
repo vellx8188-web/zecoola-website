@@ -86,6 +86,22 @@ export const CONTENT: ContentData = {
       }
     ]
   },
+  team: {
+    title: { en: 'Our Team', zh: '我们的团队' },
+    subtitle: {
+      en: 'Experts driven by passion and innovation.',
+      zh: '由激情和创新驱动的专家团队。'
+    },
+    members: [
+      { name: 'Grayson Tan', role: { en: 'Founder', zh: '创始人' } },
+      { name: 'Design Team', role: { en: 'Creative & R&D', zh: '创意与研发' } },
+      { name: 'Production Team', role: { en: 'Manufacturing', zh: '生产制造' } },
+    ],
+    founderBio: {
+      en: 'With decades of experience in the footwear industry, Grayson leads Zecoola with a vision for quality and innovation.',
+      zh: '凭借在鞋类行业的数十年经验，Grayson 以质量和创新的愿景领导 Zecoola。'
+    }
+  },
   milestone: {
     title: { en: 'Company Milestone', zh: '公司历程' },
     subtitle: { en: 'Our journey from a single factory to a global footwear partner.', zh: '从单一工厂到全球鞋业合作伙伴的历程。' },
@@ -207,7 +223,7 @@ export const CONTENT: ContentData = {
   },
   gallery: {
     title: { en: 'Factory Showcase', zh: '工厂展示' },
-    // 对应上传的文件: public/factory-1.png 到 factory-7.png
+    // 对应上传的文件: public/factory-1.png 到 factory-6.png (Changed to 6 images)
     images: [
       '/factory-1.png',
       '/factory-2.png',
@@ -215,34 +231,8 @@ export const CONTENT: ContentData = {
       '/factory-4.png',
       '/factory-5.png',
       '/factory-6.png',
-      '/factory-7.png',
     ],
     brandsTitle: { en: 'Trusted Brands', zh: '合作品牌' }
-  },
-  team: {
-    title: { en: 'Our Team', zh: '我们的团队' },
-    subtitle: { 
-      en: 'A team with multi-culture mentality, dedicated to innovation and quality.', 
-      zh: '一个具有多元文化思维的团队，致力于创新和品质。' 
-    },
-    members: [
-      {
-        name: 'Grayson Tan',
-        role: { en: 'Founder & CEO', zh: '创始人 & CEO' }
-      },
-      {
-        name: 'Core Team',
-        role: { en: 'Design & Development', zh: '设计与开发' }
-      },
-      {
-        name: 'Production Team',
-        role: { en: 'Manufacturing Experts', zh: '制造专家' }
-      }
-    ],
-    founderBio: {
-      en: 'Grayson has extensive experience in the footwear industry, leading the company from its origins to a global manufacturer with a focus on quality and innovation.',
-      zh: 'Grayson 在鞋业拥有丰富的经验，带领公司从创立发展成为注重质量和创新的全球制造商。'
-    }
   },
   contact: {
     title: { en: 'Contact Us', zh: '联系我们' },
