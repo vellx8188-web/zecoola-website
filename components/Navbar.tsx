@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
              </div>
            </div>
            
-           <span className={`text-2xl font-extrabold tracking-wide ${isScrolled ? 'text-zecoola-blue' : 'text-white'} font-[Montserrat]`}>
+           <span className={`text-2xl font-extrabold tracking-wide ${isScrolled ? 'text-zecoola-orange' : 'text-white'} font-[Montserrat]`}>
              ZECOOLA
            </span>
         </button>
