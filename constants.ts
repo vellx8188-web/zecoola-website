@@ -86,22 +86,6 @@ export const CONTENT: ContentData = {
       }
     ]
   },
-  team: {
-    title: { en: 'Our Team', zh: '我们的团队' },
-    subtitle: {
-      en: 'Experts driven by passion and innovation.',
-      zh: '由激情和创新驱动的专家团队。'
-    },
-    members: [
-      { name: 'Grayson Tan', role: { en: 'Founder', zh: '创始人' } },
-      { name: 'Design Team', role: { en: 'Creative & R&D', zh: '创意与研发' } },
-      { name: 'Production Team', role: { en: 'Manufacturing', zh: '生产制造' } },
-    ],
-    founderBio: {
-      en: 'With decades of experience in the footwear industry, Grayson leads Zecoola with a vision for quality and innovation.',
-      zh: '凭借在鞋类行业的数十年经验，Grayson 以质量和创新的愿景领导 Zecoola。'
-    }
-  },
   milestone: {
     title: { en: 'Company Milestone', zh: '公司历程' },
     subtitle: { en: 'Our journey from a single factory to a global footwear partner.', zh: '从单一工厂到全球鞋业合作伙伴的历程。' },
@@ -223,7 +207,7 @@ export const CONTENT: ContentData = {
   },
   gallery: {
     title: { en: 'Factory Showcase', zh: '工厂展示' },
-    // 对应上传的文件: public/factory-1.png 到 factory-6.png (Changed to 6 images)
+    // 对应上传的文件: public/factory-1.png 到 factory-6.png (Exactly 6 images)
     images: [
       '/factory-1.png',
       '/factory-2.png',

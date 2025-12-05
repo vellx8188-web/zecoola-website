@@ -11,11 +11,6 @@ export interface LocalizedArray {
   zh: string[];
 }
 
-export interface TeamMember {
-  name: string;
-  role: LocalizedString;
-}
-
 export interface MilestoneItem {
   year: string;
   title: LocalizedString;
@@ -54,12 +49,6 @@ export interface ContentData {
       desc: LocalizedString;
       icon: any;
     }[];
-  };
-  team: {
-    title: LocalizedString;
-    subtitle: LocalizedString;
-    members: TeamMember[];
-    founderBio: LocalizedString;
   };
   milestone: {
     title: LocalizedString;

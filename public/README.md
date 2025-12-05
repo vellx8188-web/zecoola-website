@@ -1,3 +1,4 @@
+
 # 图片上传指南 (Image Upload Guide)
 
 请将您的图片上传到这个文件夹中，并确保文件名完全一致：
@@ -12,6 +13,11 @@ Please upload your images to this folder with the exact filenames below:
 - oem.png
 - odm.png
 
+## 合作品牌 (Trusted Brands)
+- brand-1.png
+- ...
+- brand-11.png
+
 ## 工厂展示 (Factory Gallery)
 - factory-1.png
 - factory-2.png
@@ -19,4 +25,3 @@ Please upload your images to this folder with the exact filenames below:
 - factory-4.png
 - factory-5.png
 - factory-6.png
-- factory-7.png
