@@ -11,12 +11,6 @@ export interface LocalizedArray {
   zh: string[];
 }
 
-export interface TeamMember {
-  name: string;
-  role: LocalizedString;
-  image?: string; // Made optional
-}
-
 export interface MilestoneItem {
   year: string;
   title: LocalizedString;
@@ -26,6 +20,11 @@ export interface MilestoneItem {
 export interface NavItem {
   label: LocalizedString;
   href: string;
+}
+
+export interface TeamMember {
+  name: string;
+  role: LocalizedString;
 }
 
 export interface ContentData {
@@ -75,16 +74,16 @@ export interface ContentData {
       image: string;
     };
   };
+  gallery: {
+    title: LocalizedString;
+    images: string[];
+    brandsTitle: LocalizedString;
+  };
   team: {
     title: LocalizedString;
     subtitle: LocalizedString;
     members: TeamMember[];
     founderBio: LocalizedString;
-  };
-  gallery: {
-    title: LocalizedString;
-    images: string[];
-    brandsTitle: LocalizedString;
   };
   contact: {
     title: LocalizedString;

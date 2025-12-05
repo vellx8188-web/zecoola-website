@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { MapPin, Phone, Mail, Send, CheckCircle2, AlertCircle } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import * as emailjs from '@emailjs/browser';
 import { CONTENT } from '../constants';
 import { useLanguage } from '../LanguageContext';
 
@@ -113,9 +113,10 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold mb-2 text-white">{callLabel[language]}</h4>
-                  <a href="tel:+8613527226226" className="text-slate-300 font-mono text-xl hover:text-white transition-colors">
-                    +86 135 2722 6226
-                  </a>
+                  {/* Phone number updated to plain text as requested */}
+                  <div className="text-slate-300 font-mono text-xl">
+                    +86 135-2722-6226
+                  </div>
                 </div>
               </div>
 
@@ -174,7 +175,6 @@ const Contact: React.FC = () => {
                       <input 
                         type="email" 
                         name="email"
-                        // Removed required attribute to allow either email OR phone
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="name@example.com"
@@ -188,7 +188,7 @@ const Contact: React.FC = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+X-XXXXXXX" // Generic placeholder as requested
+                        placeholder="+X-XXXXXXX" 
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-zecoola-orange focus:border-transparent transition-all"
                       />
                     </div>

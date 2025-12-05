@@ -17,15 +17,12 @@ const Gallery: React.FC = () => {
             {title[language]}
           </h2>
           
+          {/* Updated to a tidy, uniform grid as requested */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-             {/* First image spans full width on larger screens to break grid monotony, or keep simple grid. 
-                 Using simple grid for 7 items means last row has 1 item if 3 cols. 
-                 Let's make the first one featured (large).
-             */}
              {images.map((imgSrc, index) => (
                 <div 
                   key={index} 
-                  className={`rounded-xl overflow-hidden shadow-lg relative group h-64 ${index === 0 ? 'md:col-span-2 lg:col-span-2 md:h-80' : 'md:h-80'}`}
+                  className="rounded-xl overflow-hidden shadow-lg relative group h-64 md:h-72"
                 >
                   <img src={imgSrc} alt={`Factory View ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
@@ -33,17 +30,17 @@ const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Brands - Matches Slide 10 */}
+        {/* Brands - Now using Images */}
         <div>
           <h2 className="text-3xl font-bold text-center text-zecoola-blue mb-12">{brandsTitle[language]}</h2>
-          <div className="flex flex-wrap justify-center gap-6 items-center">
-            {BRANDS.map((brand, i) => (
-              <div key={brand} className="group relative">
-                {/* Brand Placeholder Logo */}
-                <div className="w-40 h-20 bg-white border border-slate-200 rounded-lg flex items-center justify-center shadow-sm hover:shadow-md hover:border-zecoola-orange transition-all p-2">
-                   {/* We use text here, but user should replace with logos from Slide 10 */}
-                   <span className="font-bold text-slate-500 group-hover:text-zecoola-orange">{brand}</span>
-                </div>
+          <div className="flex flex-wrap justify-center gap-8 items-center">
+            {BRANDS.map((brandImg, i) => (
+              <div key={i} className="group relative w-32 h-16 md:w-40 md:h-20 flex items-center justify-center p-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                <img 
+                  src={brandImg} 
+                  alt={`Brand ${i+1}`}
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
             ))}
           </div>

@@ -2,9 +2,8 @@
 import { ContentData } from './types';
 import { Award, CheckCircle, PenTool, Factory } from 'lucide-react';
 
-export const BRANDS = [
-  'GATOR WADERS', 'uni', 'ALASKA', 'Vellx', 'BASE', 'CYPHER', 'CANOE', 'SDI', 'GLYPH', 'Basedbarefoot', 'SPIDI'
-];
+// Using images for brands as requested (brand-1.png to brand-11.png)
+export const BRANDS = Array.from({ length: 11 }, (_, i) => `/brand-${i + 1}.png`);
 
 export const CONTENT: ContentData = {
   // ==============================================================================
@@ -28,7 +27,6 @@ export const CONTENT: ContentData = {
     { label: { en: 'About', zh: '关于我们' }, href: 'about' },
     { label: { en: 'Milestones', zh: '发展历程' }, href: 'milestones' },
     { label: { en: 'Services', zh: '服务' }, href: 'services' },
-    { label: { en: 'Team', zh: '团队' }, href: 'team' },
     { label: { en: 'Gallery', zh: '展示' }, href: 'gallery' },
     { label: { en: 'Contact', zh: '联系' }, href: 'contact' },
   ],
@@ -207,44 +205,6 @@ export const CONTENT: ContentData = {
       image: '/odm.png'
     }
   },
-  team: {
-    title: { en: 'Our Team', zh: '我们的团队' },
-    subtitle: {
-      en: 'Experienced footwear veterans passionate about excellence.',
-      zh: '一群追求卓越的资深鞋业专家。'
-    },
-    // 已移除图片
-    members: [
-      {
-        name: 'Grayson Tan',
-        role: { en: 'Founder', zh: '创始人' }
-      },
-      {
-        name: 'Joy Tan',
-        role: { en: 'Co-founder', zh: '联合创始人' }
-      },
-      {
-        name: 'Luca Zhu',
-        role: { en: 'VP', zh: '副总裁' }
-      },
-      {
-        name: 'Mr. Zhang',
-        role: { en: 'Pattern Master', zh: '版师主管' }
-      },
-      {
-        name: 'Mr. Xu',
-        role: { en: 'Sourcing Manager', zh: '采购经理' }
-      },
-      {
-        name: 'Golden Jin',
-        role: { en: 'QC Manager', zh: '品控经理' }
-      }
-    ],
-    founderBio: {
-      en: '21 years of expertise in footwear R&D and manufacturing. The driving force behind Zecoola.',
-      zh: '21年鞋类研发与制造经验。Zecoola背后的核心推动力。'
-    }
-  },
   gallery: {
     title: { en: 'Factory Showcase', zh: '工厂展示' },
     // 对应上传的文件: public/factory-1.png 到 factory-7.png
@@ -258,6 +218,31 @@ export const CONTENT: ContentData = {
       '/factory-7.png',
     ],
     brandsTitle: { en: 'Trusted Brands', zh: '合作品牌' }
+  },
+  team: {
+    title: { en: 'Our Team', zh: '我们的团队' },
+    subtitle: { 
+      en: 'A team with multi-culture mentality, dedicated to innovation and quality.', 
+      zh: '一个具有多元文化思维的团队，致力于创新和品质。' 
+    },
+    members: [
+      {
+        name: 'Grayson Tan',
+        role: { en: 'Founder & CEO', zh: '创始人 & CEO' }
+      },
+      {
+        name: 'Core Team',
+        role: { en: 'Design & Development', zh: '设计与开发' }
+      },
+      {
+        name: 'Production Team',
+        role: { en: 'Manufacturing Experts', zh: '制造专家' }
+      }
+    ],
+    founderBio: {
+      en: 'Grayson has extensive experience in the footwear industry, leading the company from its origins to a global manufacturer with a focus on quality and innovation.',
+      zh: 'Grayson 在鞋业拥有丰富的经验，带领公司从创立发展成为注重质量和创新的全球制造商。'
+    }
   },
   contact: {
     title: { en: 'Contact Us', zh: '联系我们' },
