@@ -14,7 +14,7 @@ export interface LocalizedArray {
 export interface TeamMember {
   name: string;
   role: LocalizedString;
-  image: string;
+  image?: string; // Made optional
 }
 
 export interface MilestoneItem {
@@ -82,10 +82,8 @@ export interface ContentData {
     founderBio: LocalizedString;
   };
   gallery: {
-    productionTitle: LocalizedString;
-    productionItems: { title: LocalizedString; image: string }[];
-    sampleTitle: LocalizedString;
-    sampleImages: string[];
+    title: LocalizedString;
+    images: string[];
     brandsTitle: LocalizedString;
   };
   contact: {
@@ -106,7 +104,7 @@ export interface ContentData {
       submitting: LocalizedString;
       successMessage: LocalizedString;
       errorMessage: LocalizedString;
-      validationContact: LocalizedString; // Added validation message
+      validationContact: LocalizedString;
     }
   };
   footer: {

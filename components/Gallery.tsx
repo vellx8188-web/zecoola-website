@@ -1,54 +1,35 @@
+
 import React from 'react';
 import { BRANDS, CONTENT } from '../constants';
 import { useLanguage } from '../LanguageContext';
 
 const Gallery: React.FC = () => {
   const { language } = useLanguage();
-  const { productionTitle, productionItems, sampleTitle, brandsTitle, sampleImages } = CONTENT.gallery;
+  const { title, images, brandsTitle } = CONTENT.gallery;
 
   return (
     <section id="gallery" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         
-        {/* Factory Showcase - Matches Slides 6 & 7 */}
+        {/* Factory Showcase - 7 Images */}
         <div className="mb-24">
           <h2 className="text-3xl font-bold text-zecoola-blue mb-8 border-l-8 border-zecoola-orange pl-4">
-            {productionTitle[language]}
+            {title[language]}
           </h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-             {productionItems.map((item, index) => (
-                <div key={index} className="rounded-xl overflow-hidden shadow-lg relative group h-64">
-                  <img src={item.image} alt={item.title[language]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute bottom-0 left-0 bg-black/70 text-white p-3 w-full font-medium">
-                    {item.title[language]}
-                  </div>
+             {/* First image spans full width on larger screens to break grid monotony, or keep simple grid. 
+                 Using simple grid for 7 items means last row has 1 item if 3 cols. 
+                 Let's make the first one featured (large).
+             */}
+             {images.map((imgSrc, index) => (
+                <div 
+                  key={index} 
+                  className={`rounded-xl overflow-hidden shadow-lg relative group h-64 ${index === 0 ? 'md:col-span-2 lg:col-span-2 md:h-80' : 'md:h-80'}`}
+                >
+                  <img src={imgSrc} alt={`Factory View ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
              ))}
-          </div>
-        </div>
-
-        {/* Samples Showcase - Matches Slide 9 */}
-        <div className="mb-24">
-          <h2 className="text-3xl font-bold text-zecoola-blue mb-8 border-l-8 border-zecoola-orange pl-4">
-            {sampleTitle[language]}
-          </h2>
-          <div className="bg-slate-50 rounded-3xl p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {sampleImages.map((imgSrc, i) => (
-                <div key={i} className="bg-white rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="aspect-square bg-white rounded-lg overflow-hidden flex items-center justify-center">
-                      <img 
-                        src={imgSrc} 
-                        alt="Shoe Sample" 
-                        className="object-contain h-full w-full" 
-                      />
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-slate-400 mt-6 text-sm italic">
-              {language === 'en' ? 'Selected samples from our collection' : '精选样品展示'}
-            </p>
           </div>
         </div>
 

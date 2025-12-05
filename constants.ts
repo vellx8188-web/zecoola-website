@@ -6,19 +6,12 @@ export const BRANDS = [
   'GATOR WADERS', 'uni', 'ALASKA', 'Vellx', 'BASE', 'CYPHER', 'CANOE', 'SDI', 'GLYPH', 'Basedbarefoot', 'SPIDI'
 ];
 
-// Helper to generate placeholders. 
-// When you are ready to replace images, you can delete this function calls below and replace them with string URLs like '/images/photo.jpg'
-const getPlaceholder = (text: string, size = '800x600') => 
-  `https://placehold.co/${size}/EEE/31343C?font=montserrat&text=${encodeURIComponent(text)}`;
-
 export const CONTENT: ContentData = {
   // ==============================================================================
   // 核心配置 (GLOBAL CONFIGURATION)
   // ==============================================================================
   
-  // 关于更换 LOGO 的两种方法：
-  // 方法 A (推荐): 在 GitHub 上的 public 文件夹里上传一个叫 logo.png 的图片。
-  // 方法 B (懒人): 如果您有 Logo 的网络链接(以http开头)，直接替换下面的 '/logo.png'。
+  // LOGO 路径
   logo: '/logo.png', 
 
   // ==============================================================================
@@ -52,8 +45,8 @@ export const CONTENT: ContentData = {
   },
   about: {
     title: { en: 'About Us', zh: '关于我们' },
-    // REPLACE THIS IMAGE BELOW
-    image: getPlaceholder('Slide 3: Office Reception', '800x600'),
+    // 对应上传的文件: public/about.png
+    image: '/about.png',
     mainText: {
       p1: {
         en: 'ZECOOLA is a newly formed company by a group of footwear fanatics that have more than 50 combined years of footwear experience. Across the multiple regions, our team members came from China, Taiwan and United States.',
@@ -201,8 +194,8 @@ export const CONTENT: ContentData = {
         en: 'We have the best quality factories to execute all levels of projects. With our expertise and management, our team aims to provide customers best services of R&D, most competitive prices and reliable quality.',
         zh: '我们拥有最优质的工厂来执行各级项目。凭借我们的专业知识和管理，我们的团队旨在为客户提供最佳的研发服务、最具竞争力的价格和可靠的质量。'
       },
-      // REPLACE THIS IMAGE BELOW
-      image: getPlaceholder('Slide 5: OEM Worker Hands', '600x400')
+      // 对应上传的文件: public/oem.png
+      image: '/oem.png'
     },
     odm: {
       title: 'ODM',
@@ -210,8 +203,8 @@ export const CONTENT: ContentData = {
         en: 'In the cloud sourcing and sharing eco-system, Zecoola positions itself as customer\'s venture team. From conceptual ideas to development and production, our innovative design team executes your vision.',
         zh: '在云采购和共享生态系统中，Zecoola定位为客户的创业团队。从概念创意到开发生产，我们的创新设计团队将您的愿景变为现实。'
       },
-      // REPLACE THIS IMAGE BELOW
-      image: getPlaceholder('Slide 5: ODM CAD Screen', '600x400')
+      // 对应上传的文件: public/odm.png
+      image: '/odm.png'
     }
   },
   team: {
@@ -220,37 +213,31 @@ export const CONTENT: ContentData = {
       en: 'Experienced footwear veterans passionate about excellence.',
       zh: '一群追求卓越的资深鞋业专家。'
     },
-    // REPLACE TEAM IMAGES BELOW
+    // 已移除图片
     members: [
       {
         name: 'Grayson Tan',
-        role: { en: 'Founder', zh: '创始人' },
-        image: getPlaceholder('Slide 8: Grayson Tan', '400x400')
+        role: { en: 'Founder', zh: '创始人' }
       },
       {
         name: 'Joy Tan',
-        role: { en: 'Co-founder', zh: '联合创始人' },
-        image: getPlaceholder('Slide 8: Joy Tan', '400x400')
+        role: { en: 'Co-founder', zh: '联合创始人' }
       },
       {
         name: 'Luca Zhu',
-        role: { en: 'VP', zh: '副总裁' },
-        image: getPlaceholder('Slide 8: Luca Zhu', '400x400')
+        role: { en: 'VP', zh: '副总裁' }
       },
       {
         name: 'Mr. Zhang',
-        role: { en: 'Pattern Master', zh: '版师主管' },
-        image: getPlaceholder('Slide 8: Mr. Zhang', '400x400')
+        role: { en: 'Pattern Master', zh: '版师主管' }
       },
       {
         name: 'Mr. Xu',
-        role: { en: 'Sourcing Manager', zh: '采购经理' },
-        image: getPlaceholder('Slide 8: Mr. Xu', '400x400')
+        role: { en: 'Sourcing Manager', zh: '采购经理' }
       },
       {
         name: 'Golden Jin',
-        role: { en: 'QC Manager', zh: '品控经理' },
-        image: getPlaceholder('Slide 8: Golden Jin', '400x400')
+        role: { en: 'QC Manager', zh: '品控经理' }
       }
     ],
     founderBio: {
@@ -259,24 +246,16 @@ export const CONTENT: ContentData = {
     }
   },
   gallery: {
-    productionTitle: { en: 'Production Capability', zh: '生产能力' },
-    // REPLACE FACTORY IMAGES BELOW
-    productionItems: [
-      { title: { en: 'Assembly Lines', zh: '组装流水线' }, image: getPlaceholder('Slide 6: Assembly Line') },
-      { title: { en: 'Stitching', zh: '针车车间' }, image: getPlaceholder('Slide 6: Stitching') },
-      { title: { en: 'Quality Control', zh: '质量控制' }, image: getPlaceholder('Slide 7: Machine') }
-    ],
-    sampleTitle: { en: 'Sample Display', zh: '样品展示' },
-    // REPLACE SAMPLE IMAGES BELOW (Add as many strings as you want)
-    sampleImages: [
-      getPlaceholder('Slide 9: Shoe Sample 1', '300x300'),
-      getPlaceholder('Slide 9: Shoe Sample 2', '300x300'),
-      getPlaceholder('Slide 9: Shoe Sample 3', '300x300'),
-      getPlaceholder('Slide 9: Shoe Sample 4', '300x300'),
-      getPlaceholder('Slide 9: Shoe Sample 5', '300x300'),
-      getPlaceholder('Slide 9: Shoe Sample 6', '300x300'),
-      getPlaceholder('Slide 9: Shoe Sample 7', '300x300'),
-      getPlaceholder('Slide 9: Shoe Sample 8', '300x300'),
+    title: { en: 'Factory Showcase', zh: '工厂展示' },
+    // 对应上传的文件: public/factory-1.png 到 factory-7.png
+    images: [
+      '/factory-1.png',
+      '/factory-2.png',
+      '/factory-3.png',
+      '/factory-4.png',
+      '/factory-5.png',
+      '/factory-6.png',
+      '/factory-7.png',
     ],
     brandsTitle: { en: 'Trusted Brands', zh: '合作品牌' }
   },

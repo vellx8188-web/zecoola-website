@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CONTENT } from '../constants';
@@ -26,17 +27,11 @@ const Team: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
             >
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-lg overflow-hidden mb-4 relative group">
-                <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                />
-              </div>
-              <h3 className="text-lg font-bold text-slate-800">{member.name}</h3>
-              <p className="text-zecoola-orange font-medium text-sm text-center px-2">{member.role[language]}</p>
+              {/* Image Removed as requested */}
+              <h3 className="text-lg font-bold text-slate-800 mb-1">{member.name}</h3>
+              <p className="text-zecoola-orange font-medium text-sm text-center">{member.role[language]}</p>
             </motion.div>
           ))}
         </div>

@@ -65,7 +65,7 @@ const Contact: React.FC = () => {
           from_email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          to_email: 'Joy@zecoola.com' // This variable needs to be in your EmailJS template as {{to_email}} or just handled by the service default
+          to_email: 'info@zecoola.com' // Updated to info@zecoola.com
         },
         config.publicKey
       );
@@ -126,8 +126,7 @@ const Contact: React.FC = () => {
                 <div>
                   <h4 className="text-xl font-bold mb-2 text-white">{emailLabel[language]}</h4>
                   <div className="flex flex-col gap-1">
-                    <a href="mailto:Joy@zecoola.com" className="text-slate-300 text-lg hover:text-zecoola-orange transition-colors">Joy@zecoola.com</a>
-                    <a href="mailto:Grayson@zecoola.com" className="text-slate-300 text-lg hover:text-zecoola-orange transition-colors">Grayson@zecoola.com</a>
+                    <a href="mailto:info@zecoola.com" className="text-slate-300 text-lg hover:text-zecoola-orange transition-colors">info@zecoola.com</a>
                   </div>
                 </div>
               </div>
