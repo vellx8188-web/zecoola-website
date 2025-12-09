@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -19,6 +20,8 @@ export default {
         sans: ['"Open Sans"', 'sans-serif'],
         montserrat: ['"Montserrat"', 'sans-serif'],
         jost: ['"Jost"', 'sans-serif'],
+        // Geometric fonts that closely match the ZECOOLA signage
+        brand: ['"Century Gothic"', '"Futura"', '"Avant Garde"', '"Arial"', 'sans-serif'],
       }
     },
   },
