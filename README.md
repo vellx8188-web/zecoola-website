@@ -1,20 +1,47 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# ZECOOLA Corporate Website
 
-# Run and deploy your AI Studio app
+Official corporate website for Zecoola (Uanna Shoes) - Footwear R&D and Manufacturing Specialists.
+Built with React, TypeScript, Tailwind CSS, and Vite.
 
-This contains everything you need to run your app locally.
+## 📁 Image Management (重要：图片管理)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Xxz2lBYZm-Oj3UpEXG_Y2u8vAEEezBnC
+To ensure images do not disappear after deployment, they must be committed to the Git repository.
+**请确保将所有图片文件放入 `public/` 文件夹中，并提交到 GitHub。**
 
-## Run Locally
+### Required Images Structure:
+Place these files in the `public` folder:
 
-**Prerequisites:**  Node.js
+*   **Logo**: `logo.png`
+*   **Pages**: `about.png`, `oem.png`, `odm.png`
+*   **Brands**: `brand-1.png` to `brand-11.png`
+*   **Factory Gallery**: `factory-1.png` to `factory-6.png`
 
+## 🚀 Development
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+## 📦 Deployment
+
+1.  Push code to GitHub:
+    ```bash
+    git add .
+    git commit -m "Update content"
+    git push origin main
+    ```
+2.  Connect repository to Vercel.
+3.  Vercel will automatically deploy.
+
+## 🛠 Tech Stack
+
+*   **Framework**: React 18
+*   **Build Tool**: Vite
+*   **Styling**: Tailwind CSS
+*   **Animations**: Framer Motion
+*   **Icons**: Lucide React
+*   **Email**: EmailJS
