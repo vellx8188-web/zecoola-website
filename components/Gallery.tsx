@@ -30,16 +30,27 @@ const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Brands - Now using Images */}
+        {/* Brands Section - Premium Grid Design */}
         <div>
-          <h2 className="text-3xl font-bold text-center text-zecoola-blue mb-12">{brandsTitle[language]}</h2>
-          <div className="flex flex-wrap justify-center gap-8 items-center">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-zecoola-blue mb-4">{brandsTitle[language]}</h2>
+            <div className="w-16 h-1 bg-zecoola-orange mx-auto opacity-50"></div>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
             {BRANDS.map((brandImg, i) => (
-              <div key={i} className="group relative w-32 h-16 md:w-40 md:h-20 flex items-center justify-center p-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+              <div 
+                key={i} 
+                className="group bg-slate-50 border border-slate-100 rounded-xl h-32 flex items-center justify-center p-6 hover:shadow-xl hover:border-slate-200 hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* 
+                  object-contain: Ensures the logo fits within the box without distortion.
+                  grayscale & opacity: Unifies different logo styles/colors into a cohesive look.
+                */}
                 <img 
                   src={brandImg} 
                   alt={`Brand ${i+1}`}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                 />
               </div>
             ))}

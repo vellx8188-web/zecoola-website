@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CONTENT } from '../constants';
@@ -29,14 +30,12 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-orange-400/20 to-orange-300/30 pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        {/* ZECOOLA Title - Slide 1 puts this top right, but for web we keep it centered or in navbar. 
-            We will emphasize the Slogan here as per Slide 1 center text */}
-        
+        {/* ZECOOLA Title */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tighter drop-shadow-md font-[Montserrat]"
+          className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tight drop-shadow-md"
         >
           {title}
         </motion.h1>
@@ -45,7 +44,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl md:text-4xl font-bold text-white tracking-wide uppercase mt-4 mb-12 drop-shadow-sm"
+          className="text-2xl md:text-4xl font-bold text-white tracking-wide uppercase mt-4 mb-12 drop-shadow-sm font-[Montserrat]"
         >
           {slogan[language]}
         </motion.h2>

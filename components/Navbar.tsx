@@ -30,49 +30,17 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo Area */}
         <button 
           onClick={(e) => scrollToSection(e, 'hero')}
           className="flex items-center gap-3 focus:outline-none group"
         >
-           {/* Logo Container */}
-           <div className="w-12 h-12 rounded-full bg-white p-0.5 flex items-center justify-center shadow-sm overflow-hidden border-2 border-transparent transition-all">
-             {/* 
-                 Primary: Try to load the image.
-                 Fallback: Use the custom SVG that matches the ZECOOLA logo 
-             */}
-             <img 
-               src={CONTENT.logo} 
-               alt="Zecoola Logo" 
-               className="w-full h-full object-contain"
-               onError={(e) => {
-                 e.currentTarget.style.display = 'none';
-                 e.currentTarget.nextElementSibling!.classList.remove('hidden');
-               }}
-             />
-             
-             {/* Custom SVG Logo Fallback (Matches the ZECOOLA ZA Logo) */}
-             <div className="hidden w-full h-full flex items-center justify-center bg-white">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full p-1">
-                   {/* Orange Ring */}
-                   <circle cx="50" cy="50" r="45" stroke="#FF6B00" strokeWidth="6" />
-                   
-                   {/* Stylized ZA Monogram */}
-                   <g stroke="#FF6B00" strokeWidth="7" strokeLinecap="square" strokeLinejoin="miter">
-                     {/* Top Bar of Z */}
-                     <path d="M32 35 L68 35" />
-                     {/* Diagonal Z */}
-                     <path d="M68 35 L32 65" />
-                     {/* Bottom Bar of Z */}
-                     <path d="M32 65 L68 65" />
-                     {/* The 'A' Crossbar effect */}
-                     <path d="M42 50 L58 50" strokeWidth="6" />
-                   </g>
-                </svg>
-             </div>
-           </div>
-           
-           <span className={`text-2xl font-extrabold tracking-wide ${isScrolled ? 'text-zecoola-orange' : 'text-white'} font-[Montserrat]`}>
+           <img 
+             src={CONTENT.logo} 
+             alt="Zecoola Logo" 
+             className="h-10 w-auto object-contain"
+           />
+           <span className={`text-2xl font-black tracking-wider ${isScrolled ? 'text-slate-800' : 'text-white'} transition-colors duration-300`}>
              ZECOOLA
            </span>
         </button>
