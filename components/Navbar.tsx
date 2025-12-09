@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
              alt="Zecoola Logo" 
              className={`h-10 w-auto object-contain ${isScrolled ? 'mix-blend-multiply' : ''}`}
            />
-           <span className={`text-2xl font-black tracking-wider ${isScrolled ? 'text-zecoola-orange' : 'text-white'} transition-colors duration-300`}>
+           <span className={`text-2xl font-black tracking-wider ${isScrolled ? 'text-zecoola-orange' : 'text-white'} transition-colors duration-300 font-jost`}>
              ZECOOLA
            </span>
         </button>

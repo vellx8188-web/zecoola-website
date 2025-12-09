@@ -18,6 +18,7 @@ export default {
       fontFamily: {
         sans: ['"Open Sans"', 'sans-serif'],
         montserrat: ['"Montserrat"', 'sans-serif'],
+        jost: ['"Jost"', 'sans-serif'],
       }
     },
   },
