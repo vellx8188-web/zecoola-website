@@ -38,9 +38,9 @@ const Navbar: React.FC = () => {
            <img 
              src={CONTENT.logo} 
              alt="Zecoola Logo" 
-             className="h-10 w-auto object-contain"
+             className={`h-10 w-auto object-contain ${isScrolled ? 'mix-blend-multiply' : ''}`}
            />
-           <span className={`text-2xl font-black tracking-wider ${isScrolled ? 'text-slate-800' : 'text-white'} transition-colors duration-300`}>
+           <span className={`text-2xl font-black tracking-wider ${isScrolled ? 'text-zecoola-orange' : 'text-white'} transition-colors duration-300`}>
              ZECOOLA
            </span>
         </button>
