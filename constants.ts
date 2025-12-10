@@ -2,8 +2,32 @@
 import { ContentData } from './types';
 import { Award, CheckCircle, PenTool, Factory } from 'lucide-react';
 
+// ==============================================================================
+// 图片资源配置 (IMAGE ASSETS CONFIGURATION)
+// ==============================================================================
+// 1. 如果您使用本地 public 文件夹，请保持此处为空字符串: ''
+// 2. 如果您建立了一个单独的 GitHub 仓库放图片（开启 Pages 服务），请在此处填入网址。
+//    例如: 'https://yourname.github.io/zecoola-assets/'
+//    注意：网址末尾需要带斜杠 /
+// ==============================================================================
+export const ASSET_URL: string = ''; 
+
+// 内部辅助函数：自动处理图片路径
+// Internal helper to resolve image paths based on configuration
+const getPath = (filename: string): string => {
+  // 如果没有配置外部链接，使用本地路径
+  if (!ASSET_URL) return `/${filename}`;
+  
+  // 确保 ASSET_URL 以 / 结尾
+  const baseUrl = ASSET_URL.endsWith('/') ? ASSET_URL : `${ASSET_URL}/`;
+  // 移除文件名开头的 / (如果存在)
+  const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
+  
+  return `${baseUrl}${cleanFilename}`;
+};
+
 // Using images for brands as requested (brand-1.png to brand-10.png)
-export const BRANDS = Array.from({ length: 10 }, (_, i) => `/brand-${i + 1}.png`);
+export const BRANDS = Array.from({ length: 10 }, (_, i) => getPath(`brand-${i + 1}.png`));
 
 export const CONTENT: ContentData = {
   // ==============================================================================
@@ -11,9 +35,7 @@ export const CONTENT: ContentData = {
   // ==============================================================================
   
   // LOGO 路径
-  // IMPORTANT: Upload a logo image that includes both the ICON and the TEXT (ZECOOLA)
-  // precisely as you want it to appear.
-  logo: '/logo.png', 
+  logo: getPath('logo.png'), 
 
   // ==============================================================================
   // 邮件配置 (EMAIL CONFIGURATION)
@@ -47,7 +69,7 @@ export const CONTENT: ContentData = {
   about: {
     title: { en: 'About Us', zh: '关于我们' },
     // 对应上传的文件: public/about.png
-    image: '/about.png',
+    image: getPath('about.png'),
     mainText: {
       p1: {
         en: 'ZECOOLA is a newly formed company by a group of footwear fanatics that have more than 50 combined years of footwear experience. Across the multiple regions, our team members came from China, Taiwan and United States.',
@@ -196,7 +218,7 @@ export const CONTENT: ContentData = {
         zh: '我们拥有最优质的工厂来执行各级项目。凭借我们的专业知识和管理，我们的团队旨在为客户提供最佳的研发服务、最具竞争力的价格和可靠的质量。'
       },
       // 对应上传的文件: public/oem.png
-      image: '/oem.png'
+      image: getPath('oem.png')
     },
     odm: {
       title: 'ODM',
@@ -205,7 +227,7 @@ export const CONTENT: ContentData = {
         zh: '在云采购和共享生态系统中，Zecoola定位为客户的创业团队。从概念创意到开发生产，我们的创新设计团队将您的愿景变为现实。'
       },
       // 对应上传的文件: public/odm.png
-      image: '/odm.png'
+      image: getPath('odm.png')
     }
   },
   // ==============================================================================
@@ -218,18 +240,18 @@ export const CONTENT: ContentData = {
       zh: '我们代表性作品的综合展示，每一步都彰显创新。'
     },
     // User requested a single fused image display instead of individual cards
-    image: '/product-showcase.png'
+    image: getPath('product-showcase.png')
   },
   gallery: {
     title: { en: 'Factory Showcase', zh: '工厂展示' },
     // 对应上传的文件: public/factory-1.png 到 factory-6.png (Exactly 6 images)
     images: [
-      '/factory-1.png',
-      '/factory-2.png',
-      '/factory-3.png',
-      '/factory-4.png',
-      '/factory-5.png',
-      '/factory-6.png',
+      getPath('factory-1.png'),
+      getPath('factory-2.png'),
+      getPath('factory-3.png'),
+      getPath('factory-4.png'),
+      getPath('factory-5.png'),
+      getPath('factory-6.png'),
     ],
     brandsTitle: { en: 'Trusted Brands', zh: '合作品牌' }
   },
