@@ -21,7 +21,7 @@ Please upload your images to this folder with the exact filenames below:
 ## 合作品牌 (Trusted Brands)
 - brand-1.png
 - ...
-- brand-11.png
+- brand-10.png
 
 ## 工厂展示 (Factory Gallery)
 - factory-1.png

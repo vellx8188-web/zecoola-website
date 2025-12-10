@@ -2,8 +2,8 @@
 import { ContentData } from './types';
 import { Award, CheckCircle, PenTool, Factory } from 'lucide-react';
 
-// Using images for brands as requested (brand-1.png to brand-11.png)
-export const BRANDS = Array.from({ length: 11 }, (_, i) => `/brand-${i + 1}.png`);
+// Using images for brands as requested (brand-1.png to brand-10.png)
+export const BRANDS = Array.from({ length: 10 }, (_, i) => `/brand-${i + 1}.png`);
 
 export const CONTENT: ContentData = {
   // ==============================================================================
