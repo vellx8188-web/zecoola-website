@@ -246,6 +246,8 @@ export const CONTENT: ContentData = {
     },
     callLabel: { en: 'Call Us', zh: '电话' },
     emailLabel: { en: 'Email', zh: '邮箱' },
+    // 这里设置接收表单的邮箱地址 / Set your receiving email address here
+    emailAddress: 'info@zecoola.com',
     mapLabel: { en: 'ZECOOLA DONGGUAN', zh: '东莞友安纳' },
     mapSub: {
       en: 'Established in 2017. The heart of our manufacturing operations.',

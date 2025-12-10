@@ -86,6 +86,7 @@ export interface ContentData {
     address: LocalizedString;
     callLabel: LocalizedString;
     emailLabel: LocalizedString;
+    emailAddress: string; // Added central email configuration
     mapLabel: LocalizedString;
     mapSub: LocalizedString;
     form: {
