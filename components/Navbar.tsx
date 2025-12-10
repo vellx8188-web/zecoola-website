@@ -35,17 +35,21 @@ const Navbar: React.FC = () => {
           onClick={(e) => scrollToSection(e, 'hero')}
           className="flex items-center gap-3 focus:outline-none group"
         >
-           {/* 
-             Updated Logo Handling:
-             Removed the <span>ZECOOLA</span> text. 
-             Now relying entirely on the image to display the logo + brand name.
-             This ensures the specific custom font (with the slanted 'A') is displayed exactly as the user wants.
-           */}
+           {/* Logo Icon */}
            <img 
              src={CONTENT.logo} 
              alt="Zecoola" 
-             className={`h-12 md:h-14 w-auto object-contain transition-all duration-300 ${isScrolled ? 'mix-blend-multiply' : 'brightness-0 invert'}`}
+             className={`h-10 md:h-12 w-auto object-contain transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
            />
+           {/* 
+             Restored Text Logo 
+             Using Montserrat (Geometric Sans) with Extra Bold weight.
+             Manually leaning the 'A' to the right using skew transformation to match the brand identity.
+           */}
+           <div className={`text-2xl md:text-3xl font-black tracking-widest font-montserrat flex items-baseline ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
+             <span>ZECOOL</span>
+             <span className="transform -skew-x-12 inline-block ml-[1px]">A</span>
+           </div>
         </button>
 
         {/* Desktop Menu */}
