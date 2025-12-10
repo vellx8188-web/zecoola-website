@@ -13,6 +13,17 @@ Please upload your images to this folder with the exact filenames below:
 - oem.png
 - odm.png
 
+## 产品展示 (Product Showcase - NEW)
+Please upload individual images of the shoes (transparent PNG or white background preferred).
+- sample-1.png (Outdoor/Hunting)
+- sample-2.png (Sports/K-Jump)
+- sample-3.png (Safety/Work)
+- sample-4.png (Casual)
+- sample-5.png (Pickleball)
+- sample-6.png (Sneaker)
+- sample-7.png (Winter Boot)
+- sample-8.png (Bdaptive)
+
 ## 合作品牌 (Trusted Brands)
 - brand-1.png
 - ...

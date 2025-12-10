@@ -27,7 +27,8 @@ export const CONTENT: ContentData = {
     { label: { en: 'About', zh: '关于我们' }, href: 'about' },
     { label: { en: 'Milestones', zh: '发展历程' }, href: 'milestones' },
     { label: { en: 'Services', zh: '服务' }, href: 'services' },
-    { label: { en: 'Gallery', zh: '展示' }, href: 'gallery' },
+    { label: { en: 'Products', zh: '产品展示' }, href: 'products' }, // Added Products
+    { label: { en: 'Gallery', zh: '工厂' }, href: 'gallery' },
     { label: { en: 'Contact', zh: '联系' }, href: 'contact' },
   ],
   hero: {
@@ -204,6 +205,80 @@ export const CONTENT: ContentData = {
       // 对应上传的文件: public/odm.png
       image: '/odm.png'
     }
+  },
+  // ==============================================================================
+  // 产品展示 (PRODUCTS / SAMPLE DISPLAY)
+  // ==============================================================================
+  products: {
+    title: { en: 'Sample Display', zh: '样品展示' },
+    subtitle: { 
+      en: 'A selection of our representative works across various categories, featuring advanced technologies like K-Jump and Bdaptive.',
+      zh: '我们各类别的代表作品精选，采用了 K-Jump 和 Bdaptive 等先进技术。'
+    },
+    categories: {
+      all: { en: 'All', zh: '全部' },
+      outdoor: { en: 'Outdoor & Safety', zh: '户外与安全' },
+      sports: { en: 'Sports', zh: '运动系列' },
+      casual: { en: 'Casual', zh: '休闲系列' }
+    },
+    items: [
+      {
+        id: '1',
+        category: 'outdoor',
+        image: '/sample-1.png', // User needs to upload these
+        title: { en: 'Gator Waders Boots', zh: 'Gator Waders 涉水靴' },
+        desc: { en: 'Waterproof hunting boots', zh: '防水狩猎靴' }
+      },
+      {
+        id: '2',
+        category: 'sports',
+        image: '/sample-2.png',
+        title: { en: 'K-Jump Performance', zh: 'K-Jump 专业跑鞋' },
+        desc: { en: 'High rebound technology', zh: '高回弹科技' }
+      },
+      {
+        id: '3',
+        category: 'outdoor',
+        image: '/sample-3.png',
+        title: { en: 'Safety Work Boots', zh: '安全防护靴' },
+        desc: { en: 'Heavy duty protection', zh: '重型防护' }
+      },
+      {
+        id: '4',
+        category: 'casual',
+        image: '/sample-4.png',
+        title: { en: 'Casual Slip-on', zh: '休闲懒人鞋' },
+        desc: { en: 'Comfort lifestyle', zh: '舒适生活' }
+      },
+      {
+        id: '5',
+        category: 'sports',
+        image: '/sample-5.png',
+        title: { en: 'Cypher Pickleball', zh: 'Cypher 匹克球鞋' },
+        desc: { en: 'Court performance', zh: '球场竞技' }
+      },
+      {
+        id: '6',
+        category: 'casual',
+        image: '/sample-6.png',
+        title: { en: 'Urban Sneaker', zh: '城市休闲鞋' },
+        desc: { en: 'Modern aesthetic', zh: '现代美学' }
+      },
+      {
+        id: '7',
+        category: 'outdoor',
+        image: '/sample-7.png',
+        title: { en: 'Winter Boots', zh: '冬季保暖靴' },
+        desc: { en: 'Insulated comfort', zh: '保暖舒适' }
+      },
+      {
+        id: '8',
+        category: 'sports',
+        image: '/sample-8.png',
+        title: { en: 'Bdaptive Runner', zh: 'Bdaptive 跑鞋' },
+        desc: { en: 'Intelligent adaptive system', zh: '智能适应系统' }
+      }
+    ]
   },
   gallery: {
     title: { en: 'Factory Showcase', zh: '工厂展示' },

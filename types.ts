@@ -22,6 +22,14 @@ export interface NavItem {
   href: string;
 }
 
+export interface ProductItem {
+  id: string;
+  category: 'outdoor' | 'sports' | 'casual';
+  image: string;
+  title: LocalizedString;
+  desc?: LocalizedString;
+}
+
 export interface ContentData {
   logo: string;
   emailJS: {
@@ -68,6 +76,17 @@ export interface ContentData {
       desc: LocalizedString;
       image: string;
     };
+  };
+  products: {
+    title: LocalizedString;
+    subtitle: LocalizedString;
+    categories: {
+      all: LocalizedString;
+      outdoor: LocalizedString;
+      sports: LocalizedString;
+      casual: LocalizedString;
+    };
+    items: ProductItem[];
   };
   gallery: {
     title: LocalizedString;
