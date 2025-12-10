@@ -22,6 +22,12 @@ export interface NavItem {
   href: string;
 }
 
+// Added BrandItem interface
+export interface BrandItem {
+  image: string;
+  url: string;
+}
+
 export interface ContentData {
   logo: string;
   emailJS: {

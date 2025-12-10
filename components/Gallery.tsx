@@ -41,36 +41,58 @@ const Gallery: React.FC = () => {
             This ensures that if you have 11 items (odd number), the last row centers itself nicely.
           */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-7xl mx-auto">
-            {BRANDS.map((brandImg, i) => (
-              <div 
-                key={i} 
-                className="
-                  group 
-                  bg-white 
-                  border border-slate-100 
-                  rounded-xl 
-                  /* Fixed dimensions for uniform high-end look */
-                  w-[140px] h-[80px] 
-                  md:w-[180px] md:h-[100px] 
-                  lg:w-[200px] lg:h-[120px]
-                  flex items-center justify-center 
-                  p-4 md:p-6 
-                  shadow-sm hover:shadow-xl hover:border-slate-200 
-                  transform hover:-translate-y-1 
-                  transition-all duration-300
-                "
-              >
-                {/* 
-                  object-contain: Ensures the logo fits within the box without distortion.
-                  filter logic: Gray by default, Color on hover.
-                */}
+            {BRANDS.map((brand, i) => {
+              // Common styles for both clickable and non-clickable items
+              const containerStyles = `
+                group 
+                bg-white 
+                border border-slate-100 
+                rounded-xl 
+                /* Fixed dimensions for uniform high-end look */
+                w-[140px] h-[80px] 
+                md:w-[180px] md:h-[100px] 
+                lg:w-[200px] lg:h-[120px]
+                flex items-center justify-center 
+                p-4 md:p-6 
+                shadow-sm hover:shadow-xl hover:border-slate-200 
+                transform hover:-translate-y-1 
+                transition-all duration-300
+              `;
+
+              // Render Content (The Image)
+              const content = (
                 <img 
-                  src={brandImg} 
+                  src={brand.image} 
                   alt={`Brand ${i+1}`}
                   className="max-w-full max-h-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                 />
-              </div>
-            ))}
+              );
+
+              // If a URL is provided, wrap in an anchor tag
+              if (brand.url && brand.url.trim() !== '') {
+                return (
+                  <a 
+                    key={i}
+                    href={brand.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${containerStyles} cursor-pointer`}
+                  >
+                    {content}
+                  </a>
+                );
+              }
+
+              // Otherwise render as a plain div
+              return (
+                <div 
+                  key={i} 
+                  className={`${containerStyles} cursor-default`}
+                >
+                  {content}
+                </div>
+              );
+            })}
           </div>
         </div>
 

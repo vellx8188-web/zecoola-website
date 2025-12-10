@@ -1,5 +1,5 @@
 
-import { ContentData } from './types';
+import { ContentData, BrandItem } from './types';
 import { Award, CheckCircle, PenTool, Factory } from 'lucide-react';
 
 // ==============================================================================
@@ -26,8 +26,24 @@ const getPath = (filename: string): string => {
   return `${baseUrl}${cleanFilename}`;
 };
 
-// Using images for brands as requested (brand-1.png to brand-10.png)
-export const BRANDS = Array.from({ length: 10 }, (_, i) => getPath(`brand-${i + 1}.png`));
+// ==============================================================================
+// 合作品牌配置 (BRANDS CONFIGURATION)
+// ==============================================================================
+// 在 url: '' 的单引号中填入该品牌的官网地址。
+// 如果没有官网，保持 url: '' 为空即可，这样点击就不会有反应。
+// Example: { image: getPath('brand-1.png'), url: 'https://www.google.com' },
+export const BRANDS: BrandItem[] = [
+  { image: getPath('brand-1.png'), url: '' }, // 品牌 1 链接
+  { image: getPath('brand-2.png'), url: '' }, // 品牌 2 链接
+  { image: getPath('brand-3.png'), url: '' }, // 品牌 3 链接
+  { image: getPath('brand-4.png'), url: 'https://www.google.com' }, // 品牌 4 链接
+  { image: getPath('brand-5.png'), url: '' }, // 品牌 5 链接
+  { image: getPath('brand-6.png'), url: '' }, // 品牌 6 链接
+  { image: getPath('brand-7.png'), url: '' }, // 品牌 7 链接
+  { image: getPath('brand-8.png'), url: '' }, // 品牌 8 链接
+  { image: getPath('brand-9.png'), url: '' }, // 品牌 9 链接
+  { image: getPath('brand-10.png'), url: '' }, // 品牌 10 链接
+];
 
 export const CONTENT: ContentData = {
   // ==============================================================================
@@ -228,7 +244,7 @@ export const CONTENT: ContentData = {
       },
       // 对应上传的文件: public/odm.png
       image: getPath('odm.png')
-    }
+    },
   },
   // ==============================================================================
   // 产品展示 (PRODUCTS / SAMPLE DISPLAY)
