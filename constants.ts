@@ -10,7 +10,7 @@ import { Award, CheckCircle, PenTool, Factory } from 'lucide-react';
 //    例如: 'https://yourname.github.io/zecoola-assets/'
 //    注意：网址末尾需要带斜杠 /
 // ==============================================================================
-export const ASSET_URL: string = ''; 
+export const ASSET_URL: string = 'https://vellx8188-web.github.io/zecoola-assets/'; 
 
 // 内部辅助函数：自动处理图片路径
 // Internal helper to resolve image paths based on configuration
