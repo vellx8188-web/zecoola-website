@@ -1,3 +1,4 @@
+
 # ZECOOLA Corporate Website
 
 Official corporate website for Zecoola (Uanna Shoes) - Footwear R&D and Manufacturing Specialists.
@@ -11,8 +12,9 @@ To ensure images do not disappear after deployment, they must be committed to th
 ### Required Images Structure:
 Place these files in the `public` folder:
 
-*   **Logo**: `logo.png`
+*   **Logo**: `logo.png` (Full logo with text / 完整带文字的Logo)
 *   **Pages**: `about.png`, `oem.png`, `odm.png`
+*   **Products**: `product-showcase.png` (Single collage image / 样品展示合成图)
 *   **Brands**: `brand-1.png` to `brand-11.png`
 *   **Factory Gallery**: `factory-1.png` to `factory-6.png`
 

@@ -7,22 +7,17 @@ Please upload your images to this folder with the exact filenames below:
 
 ## 必需图片 (Required)
 - logo.png
+  **Important:** Please upload the **FULL** logo here (Icon + "ZECOOLA" text). Since you require the exact custom font (leaning 'A'), the logo must be an image containing the text.
+  (请上传包含图标和“ZECOOLA”文字的完整 Logo 图片。因为您需要完全一致的特殊字体，必须使用包含文字的图片。)
 
 ## 页面图片 (Page Images)
 - about.png
 - oem.png
 - odm.png
 
-## 产品展示 (Product Showcase - NEW)
-Please upload individual images of the shoes (transparent PNG or white background preferred).
-- sample-1.png (Outdoor/Hunting)
-- sample-2.png (Sports/K-Jump)
-- sample-3.png (Safety/Work)
-- sample-4.png (Casual)
-- sample-5.png (Pickleball)
-- sample-6.png (Sneaker)
-- sample-7.png (Winter Boot)
-- sample-8.png (Bdaptive)
+## 产品展示 (Product Showcase)
+- product-showcase.png
+  (This should be the single large image containing all your samples fused together, e.g., the shoes on the white steps / 这是一个包含所有样品的合成大图)
 
 ## 合作品牌 (Trusted Brands)
 - brand-1.png

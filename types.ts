@@ -22,14 +22,6 @@ export interface NavItem {
   href: string;
 }
 
-export interface ProductItem {
-  id: string;
-  category: 'outdoor' | 'sports' | 'casual';
-  image: string;
-  title: LocalizedString;
-  desc?: LocalizedString;
-}
-
 export interface ContentData {
   logo: string;
   emailJS: {
@@ -80,13 +72,7 @@ export interface ContentData {
   products: {
     title: LocalizedString;
     subtitle: LocalizedString;
-    categories: {
-      all: LocalizedString;
-      outdoor: LocalizedString;
-      sports: LocalizedString;
-      casual: LocalizedString;
-    };
-    items: ProductItem[];
+    image: string; // Changed from items array to single image
   };
   gallery: {
     title: LocalizedString;
