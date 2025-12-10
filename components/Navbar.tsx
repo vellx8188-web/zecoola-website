@@ -45,8 +45,9 @@ const Navbar: React.FC = () => {
              Restored Text Logo 
              Using Montserrat (Geometric Sans) with Extra Bold weight.
              Manually leaning the 'A' to the right using skew transformation to match the brand identity.
+             Updated Color: White on transparent background, Orange on white scrolled background.
            */}
-           <div className={`text-2xl md:text-3xl font-black tracking-widest font-montserrat flex items-baseline ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
+           <div className={`text-2xl md:text-3xl font-black tracking-widest font-montserrat flex items-baseline ${isScrolled ? 'text-zecoola-orange' : 'text-white'}`}>
              <span>ZECOOL</span>
              <span className="transform -skew-x-12 inline-block ml-[1px]">A</span>
            </div>
