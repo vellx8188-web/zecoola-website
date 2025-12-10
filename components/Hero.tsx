@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CONTENT } from '../constants';
@@ -6,7 +5,7 @@ import { useLanguage } from '../LanguageContext';
 
 const Hero: React.FC = () => {
   const { language } = useLanguage();
-  const { title, slogan, cta } = CONTENT.hero;
+  const { slogan, cta } = CONTENT.hero;
 
   const scrollToAbout = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -16,7 +15,6 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-[#FF6B00]">
       {/* Background elements to match Slide 1 */}
-      {/* Main Orange Background is set on the section */}
       
       {/* Large Blue Circle - Bottom Left */}
       <motion.div 
@@ -30,21 +28,23 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-orange-400/20 to-orange-300/30 pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        {/* ZECOOLA Title */}
+        {/* ZECOOLA Title - Styled to match Navbar Logo */}
+        {/* Using Montserrat Black and skewing the 'A' to lean right (-skew-x-12) */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tight drop-shadow-md"
+          className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tight drop-shadow-md font-montserrat flex items-baseline justify-center"
         >
-          {title}
+          <span>ZECOOL</span>
+          <span className="transform -skew-x-12 inline-block ml-1 md:ml-2">A</span>
         </motion.h1>
         
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl md:text-4xl font-bold text-white tracking-wide uppercase mt-4 mb-12 drop-shadow-sm font-[Montserrat]"
+          className="text-2xl md:text-4xl font-bold text-white tracking-wide uppercase mt-4 mb-12 drop-shadow-sm font-montserrat"
         >
           {slogan[language]}
         </motion.h2>
