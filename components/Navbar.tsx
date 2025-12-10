@@ -35,11 +35,11 @@ const Navbar: React.FC = () => {
           onClick={(e) => scrollToSection(e, 'hero')}
           className="flex items-center gap-3 focus:outline-none group"
         >
-           {/* Logo Icon */}
+           {/* Logo Icon - Removed brightness/invert filter to show original colors */}
            <img 
              src={CONTENT.logo} 
              alt="Zecoola" 
-             className={`h-10 md:h-12 w-auto object-contain transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
+             className="h-10 md:h-12 w-auto object-contain transition-all duration-300"
            />
            {/* 
              Restored Text Logo 
