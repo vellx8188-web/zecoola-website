@@ -17,11 +17,7 @@ const ComingSoon: React.FC = () => {
       <div className="max-w-2xl w-full text-center relative z-10">
         {/* Logo Section */}
         <div className="flex flex-col items-center mb-12">
-            <img 
-              src={CONTENT.logo} 
-              alt="Zecoola Logo" 
-              className="h-20 md:h-24 w-auto object-contain mb-4" 
-            />
+            {/* Image logo removed to ensure display stability */}
             {/* Text Logo matching Navbar style */}
             <div className="text-4xl md:text-5xl font-black tracking-widest font-montserrat flex items-baseline text-zecoola-orange">
                 <span>ZECOOL</span>
