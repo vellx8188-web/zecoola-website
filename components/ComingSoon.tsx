@@ -65,7 +65,7 @@ const ComingSoon: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs text-slate-400 font-bold uppercase">Phone</p>
-                <p className="text-slate-700 font-medium font-mono">+86 135-2722-6226</p>
+                <p className="text-slate-700 font-medium font-mono">{contact.phoneNumber}</p>
               </div>
             </div>
 

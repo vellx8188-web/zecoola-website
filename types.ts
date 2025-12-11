@@ -93,6 +93,7 @@ export interface ContentData {
     callLabel: LocalizedString;
     emailLabel: LocalizedString;
     emailAddress: string; // Added central email configuration
+    phoneNumber: string; // Added central phone configuration
     mapLabel: LocalizedString;
     mapSub: LocalizedString;
     form: {

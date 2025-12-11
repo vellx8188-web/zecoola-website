@@ -7,7 +7,7 @@ import { useLanguage } from '../LanguageContext';
 
 const Contact: React.FC = () => {
   const { language } = useLanguage();
-  const { title, desc, addressLabel, address, callLabel, emailLabel, emailAddress, mapLabel, mapSub, form } = CONTENT.contact;
+  const { title, desc, addressLabel, address, callLabel, emailLabel, emailAddress, phoneNumber, mapLabel, mapSub, form } = CONTENT.contact;
 
   // Form State
   const formRef = useRef<HTMLFormElement>(null);
@@ -113,9 +113,9 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold mb-2 text-white">{callLabel[language]}</h4>
-                  {/* Phone number updated to plain text as requested */}
+                  {/* Phone number updated to use centralized config */}
                   <div className="text-slate-300 font-mono text-xl">
-                    +86 135-2722-6226
+                    {phoneNumber}
                   </div>
                 </div>
               </div>
