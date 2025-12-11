@@ -17,7 +17,7 @@ import { LanguageProvider } from './LanguageContext';
 // ==============================================================================
 // true  = 显示 "Coming Soon" 页面 (维护模式)
 // false = 显示正式的完整网站
-const IS_MAINTENANCE_MODE = true; 
+const IS_MAINTENANCE_MODE = false; 
 
 function App() {
   // 如果开启了维护模式，直接显示 ComingSoon 页面
