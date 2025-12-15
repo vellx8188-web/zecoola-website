@@ -33,16 +33,16 @@ const getPath = (filename: string): string => {
 // 如果没有官网，保持 url: '' 为空即可，这样点击就不会有反应。
 // Example: { image: getPath('brand-1.png'), url: 'https://www.google.com' },
 export const BRANDS: BrandItem[] = [
-  { image: getPath('brand-1.png'), url: '' }, // 品牌 1 链接
-  { image: getPath('brand-2.png'), url: '' }, // 品牌 2 链接
-  { image: getPath('brand-3.png'), url: '' }, // 品牌 3 链接
-  { image: getPath('brand-4.png'), url: 'https://www.google.com' }, // 品牌 4 链接
-  { image: getPath('brand-5.png'), url: '' }, // 品牌 5 链接
-  { image: getPath('brand-6.png'), url: '' }, // 品牌 6 链接
-  { image: getPath('brand-7.png'), url: '' }, // 品牌 7 链接
-  { image: getPath('brand-8.png'), url: '' }, // 品牌 8 链接
-  { image: getPath('brand-9.png'), url: '' }, // 品牌 9 链接
-  { image: getPath('brand-10.png'), url: '' }, // 品牌 10 链接
+  { image: getPath('brand-1.png'), url: 'https://www.baseprotection.com/' },
+  { image: getPath('brand-2.png'), url: '' }, // No URL provided
+  { image: getPath('brand-3.png'), url: 'https://cypherpickleball.com/collections/mens' },
+  { image: getPath('brand-4.png'), url: 'https://alaskagearcompany.com/' },
+  { image: getPath('brand-5.png'), url: 'https://www.uni.shoes/' },
+  { image: getPath('brand-6.png'), url: 'https://www.canoefootwear.com/' },
+  { image: getPath('brand-7.png'), url: 'https://www.canoefootwear.com/' },
+  { image: getPath('brand-8.png'), url: 'https://glyph.earth/' },
+  { image: getPath('brand-9.png'), url: 'https://gatorwaders.com/' },
+  { image: getPath('brand-10.png'), url: 'https://sidi.com/en-us' },
 ];
 
 export const CONTENT: ContentData = {
