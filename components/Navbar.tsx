@@ -35,21 +35,19 @@ const Navbar: React.FC = () => {
           onClick={(e) => scrollToSection(e, 'hero')}
           className="flex items-center gap-3 focus:outline-none group"
         >
-           {/* Logo Icon - Removed brightness/invert filter to show original colors */}
+           {/* Logo Icon */}
            <img 
              src={CONTENT.logo} 
              alt="Zecoola" 
              className="h-10 md:h-12 w-auto object-contain transition-all duration-300"
            />
            {/* 
-             Restored Text Logo 
-             Using Montserrat (Geometric Sans) with Extra Bold weight.
-             Manually leaning the 'A' to the right using skew transformation to match the brand identity.
-             Updated Color: White on transparent background, Orange on white scrolled background.
+             Fix: Increased left margin for 'A' (ml-2) to prevent overlap with 'L' 
+             due to the -skew-x-12 transform.
            */}
            <div className={`text-2xl md:text-3xl font-black tracking-widest font-montserrat flex items-baseline ${isScrolled ? 'text-zecoola-orange' : 'text-white'}`}>
              <span>ZECOOL</span>
-             <span className="transform -skew-x-12 inline-block ml-[1px]">A</span>
+             <span className="transform -skew-x-12 inline-block ml-2">A</span>
            </div>
         </button>
 

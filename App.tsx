@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import ComingSoon from './components/ComingSoon';
 import { LanguageProvider } from './LanguageContext';
+import { CONTENT } from './constants';
 
 // ----------------------------------------------------------------------
 // 性能优化：懒加载 (Lazy Loading)
@@ -35,6 +36,18 @@ const DEFAULT_MAINTENANCE_MODE = true;
 function App() {
   const [isMaintenance, setIsMaintenance] = useState(DEFAULT_MAINTENANCE_MODE);
   const [isChecking, setIsChecking] = useState(true);
+
+  // 确保 Favicon 始终显示
+  useEffect(() => {
+    const updateFavicon = () => {
+      const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement || document.createElement('link');
+      link.type = 'image/png';
+      link.rel = 'icon';
+      link.href = '/logo.png'; // 强制使用 logo.png 作为 favicon
+      document.getElementsByTagName('head')[0].appendChild(link);
+    };
+    updateFavicon();
+  }, []);
 
   useEffect(() => {
     // 1. 检查 URL 是否包含秘密钥匙 (?mode=admin)

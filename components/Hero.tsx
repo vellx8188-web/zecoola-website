@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CONTENT } from '../constants';
@@ -29,7 +30,11 @@ const Hero: React.FC = () => {
 
       <div className="container mx-auto px-6 relative z-10 text-center">
         {/* ZECOOLA Title - Styled to match Navbar Logo */}
-        {/* Using Montserrat Black and skewing the 'A' to lean right (-skew-x-12) */}
+        {/* 
+           Fix: Increased margins for 'A' (ml-3 md:ml-4) 
+           The larger the text (text-9xl), the more the skew pushes the bottom leftwards, 
+           so we need more space.
+        */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,7 +42,7 @@ const Hero: React.FC = () => {
           className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tight drop-shadow-md font-montserrat flex items-baseline justify-center"
         >
           <span>ZECOOL</span>
-          <span className="transform -skew-x-12 inline-block ml-1 md:ml-2">A</span>
+          <span className="transform -skew-x-12 inline-block ml-3 md:ml-5">A</span>
         </motion.h1>
         
         <motion.h2 
