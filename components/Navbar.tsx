@@ -42,12 +42,12 @@ const Navbar: React.FC = () => {
              className="h-10 md:h-12 w-auto object-contain transition-all duration-300"
            />
            {/* 
-             Fix: Increased left margin for 'A' to ml-3 (was ml-2)
-             to ensure complete separation from 'L' due to skew transform.
+             Fix: Reverted left margin for 'A' to ml-2 as per user feedback.
+             The previous ml-3 was too wide.
            */}
            <div className={`text-2xl md:text-3xl font-black tracking-widest font-montserrat flex items-baseline ${isScrolled ? 'text-zecoola-orange' : 'text-white'}`}>
              <span>ZECOOL</span>
-             <span className="transform -skew-x-12 inline-block ml-3">A</span>
+             <span className="transform -skew-x-12 inline-block ml-2">A</span>
            </div>
         </button>
 

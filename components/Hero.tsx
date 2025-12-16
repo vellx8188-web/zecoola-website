@@ -31,9 +31,8 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10 text-center">
         {/* ZECOOLA Title - Styled to match Navbar Logo */}
         {/* 
-           Fix: Increased margins for 'A' (ml-4 md:ml-8) significantly
-           Since text is huge (text-9xl), the skew kicks the bottom of 'A' very far left.
-           We need a large margin to prevent it from touching 'L'.
+           Fix: Reverted margins for 'A' to (ml-3 md:ml-5) as per user feedback.
+           The previous values (ml-4 md:ml-8) were too large.
         */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
@@ -42,7 +41,7 @@ const Hero: React.FC = () => {
           className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tight drop-shadow-md font-montserrat flex items-baseline justify-center"
         >
           <span>ZECOOL</span>
-          <span className="transform -skew-x-12 inline-block ml-4 md:ml-8">A</span>
+          <span className="transform -skew-x-12 inline-block ml-3 md:ml-5">A</span>
         </motion.h1>
         
         <motion.h2 
