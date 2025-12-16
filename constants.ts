@@ -34,15 +34,15 @@ const getPath = (filename: string): string => {
 // Example: { image: getPath('brand-1.png'), url: 'https://www.google.com' },
 export const BRANDS: BrandItem[] = [
   { image: getPath('brand-1.png'), url: 'https://www.baseprotection.com/' },
-  { image: getPath('brand-2.png'), url: '' }, // No URL provided
-  { image: getPath('brand-3.png'), url: 'https://cypherpickleball.com/collections/mens' },
-  { image: getPath('brand-4.png'), url: 'https://alaskagearcompany.com/' },
-  { image: getPath('brand-5.png'), url: 'https://www.uni.shoes/' },
-  { image: getPath('brand-6.png'), url: 'https://www.canoefootwear.com/' },
-  { image: getPath('brand-7.png'), url: 'https://www.canoefootwear.com/' },
-  { image: getPath('brand-8.png'), url: 'https://glyph.earth/' },
-  { image: getPath('brand-9.png'), url: 'https://gatorwaders.com/' },
-  { image: getPath('brand-10.png'), url: 'https://sidi.com/en-us' },
+  { image: getPath('brand-2.png'), url: 'https://cypherpickleball.com/collections/mens' },
+  { image: getPath('brand-3.png'), url: 'https://alaskagearcompany.com/' },
+  { image: getPath('brand-4.png'), url: 'https://www.uni.shoes/' },
+  { image: getPath('brand-5.png'), url: 'https://www.canoefootwear.com/' },
+  { image: getPath('brand-6.png'), url: 'https://glyph.earth/' },
+  { image: getPath('brand-7.png'), url: 'https://gatorwaders.com/' },
+  { image: getPath('brand-8.png'), url: 'https://sidi.com/en-us' },
+  { image: getPath('brand-9.png'), url: 'https://www.spidi.com/us_en/' },
+  { image: getPath('brand-10.png'), url: '' }, // Empty as requested
 ];
 
 export const CONTENT: ContentData = {
