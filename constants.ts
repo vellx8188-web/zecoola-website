@@ -31,7 +31,7 @@ const getPath = (filename: string): string => {
 // ==============================================================================
 // 在 url: '' 的单引号中填入该品牌的官网地址。
 // 如果没有官网，保持 url: '' 为空即可，这样点击就不会有反应。
-// Example: { image: getPath('brand-1.png'), url: 'https://www.google.com' },
+// 注意：请确保 public 文件夹中的图片文件名 (brand-1.png 等) 与此处的顺序对应！
 export const BRANDS: BrandItem[] = [
   { image: getPath('brand-1.png'), url: 'https://www.baseprotection.com/' },
   { image: getPath('brand-2.png'), url: 'https://cypherpickleball.com/collections/mens' },

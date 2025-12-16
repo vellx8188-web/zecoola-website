@@ -37,17 +37,28 @@ function App() {
   const [isMaintenance, setIsMaintenance] = useState(DEFAULT_MAINTENANCE_MODE);
   const [isChecking, setIsChecking] = useState(true);
 
-  // 确保 Favicon 始终显示
+  // ------------------------------------------------
+  // 强制修复 Favicon (浏览器标签页 Logo)
+  // Fix: Force browser to recognize the favicon by removing old links and adding a new one
+  // ------------------------------------------------
   useEffect(() => {
     const updateFavicon = () => {
-      const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement || document.createElement('link');
+      // 1. 移除所有旧的 icon 标签
+      const oldLinks = document.querySelectorAll("link[rel*='icon']");
+      oldLinks.forEach(link => link.remove());
+
+      // 2. 创建一个新的 link 标签
+      const link = document.createElement('link');
       link.type = 'image/png';
       link.rel = 'icon';
-      link.href = '/logo.png'; // 强制使用 logo.png 作为 favicon
+      // 3. 添加时间戳参数，强制浏览器不使用缓存 (?v=timestamp)
+      link.href = `/logo.png?v=${new Date().getTime()}`;
+      
       document.getElementsByTagName('head')[0].appendChild(link);
     };
+
     updateFavicon();
-  }, []);
+  }, [isMaintenance]); // 当维护模式切换时，再次执行以防丢失
 
   useEffect(() => {
     // 1. 检查 URL 是否包含秘密钥匙 (?mode=admin)
