@@ -25,15 +25,15 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-orange-400/20 to-orange-300/30 pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        {/* ZECOOLA Title - Very tight spacing for 'A' */}
+        {/* ZECOOLA Title - Adjusted spacing for the skewed 'A' to prevent overlapping with 'L' */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tight drop-shadow-md font-montserrat flex items-baseline justify-center"
+          className="text-6xl md:text-9xl font-black text-white mb-2 drop-shadow-md font-montserrat flex items-baseline justify-center"
         >
           <span>ZECOOL</span>
-          <span className="transform -skew-x-12 inline-block ml-[2px] md:ml-[4px]">A</span>
+          <span className="transform -skew-x-12 inline-block ml-[12px] md:ml-[24px]">A</span>
         </motion.h1>
         
         <motion.h2 
