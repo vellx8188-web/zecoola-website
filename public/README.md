@@ -1,25 +1,28 @@
 
-# 图片上传与速度优化指南 (Image & Speed Guide)
+# 网站加速与图片管理指南 (Speed Optimization Guide)
 
-为了保证网站在国内的打开速度，请务必关注以下几点：
+为了让国内用户也能秒开网站，请遵循以下图片处理流程：
 
-## 1. 图片体积优化 (CRITICAL)
-国内加载慢很大程度是因为图片文件太大。请在上传前进行压缩：
-- **推荐工具**: [TinyPNG](https://tinypng.com/) 或 [Squoosh](https://squoosh.app/)。
-- **目标大小**: 单张图片尽量控制在 **200KB** 以内，Logo和图标控制在 **20KB** 以内。
-- **推荐格式**: 如果可以，将图片转换为 `.webp` 格式（并在代码中对应更新后缀名），体积会比 `.png` 小很多。
+## 1. 强制使用 WebP 格式 (MANDATORY)
+代码已配置为优先加载 `.webp` 图片。
+- **操作步骤**: 使用 [Squoosh.app](https://squoosh.app/) 将您的 PNG 原始图片转换为 WebP。
+- **目标体积**: 大背景图（如 about, oem, odm）务必控制在 **150KB - 300KB** 之间。
+- **文件清单**:
+  - `about.webp`
+  - `oem.webp`
+  - `odm.webp`
+  - `product-showcase.webp`
+  - `factory-1.webp` 到 `factory-6.webp`
 
-## 2. 必需图片 (Required Filenames)
-请确保文件名完全一致（全小写）：
+## 2. 小图片使用 PNG
+Logo 和品牌图标因为本身很小（建议控制在 20KB 以内），建议继续使用 `.png` 以保证兼容性。
 - `logo.png`
-- `about.png`
-- `oem.png`
-- `odm.png`
-- `product-showcase.png`
 - `brand-1.png` 到 `brand-10.png`
-- `factory-1.png` 到 `factory-6.png`
 
-## 3. CDN 加速建议
-目前代码中图片是从本地 `public` 文件夹加载的。如果依然觉得慢，建议：
-1. 使用国内的云服务存储（如 阿里云OSS、腾讯云COS）。
-2. 在 `constants.ts` 的 `ASSET_URL` 中填入云存储的访问地址。
+## 3. 为什么不直接用 CDN？
+目前图片是放在您自己的 `public` 文件夹中。如果您发现图片加载依然吃力，建议：
+1. 注册一个阿里云 OSS 或 腾讯云 COS。
+2. 将图片上传上去。
+3. 在 `constants.ts` 中将 `ASSET_URL` 改为您云存储的地址。
+
+这样图片将通过国内的 CDN 节点分发，速度会达到极致。

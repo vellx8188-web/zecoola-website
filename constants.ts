@@ -16,7 +16,7 @@ const getPath = (filename: string): string => {
 };
 
 // ==============================================================================
-// 合作品牌配置 (BRANDS CONFIGURATION) - 保持 PNG 因为通常体积很小
+// 合作品牌配置 (BRANDS CONFIGURATION) - 保持 PNG，因为体积很小
 // ==============================================================================
 export const BRANDS: BrandItem[] = [
   { image: getPath('brand-1.png'), url: 'https://www.baseprotection.com/' },
@@ -62,7 +62,7 @@ export const CONTENT: ContentData = {
   },
   about: {
     title: { en: 'About Us', zh: '关于我们' },
-    // 升级为 .webp 提升国内加载速度
+    // 大图使用 WebP，配合您已转换好的文件
     image: getPath('about.webp'),
     mainText: {
       p1: {
@@ -143,7 +143,6 @@ export const CONTENT: ContentData = {
   },
   gallery: {
     title: { en: 'Factory Showcase', zh: '工厂展示' },
-    // 升级工厂图片为 .webp
     images: [
       getPath('factory-1.webp'),
       getPath('factory-2.webp'),
