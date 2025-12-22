@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CONTENT } from '../constants';
@@ -46,6 +47,7 @@ const About: React.FC = () => {
                     src={image}
                     alt="Zecoola Office Reception" 
                     className="w-full h-auto object-cover"
+                    loading="lazy"
                 />
             </div>
             

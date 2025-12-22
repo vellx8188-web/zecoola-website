@@ -15,9 +15,6 @@ const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-[#FF6B00]">
-      {/* Background elements to match Slide 1 */}
-      
-      {/* Large Blue Circle - Bottom Left */}
       <motion.div 
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -25,15 +22,10 @@ const Hero: React.FC = () => {
         className="absolute -bottom-[20%] -left-[10%] w-[70vh] h-[70vh] bg-[#1d4ed8] rounded-full z-0"
       ></motion.div>
 
-      {/* Subtle Gradient Overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-orange-400/20 to-orange-300/30 pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        {/* ZECOOLA Title - Styled to match Navbar Logo */}
-        {/* 
-           Fix: Reverted margins for 'A' to (ml-3 md:ml-5) as per user feedback.
-           The previous values (ml-4 md:ml-8) were too large.
-        */}
+        {/* ZECOOLA Title - Very tight spacing for 'A' */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,7 +33,7 @@ const Hero: React.FC = () => {
           className="text-6xl md:text-9xl font-black text-white mb-2 tracking-tight drop-shadow-md font-montserrat flex items-baseline justify-center"
         >
           <span>ZECOOL</span>
-          <span className="transform -skew-x-12 inline-block ml-3 md:ml-5">A</span>
+          <span className="transform -skew-x-12 inline-block ml-[2px] md:ml-[4px]">A</span>
         </motion.h1>
         
         <motion.h2 

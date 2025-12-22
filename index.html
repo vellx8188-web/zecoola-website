@@ -6,13 +6,17 @@
     <link rel="icon" type="image/png" href="/logo.png?v=3" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Performance Optimization: DNS Preconnect -->
+    <!-- Performance Optimization: DNS Preconnect & Prefetch -->
+    <!-- Preconnecting to fonts and CDN significantly reduces load time in high-latency environments -->
     <link rel="preconnect" href="https://fonts.font.im" crossorigin>
+    <link rel="preconnect" href="https://aistudiocdn.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.font.im">
+    <link rel="dns-prefetch" href="https://aistudiocdn.com">
     
     <!-- Force Webkit kernel for Chinese browsers (360, QQ, etc.) -->
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="force-rendering" content="webkit"/>
     
     <title>ZECOOLA | 友安纳鞋业 - Professional Footwear Manufacturing</title>
     <meta name="keywords" content="Zecoola, Uanna Shoes, Footwear Manufacturer, Dongguan Shoe Factory, OEM/ODM, 友安纳鞋业, 东莞鞋厂, 鞋类代工" />

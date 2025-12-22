@@ -35,19 +35,20 @@ const Navbar: React.FC = () => {
           onClick={(e) => scrollToSection(e, 'hero')}
           className="flex items-center gap-3 focus:outline-none group"
         >
-           {/* Logo Icon */}
+           {/* Logo Icon - Priority loading */}
            <img 
              src={CONTENT.logo} 
              alt="Zecoola" 
              className="h-10 md:h-12 w-auto object-contain transition-all duration-300"
+             // @ts-ignore
+             fetchpriority="high"
            />
            {/* 
-             Fix: Reverted left margin for 'A' to ml-2 as per user feedback.
-             The previous ml-3 was too wide.
+             Fix: Reduced margin to 1px for a unified text look.
            */}
            <div className={`text-2xl md:text-3xl font-black tracking-widest font-montserrat flex items-baseline ${isScrolled ? 'text-zecoola-orange' : 'text-white'}`}>
              <span>ZECOOL</span>
-             <span className="transform -skew-x-12 inline-block ml-2">A</span>
+             <span className="transform -skew-x-12 inline-block ml-[1px]">A</span>
            </div>
         </button>
 
@@ -63,7 +64,6 @@ const Navbar: React.FC = () => {
             </button>
           ))}
           
-          {/* Language Toggle */}
           <button 
             onClick={toggleLanguage}
             className={`flex items-center gap-1 border px-3 py-1 rounded-full transition-all ${isScrolled ? 'border-slate-300 text-slate-700 hover:bg-slate-100' : 'border-white/50 text-white hover:bg-white/20'}`}
@@ -73,7 +73,6 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Controls */}
         <div className="md:hidden flex items-center gap-4">
           <button 
             onClick={toggleLanguage}
@@ -81,7 +80,6 @@ const Navbar: React.FC = () => {
           >
              <span className="text-sm font-bold">{language === 'en' ? 'EN' : '中'}</span>
           </button>
-          
           <button
             className="text-zecoola-orange focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
@@ -91,7 +89,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-white absolute w-full shadow-xl border-t z-50">
           <div className="flex flex-col px-6 py-4 space-y-4">

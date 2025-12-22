@@ -11,7 +11,7 @@ const Gallery: React.FC = () => {
     <section id="gallery" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         
-        {/* Factory Showcase - 7 Images */}
+        {/* Factory Showcase - 6 Images */}
         <div className="mb-24">
           <h2 className="text-3xl font-bold text-zecoola-blue mb-8 border-l-8 border-zecoola-orange pl-4">
             {title[language]}
@@ -23,7 +23,12 @@ const Gallery: React.FC = () => {
                   key={index} 
                   className="rounded-xl overflow-hidden shadow-lg relative group h-64 md:h-72"
                 >
-                  <img src={imgSrc} alt={`Factory View ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img 
+                    src={imgSrc} 
+                    alt={`Factory View ${index + 1}`} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    loading="lazy"
+                  />
                 </div>
              ))}
           </div>
@@ -36,19 +41,13 @@ const Gallery: React.FC = () => {
             <div className="w-16 h-1 bg-zecoola-orange mx-auto opacity-50"></div>
           </div>
           
-          {/* 
-            Change to Flexbox with wrap and center alignment.
-            This ensures that if you have 11 items (odd number), the last row centers itself nicely.
-          */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-7xl mx-auto">
             {BRANDS.map((brand, i) => {
-              // Common styles for both clickable and non-clickable items
               const containerStyles = `
                 group 
                 bg-white 
                 border border-slate-100 
                 rounded-xl 
-                /* Fixed dimensions for uniform high-end look */
                 w-[140px] h-[80px] 
                 md:w-[180px] md:h-[100px] 
                 lg:w-[200px] lg:h-[120px]
@@ -59,16 +58,15 @@ const Gallery: React.FC = () => {
                 transition-all duration-300
               `;
 
-              // Render Content (The Image)
               const content = (
                 <img 
                   src={brand.image} 
                   alt={`Brand ${i+1}`}
                   className="max-w-full max-h-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                  loading="lazy"
                 />
               );
 
-              // If a URL is provided, wrap in an anchor tag
               if (brand.url && brand.url.trim() !== '') {
                 return (
                   <a 
@@ -83,7 +81,6 @@ const Gallery: React.FC = () => {
                 );
               }
 
-              // Otherwise render as a plain div
               return (
                 <div 
                   key={i} 
