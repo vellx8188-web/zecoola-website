@@ -2,9 +2,19 @@
 import { ContentData, BrandItem } from './types';
 import { Award, CheckCircle, PenTool, Factory } from 'lucide-react';
 
+/**
+ * 💡 修改图片指南 (How to Change Images):
+ * 1. 本地图片: 将图片放入 public 文件夹，直接写文件名 (如 'logo.png')
+ * 2. 外部链接: 直接粘贴完整的网址 (如 'https://your-cloud-storage.com/image.jpg')
+ *    这种方式最简单，不需要通过 GitHub 批量删除或修改只读文件。
+ */
 export const ASSET_URL: string = ''; 
 
 const getPath = (filename: string): string => {
+  // 如果已经是完整的网址(http/https)，直接返回
+  if (filename.startsWith('http')) return filename;
+  
+  // 否则走本地相对路径逻辑
   if (!ASSET_URL) return `/${filename}`;
   const baseUrl = ASSET_URL.endsWith('/') ? ASSET_URL : `${ASSET_URL}/`;
   const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
