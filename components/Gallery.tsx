@@ -12,7 +12,7 @@ const Gallery: React.FC = () => {
     <section id="gallery" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
         
-        {/* Factory Showcase */}
+        {/* Factory Showcase - 保持原有的工厂展示 */}
         <div className="mb-32">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
@@ -48,76 +48,76 @@ const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Brand Ecosystem - Reimagined for Maximum Clarity & Size */}
-        <div className="relative py-24 bg-[#f8fafc] rounded-[4rem] border border-slate-100">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl font-black text-zecoola-blue mb-4 uppercase tracking-tighter">
+        {/* Brand Ecosystem - High Contrast Deep Theme */}
+        <div className="relative py-28 bg-[#f8fafc] rounded-[5rem] border border-slate-200/50">
+          <div className="text-center mb-28">
+            <h2 className="text-4xl md:text-5xl font-black text-zecoola-blue mb-4 uppercase tracking-tighter">
                 {brandsTitle[language]}
             </h2>
-            <div className="w-16 h-1 bg-zecoola-orange mx-auto"></div>
+            <div className="w-20 h-1.5 bg-zecoola-orange mx-auto"></div>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-12 md:gap-x-14 md:gap-y-20 max-w-7xl mx-auto px-6">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-12 md:gap-x-12 md:gap-y-24 max-w-7xl mx-auto px-8">
             {BRANDS.map((brand, i) => {
-              // 错落布局
-              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-16";
+              // 错落有致的布局偏移
+              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-24";
               
               const content = (
                 <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   animate={{
-                    y: [0, -15, 0],
+                    y: [0, -20, 0],
                   }}
                   transition={{ 
                     y: {
-                      duration: 7,
+                      duration: 8,
                       repeat: Infinity,
-                      delay: i * 0.6,
+                      delay: i * 0.8,
                       ease: "easeInOut"
                     },
                     default: {
-                      delay: i * 0.05,
+                      delay: i * 0.08,
                       type: "spring",
-                      stiffness: 80
+                      stiffness: 100
                     }
                   }}
                   className={`
                     ${verticalOffset}
                     group relative
                     w-36 h-36 md:w-56 md:h-56 lg:w-64 lg:h-64
-                    bg-white
+                    bg-[#0f172a]
                     rounded-full
                     flex items-center justify-center 
-                    p-2 md:p-3 lg:p-4
-                    shadow-[0_25px_60px_-15px_rgba(0,0,0,0.06),0_10px_20px_-5px_rgba(0,0,0,0.04)]
-                    hover:shadow-[0_40px_90px_-20px_rgba(255,107,0,0.2)]
+                    p-3 md:p-5 lg:p-6
+                    shadow-[0_30px_70px_-15px_rgba(15,23,42,0.4)]
+                    hover:shadow-[0_45px_100px_-20px_rgba(255,107,0,0.5)]
                     hover:scale-110
-                    border border-white
+                    border-4 border-white/5
+                    hover:border-zecoola-orange/20
                     transition-all duration-700
                     cursor-pointer
                   `}
                 >
                   {/* 
-                     核心视觉改进：
-                     1. 容器为纯白 (bg-white)，背景为浅灰 (#f8fafc)，这样 Logo 原本带的白色底色会自动消失。
-                     2. 极小的内边距 (p-2/3/4)，配合 max-w-[95%]，让 Logo 填满整个圆圈。
-                     3. 给图片加上 drop-shadow-[0_2px_10px_rgba(0,0,0,0.1)]：
-                        这层极薄的阴影会让白色文字即使在白底上也清晰可见。
+                     视觉核心处理：
+                     1. 使用 bg-[#0f172a] (深蓝黑)：白色文字、橙色文字在这个底色下亮度最高，最清晰。
+                     2. 设置容器溢出隐藏并圆角化。
+                     3. 给图片应用 drop-shadow-[0_0_10px_rgba(255,255,255,0.15)]：
+                        这个滤镜能确保深色 Logo 在深色背景下依然能被识别出轮廓，同时增强亮色 Logo 的光感。
                   */}
-                  <div className="w-full h-full flex items-center justify-center rounded-full overflow-hidden bg-white">
+                  <div className="w-full h-full flex items-center justify-center rounded-full overflow-hidden relative">
                     <img 
                         src={brand.image} 
                         alt={`Partner Brand ${i+1}`}
-                        className="max-w-[92%] max-h-[92%] object-contain transition-all duration-700 drop-shadow-[0_4px_12px_rgba(0,0,0,0.08)] group-hover:drop-shadow-[0_8px_24px_rgba(255,107,0,0.15)]"
+                        className="max-w-[95%] max-h-[95%] w-auto h-auto object-contain transition-all duration-700 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(255,107,0,0.3)]"
                         loading="lazy"
                     />
                   </div>
                   
-                  {/* 悬停时的精致光影 */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/0 to-slate-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                  <div className="absolute -inset-[2px] rounded-full border border-zecoola-orange/0 group-hover:border-zecoola-orange/10 scale-105 group-hover:scale-100 transition-all duration-1000"></div>
+                  {/* 背景装饰光效 */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 </motion.div>
               );
 
@@ -137,9 +137,9 @@ const Gallery: React.FC = () => {
             })}
           </div>
 
-          {/* 背景装饰：更有层次感的柔光 */}
-          <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-zecoola-orange/5 rounded-full blur-[180px] -z-10 animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-zecoola-blue/5 rounded-full blur-[180px] -z-10"></div>
+          {/* 页面装饰元素：提升整体大气感 */}
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-zecoola-orange/5 rounded-full blur-[200px] -z-10 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-zecoola-blue/5 rounded-full blur-[200px] -z-10"></div>
         </div>
 
       </div>
