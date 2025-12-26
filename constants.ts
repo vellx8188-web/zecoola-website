@@ -22,7 +22,7 @@ export const BRANDS: BrandItem[] = [
   { image: getPath('brand-8.png'), url: 'https://sidi.com/en-us' },
   { image: getPath('brand-9.png'), url: 'https://www.spidi.com/us_en/' },
   { image: getPath('brand-10.png'), url: '' },
-  { image: getPath('brand-11.png'), url: '' }, // Added 11th brand slot
+  { image: getPath('brand-11.png'), url: '' },
 ];
 
 export const CONTENT: ContentData = {
@@ -74,26 +74,26 @@ export const CONTENT: ContentData = {
     features: [
       {
         number: '01',
-        title: { en: 'Decades of Mastery', zh: '50+年行业经验' },
-        desc: { en: 'Leveraging a half-century of technical expertise and innovation.', zh: '凭借半个世纪的技术积淀与持续创新。' },
+        title: { en: '50+ Years of Mastery', zh: '50+年行业深耕' },
+        desc: { en: 'A distinguished group of footwear veterans with a lifelong passion for craft and innovation.', zh: '汇聚鞋业资深专家团队，对制鞋工艺与持续创新充满热忱。' },
         icon: Award
       },
       {
         number: '02',
-        title: { en: 'Turnkey Solutions', zh: '一站式服务' },
-        desc: { en: 'End-to-end project management from concept to final delivery.', zh: '从概念到交付的全流程端到端项目管理。' },
+        title: { en: 'One-Stop Service', zh: '一站式服务方案' },
+        desc: { en: 'A strategic venture team providing end-to-end execution from vision to reality.', zh: '战略化的执行团队，提供从设计愿景到成品交付的全流程服务。' },
         icon: CheckCircle
       },
       {
         number: '03',
-        title: { en: 'Design Innovation', zh: '专业设计' },
-        desc: { en: 'Fusing functional performance with market-leading aesthetics.', zh: '将功能性表现与市场领先的美学设计深度融合。' },
+        title: { en: 'Professional Design', zh: '专业美学设计' },
+        desc: { en: 'Fusing functional performance with market-leading aesthetics to innovate and excel.', zh: '将功能性能与市场领先的美学相结合，不断追求创新与卓越。' },
         icon: PenTool
       },
       {
         number: '04',
-        title: { en: 'Certified Quality', zh: '认证工厂' },
-        desc: { en: 'Standardized production via our network of certified facilities.', zh: '通过通过国际认证的工厂网络实现标准化生产。' },
+        title: { en: 'Qualified Factory', zh: '认证品质工厂' },
+        desc: { en: 'Allied with certified facilities that guarantee world-class manufacturing quality.', zh: '联合多家国际认证工厂，确保世界一流的制造品质。' },
         icon: Factory
       }
     ]
