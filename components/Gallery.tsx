@@ -1,5 +1,4 @@
 
-// Fix: Added missing React import to resolve "Cannot find namespace 'React'" error
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BRANDS, CONTENT } from '../constants';
@@ -51,22 +50,17 @@ const Gallery: React.FC = () => {
 
         {/* Brand Ecosystem - Reimagined Organic Layout */}
         <div className="relative py-16">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl font-black text-zecoola-blue mb-4 uppercase tracking-tighter">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl font-black text-zecoola-blue mb-4 uppercase tracking-tighter">
                 {brandsTitle[language]}
             </h2>
-            <div className="w-12 h-1 bg-zecoola-orange mx-auto"></div>
+            <div className="w-16 h-1 bg-zecoola-orange mx-auto"></div>
           </div>
           
-          {/* 
-            Visual Strategy:
-            Using a staggered flex layout that avoids rigid rows and columns.
-            Each logo is wrapped in a soft, circular white bubble with high-end shadow.
-          */}
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-12 md:gap-x-12 md:gap-y-16 max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-10 md:gap-x-12 md:gap-y-16 max-w-7xl mx-auto">
             {BRANDS.map((brand, i) => {
-              // 模拟错落感：根据索引添加上下偏移
-              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-12";
+              // 错落感：根据索引添加上下偏移
+              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-14";
               
               const content = (
                 <motion.div
@@ -74,50 +68,51 @@ const Gallery: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   animate={{
-                    y: [0, -8, 0],
+                    y: [0, -10, 0],
                   }}
-                  // Fix: Merged duplicate transition attributes into a single object with property-specific settings
                   transition={{ 
                     y: {
-                      duration: 4,
+                      duration: 5,
                       repeat: Infinity,
-                      delay: i * 0.3,
+                      delay: i * 0.4,
                       ease: "easeInOut"
                     },
                     default: {
-                      delay: i * 0.05,
+                      delay: i * 0.08,
                       type: "spring",
-                      stiffness: 50
+                      stiffness: 60
                     }
                   }}
                   className={`
                     ${verticalOffset}
                     group relative
-                    w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44
+                    w-32 h-32 md:w-44 md:h-44 lg:w-52 lg:h-52
                     bg-white
                     rounded-full
                     flex items-center justify-center 
-                    p-6 md:p-8
-                    shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)]
-                    hover:shadow-[0_20px_60px_-15px_rgba(255,107,0,0.2)]
-                    hover:scale-110
-                    border border-slate-50
-                    transition-all duration-500
+                    p-5 md:p-8 lg:p-10
+                    shadow-[0_15px_50px_-15px_rgba(0,0,0,0.08)]
+                    hover:shadow-[0_25px_70px_-15px_rgba(255,107,0,0.25)]
+                    hover:scale-105
+                    border border-slate-100/50
+                    transition-all duration-700
                   `}
                 >
+                  {/* 
+                     Key Improvements here:
+                     1. Removed 'grayscale' and 'opacity-60' to show full color.
+                     2. Using 'object-contain' and 'w-full h-full' to ensure proper scaling.
+                     3. The padding (p-5/8/10) handles the "too small" issue by giving more room to the image.
+                  */}
                   <img 
                     src={brand.image} 
                     alt={`Partner Brand ${i+1}`}
-                    className="max-w-full max-h-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    className="w-full h-full object-contain transition-all duration-700 brightness-100 group-hover:brightness-110"
                     loading="lazy"
-                    onError={(e) => {
-                        // 如果图片丢失，显示占位数字或文字
-                        e.currentTarget.style.display = 'none';
-                        e.currentTarget.parentElement!.innerHTML = `<span class="text-slate-300 font-bold text-xs">PARTNER ${i+1}</span>`;
-                    }}
                   />
-                  {/* Hover Indicator */}
-                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-zecoola-orange/20 transition-all duration-500"></div>
+                  
+                  {/* Subtle decorative ring on hover */}
+                  <div className="absolute inset-0 rounded-full border border-zecoola-orange/0 group-hover:border-zecoola-orange/10 scale-90 group-hover:scale-100 transition-all duration-700"></div>
                 </motion.div>
               );
 
@@ -137,9 +132,9 @@ const Gallery: React.FC = () => {
             })}
           </div>
 
-          {/* Background Decorative Elements - Subtle gradients for a professional vibe */}
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-zecoola-orange/5 rounded-full blur-[100px] -z-10"></div>
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-zecoola-blue/5 rounded-full blur-[120px] -z-10"></div>
+          {/* Decorative Background Blooms */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-zecoola-orange/5 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-zecoola-blue/5 rounded-full blur-[150px] -z-10"></div>
         </div>
 
       </div>
