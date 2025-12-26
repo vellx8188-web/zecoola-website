@@ -48,8 +48,8 @@ const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Brand Ecosystem - Reimagined Organic Layout */}
-        <div className="relative py-16">
+        {/* Brand Ecosystem - High Contrast Organic Layout */}
+        <div className="relative py-20 bg-slate-50/50 rounded-[4rem]">
           <div className="text-center mb-24">
             <h2 className="text-4xl font-black text-zecoola-blue mb-4 uppercase tracking-tighter">
                 {brandsTitle[language]}
@@ -57,62 +57,65 @@ const Gallery: React.FC = () => {
             <div className="w-16 h-1 bg-zecoola-orange mx-auto"></div>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-10 md:gap-x-12 md:gap-y-16 max-w-7xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-10 md:gap-x-10 md:gap-y-16 max-w-7xl mx-auto px-4">
             {BRANDS.map((brand, i) => {
-              // 错落感：根据索引添加上下偏移
-              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-14";
+              // 错落感：根据索引添加上下偏移，营造动感布局
+              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-20";
               
               const content = (
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   animate={{
-                    y: [0, -10, 0],
+                    y: [0, -12, 0],
                   }}
                   transition={{ 
                     y: {
-                      duration: 5,
+                      duration: 6,
                       repeat: Infinity,
-                      delay: i * 0.4,
+                      delay: i * 0.5,
                       ease: "easeInOut"
                     },
                     default: {
-                      delay: i * 0.08,
+                      delay: i * 0.1,
                       type: "spring",
-                      stiffness: 60
+                      stiffness: 70
                     }
                   }}
                   className={`
                     ${verticalOffset}
                     group relative
-                    w-32 h-32 md:w-44 md:h-44 lg:w-52 lg:h-52
-                    bg-white
+                    w-32 h-32 md:w-48 md:h-48 lg:w-60 lg:h-60
+                    bg-slate-900
                     rounded-full
                     flex items-center justify-center 
-                    p-5 md:p-8 lg:p-10
-                    shadow-[0_15px_50px_-15px_rgba(0,0,0,0.08)]
-                    hover:shadow-[0_25px_70px_-15px_rgba(255,107,0,0.25)]
-                    hover:scale-105
-                    border border-slate-100/50
+                    p-4 md:p-6 lg:p-8
+                    shadow-[0_20px_50px_-15px_rgba(0,0,0,0.3)]
+                    hover:shadow-[0_30px_80px_-15px_rgba(255,107,0,0.4)]
+                    hover:scale-110
+                    border border-white/5
                     transition-all duration-700
+                    cursor-pointer
                   `}
                 >
                   {/* 
-                     Key Improvements here:
-                     1. Removed 'grayscale' and 'opacity-60' to show full color.
-                     2. Using 'object-contain' and 'w-full h-full' to ensure proper scaling.
-                     3. The padding (p-5/8/10) handles the "too small" issue by giving more room to the image.
+                     核心改进：
+                     1. 背景改为 bg-slate-900：深色背景能让白色 Logo 和彩色 Logo（如 UNI 的橙色）完美浮现。
+                     2. 减小了 Padding：让 Logo 占据圆圈约 90% 的面积。
+                     3. 增加了 drop-shadow-lg：让 Logo 本身也有立体感。
                   */}
-                  <img 
-                    src={brand.image} 
-                    alt={`Partner Brand ${i+1}`}
-                    className="w-full h-full object-contain transition-all duration-700 brightness-100 group-hover:brightness-110"
-                    loading="lazy"
-                  />
+                  <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                    <img 
+                        src={brand.image} 
+                        alt={`Partner Brand ${i+1}`}
+                        className="max-w-[90%] max-h-[90%] object-contain transition-all duration-700 filter brightness-110 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                        loading="lazy"
+                    />
+                  </div>
                   
-                  {/* Subtle decorative ring on hover */}
-                  <div className="absolute inset-0 rounded-full border border-zecoola-orange/0 group-hover:border-zecoola-orange/10 scale-90 group-hover:scale-100 transition-all duration-700"></div>
+                  {/* 悬停时的光圈效果 */}
+                  <div className="absolute inset-0 rounded-full border-2 border-zecoola-orange/0 group-hover:border-zecoola-orange/30 scale-110 group-hover:scale-100 transition-all duration-1000"></div>
                 </motion.div>
               );
 
@@ -132,9 +135,8 @@ const Gallery: React.FC = () => {
             })}
           </div>
 
-          {/* Decorative Background Blooms */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-zecoola-orange/5 rounded-full blur-[120px] -z-10 animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-zecoola-blue/5 rounded-full blur-[150px] -z-10"></div>
+          {/* 背景装饰：增加科技感的柔光 */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-zecoola-orange/5 rounded-full blur-[160px] -z-10"></div>
         </div>
 
       </div>
