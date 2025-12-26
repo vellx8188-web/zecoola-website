@@ -30,116 +30,77 @@ const Gallery: React.FC = () => {
              {images.map((imgSrc, index) => (
                 <motion.div 
                   key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="rounded-3xl overflow-hidden shadow-xl relative group aspect-[4/3] bg-slate-100"
+                  className="rounded-2xl overflow-hidden shadow-lg relative group aspect-[4/3] bg-slate-100"
                 >
                   <img 
                     src={imgSrc} 
                     alt={`Facility View ${index + 1}`} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </motion.div>
              ))}
           </div>
         </div>
 
-        {/* Brand Ecosystem - High Contrast Deep Theme */}
-        <div className="relative py-28 bg-[#f8fafc] rounded-[5rem] border border-slate-200/50">
-          <div className="text-center mb-28">
-            <h2 className="text-4xl md:text-5xl font-black text-zecoola-blue mb-4 uppercase tracking-tighter">
+        {/* Brand Ecosystem - Classic Industrial Grid */}
+        <div className="bg-slate-50 rounded-[3rem] py-20 px-6 md:px-12 border border-slate-100">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-zecoola-blue mb-4 uppercase tracking-tight">
                 {brandsTitle[language]}
             </h2>
-            <div className="w-20 h-1.5 bg-zecoola-orange mx-auto"></div>
+            <div className="w-16 h-1 bg-zecoola-orange mx-auto"></div>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-12 md:gap-x-12 md:gap-y-24 max-w-7xl mx-auto px-8">
+          {/* 
+            方形网格布局：
+            - 使用 bg-slate-900 (深色) 容器确保白色 Logo 可见。
+            - grid-cols 分布确保在各种屏幕下都整齐。
+            - 移除复杂动画，仅保留简单的悬停放大，提升加载性能。
+          */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
             {BRANDS.map((brand, i) => {
-              // 错落有致的布局偏移
-              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-24";
-              
-              const content = (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  animate={{
-                    y: [0, -20, 0],
-                  }}
-                  transition={{ 
-                    y: {
-                      duration: 8,
-                      repeat: Infinity,
-                      delay: i * 0.8,
-                      ease: "easeInOut"
-                    },
-                    default: {
-                      delay: i * 0.08,
-                      type: "spring",
-                      stiffness: 100
-                    }
-                  }}
-                  className={`
-                    ${verticalOffset}
-                    group relative
-                    w-36 h-36 md:w-56 md:h-56 lg:w-64 lg:h-64
-                    bg-[#0f172a]
-                    rounded-full
-                    flex items-center justify-center 
-                    p-3 md:p-5 lg:p-6
-                    shadow-[0_30px_70px_-15px_rgba(15,23,42,0.4)]
-                    hover:shadow-[0_45px_100px_-20px_rgba(255,107,0,0.5)]
-                    hover:scale-110
-                    border-4 border-white/5
-                    hover:border-zecoola-orange/20
-                    transition-all duration-700
-                    cursor-pointer
-                  `}
+              const cardContent = (
+                <div 
+                  className="group relative aspect-square md:aspect-video bg-slate-900 rounded-xl flex items-center justify-center p-4 md:p-6 border border-slate-800 hover:border-zecoola-orange/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
                 >
-                  {/* 
-                     视觉核心处理：
-                     1. 使用 bg-[#0f172a] (深蓝黑)：白色文字、橙色文字在这个底色下亮度最高，最清晰。
-                     2. 设置容器溢出隐藏并圆角化。
-                     3. 给图片应用 drop-shadow-[0_0_10px_rgba(255,255,255,0.15)]：
-                        这个滤镜能确保深色 Logo 在深色背景下依然能被识别出轮廓，同时增强亮色 Logo 的光感。
-                  */}
-                  <div className="w-full h-full flex items-center justify-center rounded-full overflow-hidden relative">
-                    <img 
-                        src={brand.image} 
-                        alt={`Partner Brand ${i+1}`}
-                        className="max-w-[95%] max-h-[95%] w-auto h-auto object-contain transition-all duration-700 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(255,107,0,0.3)]"
-                        loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* 背景装饰光效 */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                </motion.div>
+                  <img 
+                    src={brand.image} 
+                    alt={`Partner ${i+1}`}
+                    className="max-w-full max-h-full object-contain filter transition-all duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
               );
 
-              return brand.url ? (
-                <a 
+              return (
+                <motion.div
                   key={i}
-                  href={brand.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block no-underline"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
                 >
-                  {content}
-                </a>
-              ) : (
-                <div key={i}>{content}</div>
+                  {brand.url ? (
+                    <a href={brand.url} target="_blank" rel="noopener noreferrer">
+                      {cardContent}
+                    </a>
+                  ) : (
+                    cardContent
+                  )}
+                </motion.div>
               );
             })}
           </div>
 
-          {/* 页面装饰元素：提升整体大气感 */}
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-zecoola-orange/5 rounded-full blur-[200px] -z-10 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-zecoola-blue/5 rounded-full blur-[200px] -z-10"></div>
+          <p className="text-center text-slate-400 mt-12 text-sm font-medium italic">
+            {language === 'en' ? 'Collaborating with industry leaders worldwide' : '与全球行业领导者深度合作'}
+          </p>
         </div>
 
       </div>
