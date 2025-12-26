@@ -22,7 +22,7 @@ export const BRANDS: BrandItem[] = [
   { image: getPath('brand-8.png'), url: 'https://sidi.com/en-us' },
   { image: getPath('brand-9.png'), url: 'https://www.spidi.com/us_en/' },
   { image: getPath('brand-10.png'), url: '' },
-  { image: getPath('brand-11.png'), url: '' },
+  { image: getPath('brand-11.png'), url: 'https://uniwork.it/' },
 ];
 
 export const CONTENT: ContentData = {
