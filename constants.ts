@@ -2,12 +2,8 @@
 import { ContentData, BrandItem } from './types';
 import { Award, CheckCircle, PenTool, Factory } from 'lucide-react';
 
-// ==============================================================================
-// 图片资源配置 (IMAGE ASSETS CONFIGURATION)
-// ==============================================================================
 export const ASSET_URL: string = ''; 
 
-// 内部辅助函数：自动处理图片路径
 const getPath = (filename: string): string => {
   if (!ASSET_URL) return `/${filename}`;
   const baseUrl = ASSET_URL.endsWith('/') ? ASSET_URL : `${ASSET_URL}/`;
@@ -15,9 +11,6 @@ const getPath = (filename: string): string => {
   return `${baseUrl}${cleanFilename}`;
 };
 
-// ==============================================================================
-// 合作品牌配置 (BRANDS CONFIGURATION) - 保持 PNG，因为体积很小
-// ==============================================================================
 export const BRANDS: BrandItem[] = [
   { image: getPath('brand-1.png'), url: 'https://www.baseprotection.com/' },
   { image: getPath('brand-2.png'), url: 'https://cypherpickleball.com/collections/mens' },
@@ -29,6 +22,7 @@ export const BRANDS: BrandItem[] = [
   { image: getPath('brand-8.png'), url: 'https://sidi.com/en-us' },
   { image: getPath('brand-9.png'), url: 'https://www.spidi.com/us_en/' },
   { image: getPath('brand-10.png'), url: '' },
+  { image: getPath('brand-11.png'), url: '' }, // Added 11th brand slot
 ];
 
 export const CONTENT: ContentData = {
@@ -45,104 +39,103 @@ export const CONTENT: ContentData = {
     { label: { en: 'About', zh: '关于我们' }, href: 'about' },
     { label: { en: 'Milestones', zh: '发展历程' }, href: 'milestones' },
     { label: { en: 'Services', zh: '服务' }, href: 'services' },
-    { label: { en: 'Products', zh: '产品展示' }, href: 'products' }, 
-    { label: { en: 'Gallery', zh: '工厂' }, href: 'gallery' },
+    { label: { en: 'Showcase', zh: '产品展示' }, href: 'products' }, 
+    { label: { en: 'Factory', zh: '工厂' }, href: 'gallery' },
     { label: { en: 'Contact', zh: '联系' }, href: 'contact' },
   ],
   hero: {
     title: 'ZECOOLA',
     slogan: {
-      en: 'TOGETHER WE MAKE DIFFERENCE',
-      zh: '携手共创非凡'
+      en: 'PRECISION ENGINEERING. GLOBAL EXCELLENCE.',
+      zh: '卓越工艺，全球视野'
     },
     cta: {
-      en: 'Discover More',
+      en: 'Explore Solutions',
       zh: '了解更多'
     }
   },
   about: {
-    title: { en: 'About Us', zh: '关于我们' },
-    // 大图使用 WebP，配合您已转换好的文件
+    title: { en: 'Corporate Profile', zh: '关于我们' },
     image: getPath('about.webp'),
     mainText: {
       p1: {
-        en: 'ZECOOLA is a newly formed company by a group of footwear fanatics that have more than 50 combined years of footwear experience. Across the multiple regions, our team members came from China, Taiwan and United States.',
-        zh: 'ZECOOLA 是一家由一群拥有超过50年综合经验的鞋类狂热爱好者新成立的公司。我们的团队成员来自中国、台湾和美国，拥有多元文化的思维方式。'
+        en: 'ZECOOLA is a premier footwear R&D and manufacturing powerhouse, built on a foundation of over 50 years of collective industry expertise. Our strategic leadership team brings together diverse perspectives from China, Taiwan, and the United States.',
+        zh: 'ZECOOLA 是一家领先的鞋类研发与制造企业，拥有超过50年的行业深厚积淀。我们的管理团队汇聚了来自中国、台湾和美国的多元文化视野与专业经验。'
       },
       p2: {
-        en: 'We are a team with multi-culture mentality. Our expertise includes the design, development and production for professional sport shoes and casual shoes.',
-        zh: '我们是一个具有多元文化思维的团队。我们的专长包括专业运动鞋和休闲鞋的设计、开发和生产。'
+        en: 'We specialize in high-performance technical footwear, blending advanced engineering with contemporary aesthetics. From professional athletic gear to premium casual lines, we deliver manufacturing excellence at scale.',
+        zh: '我们专注于高性能技术鞋类，将先进工程技术与现代美学完美结合。从专业运动装备到高端休闲系列，我们提供规模化的卓越制造服务。'
       },
       imageCaption: {
-        en: '"A team with multi-culture mentality."',
-        zh: '“一个具有多元文化思维的团队。”'
+        en: '"A global mindset in footwear manufacturing."',
+        zh: '“具备全球视野的鞋类制造专家。”'
       }
     },
     features: [
       {
         number: '01',
-        title: { en: '50+ Years Experience', zh: '50+年行业经验' },
-        desc: { en: 'A group of footwear veterans that passinate about shoes.', zh: '一群对鞋类充满热情的行业资深人士。' },
+        title: { en: 'Decades of Mastery', zh: '50+年行业经验' },
+        desc: { en: 'Leveraging a half-century of technical expertise and innovation.', zh: '凭借半个世纪的技术积淀与持续创新。' },
         icon: Award
       },
       {
         number: '02',
-        title: { en: 'One Stop Service', zh: '一站式服务' },
-        desc: { en: 'A strategic venture team that executes the visions.', zh: '执行愿景的战略创业团队。' },
+        title: { en: 'Turnkey Solutions', zh: '一站式服务' },
+        desc: { en: 'End-to-end project management from concept to final delivery.', zh: '从概念到交付的全流程端到端项目管理。' },
         icon: CheckCircle
       },
       {
         number: '03',
-        title: { en: 'Professional Design', zh: '专业设计' },
-        desc: { en: 'Function and aesthetic that innovate and excel.', zh: '创新且卓越的功能与美学设计。' },
+        title: { en: 'Design Innovation', zh: '专业设计' },
+        desc: { en: 'Fusing functional performance with market-leading aesthetics.', zh: '将功能性表现与市场领先的美学设计深度融合。' },
         icon: PenTool
       },
       {
         number: '04',
-        title: { en: 'Qualified Factory', zh: '认证工厂' },
-        desc: { en: 'Allied certified factories that provide great quality.', zh: '提供优质质量的联盟认证工厂。' },
+        title: { en: 'Certified Quality', zh: '认证工厂' },
+        desc: { en: 'Standardized production via our network of certified facilities.', zh: '通过通过国际认证的工厂网络实现标准化生产。' },
         icon: Factory
       }
     ]
   },
   milestone: {
-    title: { en: 'Company Milestone', zh: '公司历程' },
-    subtitle: { en: 'Our journey from a single factory to a global footwear partner.', zh: '从单一工厂到全球鞋业合作伙伴的历程。' },
+    title: { en: 'Our Heritage', zh: '公司历程' },
+    subtitle: { en: 'The strategic evolution of ZECOOLA from regional specialist to global partner.', zh: 'ZECOOLA 从区域专家到全球合作伙伴的战略演变历程。' },
     items: [
-      { year: '2008', title: { en: 'Origins', zh: '起源' }, description: { en: ['Built the shoe upper factory of Dongguan Dasheng Sporting Goods Co., Ltd. for safety shoe upper orders.'], zh: ['建立东莞大盛体育用品有限公司鞋面工厂，承接安全鞋面订单。'] } },
-      { year: '2016', title: { en: 'Foundation', zh: '成立' }, description: { en: ['Zecoola Shoes Dongguan Co., Ltd was founded in Dongguan at the end of 2016.'], zh: ['2016年底，Zecoola鞋业（东莞）有限公司在东莞成立。'] } },
-      { year: '2017', title: { en: 'Expansion', zh: '扩张' }, description: { en: ['Obtained Import & Export License.', 'Opened Company Bank Account at Hang Seng Bank, Hong Kong.', 'Produced first order of safety shoe uppers for Base Protection (Italy).'], zh: ['获得进出口许可证。', '开设香港恒生银行公司账户。', '为意大利Base Protection生产首批安全鞋面。'] } },
-      { year: '2018', title: { en: 'Self-Sufficiency', zh: '自给自足' }, description: { en: ['Since September 2018, all orders have been produced in our own factory.'], zh: ['自2018年9月起，所有订单均在自有工厂生产。'] } },
-      { year: '2019', title: { en: 'Capacity Growth', zh: '产能增长' }, description: { en: ['Assembly line set up for high-end shoe orders with a daily capacity of 800 pairs.'], zh: ['设立高端鞋类流水线，日产能800双。'] } },
-      { year: '2020', title: { en: 'Global Reach', zh: '全球布局' }, description: { en: ['Zecoola Singapore established.', 'Opened company account at OCBC Bank, Singapore.'], zh: ['成立新加坡Zecoola。', '开设新加坡华侨银行（OCBC）公司账户。'] } },
-      { year: '2021', title: { en: 'US Market', zh: '进军美国' }, description: { en: ['Started developing customers in the U.S. market.', 'Received 1st orders from GATOR WADERS.'], zh: ['开始开发美国市场客户。', '收到GATOR WADERS的首批订单。'] } },
-      { year: '2022', title: { en: 'Partnerships', zh: '新合作伙伴' }, description: { en: ['Started developing Cypher Pickleball.', 'Received 1st orders from Cypher.'], zh: ['开发Cypher Pickleball品牌。', '收到Cypher的首批订单。'] } },
-      { year: '2023', title: { en: 'Rebranding', zh: '更名' }, description: { en: ['Factory renamed to Uanna Shoes Dongguan Co., Ltd.'], zh: ['工厂更名为东莞市友安纳鞋业有限公司。'] } },
-      { year: '2024', title: { en: 'Expansion', zh: '新版图' }, description: { en: ['Received 1st orders from AKGC.', 'Built the shoe upper factory in Shaanxi.'], zh: ['收到AKGC的首批订单。', '建立陕西鞋面工厂。'] } },
-      { year: '2025', title: { en: 'Modernization', zh: '现代化升级' }, description: { en: ['Factory moved to a new location with upgraded production capabilities.', 'Expanded stitching and lasting lines.', 'Added outsole assembling line.'], zh: ['工厂搬迁至新址，升级生产能力。', '扩大针车和成型线。', '增加大底组装线。'] } }
+      { year: '2008', title: { en: 'Operational Inception', zh: '业务启航' }, description: { en: ['Established specialized production for technical safety footwear components.'], zh: ['建立东莞大盛体育用品有限公司，专注安全鞋类部件生产。'] } },
+      { year: '2016', title: { en: 'Corporate Foundation', zh: '正式成立' }, description: { en: ['ZECOOLA Shoes was officially incorporated in Dongguan, China.'], zh: ['2016年底，Zecoola鞋业（东莞）有限公司在东莞正式成立。'] } },
+      { year: '2017', title: { en: 'Global Integration', zh: '国际化整合' }, description: { en: ['Secured full import/export licensure.', 'Established international financial operations in Hong Kong.', 'Commenced strategic partnership with Base Protection (Italy).'], zh: ['获得全额进出口经营权。', '在香港设立国际财务运营中心。', '开启与意大利 Base Protection 的战略合作。'] } },
+      { year: '2018', title: { en: 'Facility Autonomy', zh: '垂直整合' }, description: { en: ['Achieved 100% in-house production through fully-owned manufacturing lines.'], zh: ['通过自有流水线实现了100%的内部自主化生产。'] } },
+      { year: '2019', title: { en: 'Scaling Capacity', zh: '产能扩增' }, description: { en: ['Inaugurated high-end assembly lines with specialized daily capacity of 800 pairs.'], zh: ['启用高端组装线，日产能提升至800双。'] } },
+      { year: '2020', title: { en: 'Strategic Node', zh: '战略节点' }, description: { en: ['Expanded presence to Singapore.', 'Optimized Southeast Asian financial and logistics hubs.'], zh: ['业务版图扩张至新加坡。', '优化东南亚财务与物流中心。'] } },
+      { year: '2021', title: { en: 'Market Penetration', zh: '进军美洲' }, description: { en: ['Formal entry into the U.S. market.', 'Secured first-tier contracts with Gator Waders.'], zh: ['正式进入美国市场。', '与 Gator Waders 达成一级供应合同。'] } },
+      { year: '2022', title: { en: 'Growth & Verticals', zh: '垂直领域增长' }, description: { en: ['Partnered with Cypher Pickleball for specialized performance gear.'], zh: ['与 Cypher Pickleball 合作开发专业运动装备。'] } },
+      { year: '2023', title: { en: 'Brand Identity', zh: '品牌升级' }, description: { en: ['Strategic rebranding of manufacturing facilities to Uanna Shoes.'], zh: ['工厂战略性更名为东莞市友安纳鞋业。'] } },
+      { year: '2024', title: { en: 'Infrastructure Expansion', zh: '基建扩张' }, description: { en: ['Operationalized new component production facility in Shaanxi province.'], zh: ['在陕西省新建并启用鞋材生产基地。'] } },
+      { year: '2025', title: { en: 'Modernization 2.0', zh: '现代化2.0' }, description: { en: ['Relocation to state-of-the-art campus.', 'Significant upgrades to automated stitching and outsole assembly lines.'], zh: ['整体搬迁至现代化工业园。', '对自动化针车和大底组装线进行大规模升级。'] } }
     ]
   },
   services: {
-    title: { en: 'One Stop Service', zh: '一站式服务' },
-    subtitle: { en: 'From conceptual ideas to development and production, our team is capable of providing the full service as a whole.', zh: '从概念构思到开发生产，我们的团队能够提供全方位的整体服务。' },
+    title: { en: 'Full-Spectrum Services', zh: '全方位服务' },
+    subtitle: { en: 'Leveraging a unified ecosystem to transform conceptual visions into market-ready reality.', zh: '利用统一的生态系统，将概念愿景转化为就绪的市场产品。' },
     oem: {
-      title: 'OEM',
-      desc: { en: 'We have the best quality factories to execute all levels of projects. With our expertise and management, our team aims to provide customers best services of R&D, most competitive prices and reliable quality.', zh: '我们拥有最优质的工厂来执行各级项目。凭借我们的专业知识和管理，我们的团队旨在为客户提供最佳的研发服务、最具竞争力的价格和可靠的质量。' },
+      title: 'OEM Manufacturing',
+      desc: { en: 'We operate world-class facilities optimized for complex technical projects. Our team provides robust R&D support, competitive pricing, and rigorous quality assurance at every stage.', zh: '我们运营着针对复杂技术项目优化的世界级工厂。我们的团队在每个阶段都提供强大的研发支持、极具竞争力的定价和严苛的质量保证。' },
       image: getPath('oem.webp')
     },
     odm: {
-      title: 'ODM',
-      desc: { en: 'In the cloud sourcing and sharing eco-system, Zecoola positions itself as customer\'s venture team. From conceptual ideas to development and production, our innovative design team executes your vision.', zh: '在云采购和共享生态系统中，Zecoola定位为客户的创业团队。从概念创意到开发生产，我们的创新设计团队将您的愿景变为现实。' },
+      title: 'ODM & Co-Creation',
+      desc: { en: 'Acting as an extension of your creative team, ZECCOOLA offers full-cycle development. From disruptive design concepts to material sourcing, we execute your brand\'s vision with precision.', zh: '作为您创意团队的延伸，ZECOOLA 提供全周期开发。从突破性的设计概念到原材料采购，我们精准执行您的品牌愿景。' },
       image: getPath('odm.webp')
     },
   },
   products: {
-    title: { en: 'Sample Display', zh: '样品展示' },
-    subtitle: { en: 'A comprehensive collection of our representative works, showcasing innovation in every step.', zh: '我们代表性作品的综合展示，每一步都彰显创新。' },
+    title: { en: 'Exhibition Showcase', zh: '样品展示' },
+    subtitle: { en: 'A curated selection of our high-precision manufacturing outputs, demonstrating versatility and craftsmanship.', zh: '精选高精度制造作品，展现我们的工艺多样性与卓越品质。' },
     image: getPath('product-showcase.webp')
   },
   gallery: {
-    title: { en: 'Factory Showcase', zh: '工厂展示' },
+    title: { en: 'Industrial Facilities', zh: '工厂展示' },
     images: [
       getPath('factory-1.webp'),
       getPath('factory-2.webp'),
@@ -151,33 +144,33 @@ export const CONTENT: ContentData = {
       getPath('factory-5.webp'),
       getPath('factory-6.webp'),
     ],
-    brandsTitle: { en: 'Trusted Brands', zh: '合作品牌' }
+    brandsTitle: { en: 'Strategic Partnerships', zh: '全球合作伙伴' }
   },
   contact: {
-    title: { en: 'Contact Us', zh: '联系我们' },
-    desc: { en: 'Inquiries or suggestions are welcomed. Should you wish to reach us, please drop us a line.', zh: '欢迎任何咨询或建议。如果您想联系我们，请随时留言。' },
-    addressLabel: { en: 'Factory Location', zh: '工厂地址' },
+    title: { en: 'Connect With Us', zh: '联系我们' },
+    desc: { en: 'We are ready to discuss your next project or provide technical consultations. Reach out to our team today.', zh: '我们已准备好讨论您的下一个项目。请随时联系我们的专业团队。' },
+    addressLabel: { en: 'Global HQ & Factory', zh: '全球总部与工厂' },
     address: { en: '2nd Floor, Building 3, Zhuoyue Manufacturing Industrial Park, No.320\nKangle South Road, Houjie Town, Dongguan City, China', zh: '中国广东省东莞市厚街镇康乐南路320号\n卓越制造工业园3栋2楼' },
-    callLabel: { en: 'Call Us', zh: '电话' },
-    emailLabel: { en: 'Email', zh: '邮箱' },
+    callLabel: { en: 'Inquiries', zh: '业务咨询' },
+    emailLabel: { en: 'Electronic Mail', zh: '电子邮件' },
     emailAddress: 'info@zecoola.com',
     phoneNumber: '(0769) 8121-1559',
     mapLabel: { en: 'ZECOOLA DONGGUAN', zh: '东莞友安纳' },
-    mapSub: { en: 'Established in 2017. The heart of our manufacturing operations.', zh: '成立于2017年。我们的核心制造基地。' },
+    mapSub: { en: 'Premier R&D Hub and Production Center.', zh: '核心研发枢纽与生产中心。' },
     form: {
-      name: { en: 'Your Name', zh: '您的姓名' },
-      email: { en: 'Email Address', zh: '电子邮箱' },
-      phone: { en: 'Phone Number', zh: '电话号码' },
-      message: { en: 'How can we help you?', zh: '请输入您的留言内容' },
-      submit: { en: 'Send Message', zh: '发送留言' },
-      submitting: { en: 'Sending...', zh: '发送中...' },
-      successMessage: { en: 'Thank you! Your message has been sent successfully.', zh: '谢谢！您的留言已成功发送。' },
-      errorMessage: { en: 'Something went wrong. Please try again later.', zh: '出错了，请稍后再试。' },
-      validationContact: { en: 'Please provide either an email or a phone number.', zh: '请至少提供一种联系方式（邮箱或电话）。' }
+      name: { en: 'Full Name', zh: '您的姓名' },
+      email: { en: 'Work Email', zh: '工作邮箱' },
+      phone: { en: 'Contact Number', zh: '电话号码' },
+      message: { en: 'Project Brief / Message', zh: '留言内容' },
+      submit: { en: 'Submit Request', zh: '提交申请' },
+      submitting: { en: 'Processing...', zh: '处理中...' },
+      successMessage: { en: 'Transmission successful. Our team will contact you shortly.', zh: '发送成功。我们的团队将很快与您取得联系。' },
+      errorMessage: { en: 'Service interrupted. Please contact info@zecoola.com directly.', zh: '系统繁忙。请直接通过邮箱联系我们。' },
+      validationContact: { en: 'Please provide at least one valid contact channel.', zh: '请至少提供一种有效的联系方式。' }
     }
   },
   footer: {
-    thankYou: { en: 'THANK YOU', zh: '感谢观看' },
-    rights: { en: 'Zecoola Shoes Dongguan Co., Ltd. All rights reserved.', zh: '东莞市友安纳鞋业有限公司 版权所有' }
+    thankYou: { en: 'PRECISION IN EVERY STEP', zh: '每一步，皆精准' },
+    rights: { en: '© Zecoola Shoes Dongguan Co., Ltd. Global Manufacturing Intelligence.', zh: '东莞市友安纳鞋业有限公司 版权所有' }
   }
 };
