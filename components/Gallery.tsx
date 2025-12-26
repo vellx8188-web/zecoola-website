@@ -1,4 +1,5 @@
 
+// Fix: Added missing React import to resolve "Cannot find namespace 'React'" error
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BRANDS, CONTENT } from '../constants';
@@ -34,7 +35,7 @@ const Gallery: React.FC = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="rounded-2xl overflow-hidden shadow-xl relative group aspect-[4/3] bg-slate-100"
+                  className="rounded-3xl overflow-hidden shadow-xl relative group aspect-[4/3] bg-slate-100"
                 >
                   <img 
                     src={imgSrc} 
@@ -42,87 +43,103 @@ const Gallery: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" 
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </motion.div>
              ))}
           </div>
         </div>
 
-        {/* Brand Ecosystem - Improved for 11 logos and white backgrounds */}
-        <div className="relative">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-zecoola-blue mb-4 uppercase tracking-tight">{brandsTitle[language]}</h2>
-            <p className="text-slate-400 text-sm max-w-lg mx-auto italic">
-              Empowering industry leaders through manufacturing excellence and reliable supply chains.
-            </p>
+        {/* Brand Ecosystem - Reimagined Organic Layout */}
+        <div className="relative py-16">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl font-black text-zecoola-blue mb-4 uppercase tracking-tighter">
+                {brandsTitle[language]}
+            </h2>
+            <div className="w-12 h-1 bg-zecoola-orange mx-auto"></div>
           </div>
           
           {/* 
             Visual Strategy:
-            1. Use 'flex-wrap' with 'justify-center' to handle the 11th logo naturally.
-            2. Add a subtle 'bg-slate-900' or 'bg-slate-50' with borders to make white logos pop.
-            3. Apply a grayscale filter by default for a premium "B2B Wall" look.
+            Using a staggered flex layout that avoids rigid rows and columns.
+            Each logo is wrapped in a soft, circular white bubble with high-end shadow.
           */}
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-12 md:gap-x-12 md:gap-y-16 max-w-6xl mx-auto">
             {BRANDS.map((brand, i) => {
-              const cardBaseStyles = `
-                group 
-                relative
-                bg-slate-900
-                border border-slate-800
-                rounded-2xl
-                w-[130px] h-[70px] 
-                md:w-[170px] md:h-[90px] 
-                lg:w-[200px] lg:h-[110px]
-                flex items-center justify-center 
-                p-4 md:p-6 
-                shadow-lg hover:shadow-orange-900/10
-                hover:border-zecoola-orange/50
-                transform hover:-translate-y-2 
-                transition-all duration-500
-              `;
-
+              // 模拟错落感：根据索引添加上下偏移
+              const verticalOffset = i % 2 === 0 ? "mt-0" : "md:mt-12";
+              
               const content = (
-                <img 
-                  src={brand.image} 
-                  alt={`Partner Brand ${i+1}`}
-                  className="max-w-[85%] max-h-[85%] object-contain filter brightness-125 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:brightness-100 transition-all duration-700 ease-in-out"
-                  loading="lazy"
-                />
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  animate={{
+                    y: [0, -8, 0],
+                  }}
+                  // Fix: Merged duplicate transition attributes into a single object with property-specific settings
+                  transition={{ 
+                    y: {
+                      duration: 4,
+                      repeat: Infinity,
+                      delay: i * 0.3,
+                      ease: "easeInOut"
+                    },
+                    default: {
+                      delay: i * 0.05,
+                      type: "spring",
+                      stiffness: 50
+                    }
+                  }}
+                  className={`
+                    ${verticalOffset}
+                    group relative
+                    w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44
+                    bg-white
+                    rounded-full
+                    flex items-center justify-center 
+                    p-6 md:p-8
+                    shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)]
+                    hover:shadow-[0_20px_60px_-15px_rgba(255,107,0,0.2)]
+                    hover:scale-110
+                    border border-slate-50
+                    transition-all duration-500
+                  `}
+                >
+                  <img 
+                    src={brand.image} 
+                    alt={`Partner Brand ${i+1}`}
+                    className="max-w-full max-h-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                        // 如果图片丢失，显示占位数字或文字
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement!.innerHTML = `<span class="text-slate-300 font-bold text-xs">PARTNER ${i+1}</span>`;
+                    }}
+                  />
+                  {/* Hover Indicator */}
+                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-zecoola-orange/20 transition-all duration-500"></div>
+                </motion.div>
               );
 
               return brand.url ? (
-                <motion.a 
+                <a 
                   key={i}
                   href={brand.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className={`${cardBaseStyles} cursor-pointer`}
+                  className="block no-underline"
                 >
                   {content}
-                  <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-zecoola-orange rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </motion.a>
+                </a>
               ) : (
-                <motion.div 
-                  key={i} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className={`${cardBaseStyles} cursor-default`}
-                >
-                  {content}
-                </motion.div>
+                <div key={i}>{content}</div>
               );
             })}
           </div>
 
-          {/* Background Decorative Element */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-zecoola-orange/[0.02] -z-10 rounded-full blur-3xl pointer-events-none"></div>
+          {/* Background Decorative Elements - Subtle gradients for a professional vibe */}
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-zecoola-orange/5 rounded-full blur-[100px] -z-10"></div>
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-zecoola-blue/5 rounded-full blur-[120px] -z-10"></div>
         </div>
 
       </div>
