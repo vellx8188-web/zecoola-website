@@ -1,4 +1,5 @@
 
+// Fix: Import React to resolve 'Cannot find namespace React' error on line 6
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BRANDS, CONTENT } from '../constants';
@@ -36,10 +37,15 @@ const Gallery: React.FC = () => {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="rounded-2xl overflow-hidden shadow-md relative group aspect-[4/3] bg-slate-100"
                 >
+                  {/* 
+                    💡 修复逻辑：
+                    将 h-auto 改为 h-full。
+                    在 aspect 容器中，必须使用 h-full 配合 object-cover 才能确保图片填满整个空间。
+                  */}
                   <img 
                     src={imgSrc} 
                     alt={`Facility View ${index + 1}`} 
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 ease-out" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" 
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -67,11 +73,6 @@ const Gallery: React.FC = () => {
                 transition={{ duration: 0.3, delay: i * 0.02 }}
                 className="w-[calc(50%-1rem)] sm:w-[calc(33.33%-1.5rem)] md:w-[calc(25%-1.5rem)] lg:w-[calc(20%-1.5rem)] max-w-[280px]"
               >
-                {/* 
-                  💡 视觉优化核心逻辑：
-                  1. bg-[#e2e8f0] (Slate-200): 使用中等深浅的灰色背景，让白色 LOGO 有对比度，深色 LOGO 也不突兀。
-                  2. drop-shadow-sm: 为图像本身（而非容器）增加投影，确保白色文字在浅色背景上依然有轮廓。
-                */}
                 {brand.url ? (
                   <a 
                     href={brand.url} 
