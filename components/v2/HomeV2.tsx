@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Layers, Factory, Box, CheckCircle2, Send, Globe, Award, Microscope, Zap } from 'lucide-react';
-import { CONTENT, BRANDS } from '../../constants';
+import { ArrowRight, Layers, Factory, Globe, Award, Microscope, Zap } from 'lucide-react';
+import { CONTENT } from '../../constants';
 import { useLanguage } from '../../LanguageContext';
 
 const HomeV2: React.FC = () => {
@@ -34,6 +34,7 @@ const HomeV2: React.FC = () => {
                <div className="text-3xl font-bold text-slate-400 leading-relaxed border-l-8 border-orange-600 pl-12 py-4">
                  {CONTENT.aboutPage.whoWeAre.content[language]}
                </div>
+               <img src="/about-vision.webp" alt="Heritage" className="w-full h-80 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700" />
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="bg-slate-50 p-12 rounded-sm border border-slate-100">
                     <h3 className="text-xs font-black text-orange-600 uppercase tracking-widest mb-6">Our Mission</h3>
@@ -80,27 +81,6 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：服务项目 (Services) */}
-      <section id="services" className="py-32 bg-white">
-        <div className="container mx-auto px-6 lg:px-20 text-center">
-           <h2 className="text-5xl lg:text-7xl font-black text-slate-950 mb-16 tracking-tighter uppercase">SOLUTIONS.</h2>
-           <div className="grid md:grid-cols-2 gap-12">
-              <div className="group relative overflow-hidden bg-slate-900 rounded-sm p-16 text-left hover:shadow-2xl transition-all">
-                 <div className="absolute top-0 right-0 p-8 text-white/5 opacity-0 group-hover:opacity-100 transition-opacity"><Layers size={200} /></div>
-                 <h3 className="text-3xl font-black text-white mb-6 uppercase">OEM</h3>
-                 <p className="text-slate-400 text-lg leading-relaxed mb-12">Built to your specifications with absolute precision and engineering fidelity.</p>
-                 <div className="h-[2px] w-20 bg-orange-600" />
-              </div>
-              <div className="group relative overflow-hidden bg-slate-100 rounded-sm p-16 text-left hover:shadow-2xl transition-all">
-                 <div className="absolute top-0 right-0 p-8 text-slate-950/5 opacity-0 group-hover:opacity-100 transition-opacity"><Factory size={200} /></div>
-                 <h3 className="text-3xl font-black text-slate-950 mb-6 uppercase">ODM</h3>
-                 <p className="text-slate-500 text-lg leading-relaxed mb-12">Translating your brand vision into functional, production-ready design prototypes.</p>
-                 <div className="h-[2px] w-20 bg-orange-600" />
-              </div>
-           </div>
-        </div>
-      </section>
-
       {/* 模块：产品展厅 (Showcase) */}
       <section id="showcase" className="py-32 bg-slate-950 text-white overflow-hidden">
         <div className="container mx-auto px-6 lg:px-20">
@@ -118,7 +98,7 @@ const HomeV2: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 h-[800px]">
              <motion.div {...fadeInUp} className="md:col-span-8 group relative overflow-hidden rounded-sm bg-slate-900">
-                <img src="/factory-4.webp" alt="Showcase" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2s]" />
+                <img src="/showcase-main.webp" alt="Showcase" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2s]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-90" />
                 <div className="absolute bottom-12 left-12">
                    <h3 className="text-4xl font-black mb-4">Functional Technical Series</h3>
@@ -127,11 +107,11 @@ const HomeV2: React.FC = () => {
              </motion.div>
              <div className="md:col-span-4 flex flex-col gap-10">
                 <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="h-1/2 group relative overflow-hidden rounded-sm bg-slate-900">
-                   <img src="/factory-5.webp" alt="Showcase" className="w-full h-full object-cover opacity-60" />
+                   <img src="/showcase-sub1.webp" alt="Showcase" className="w-full h-full object-cover opacity-60" />
                    <div className="absolute bottom-8 left-8"><h4 className="text-xl font-black uppercase">Safety</h4></div>
                 </motion.div>
                 <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="h-1/2 group relative overflow-hidden rounded-sm bg-slate-900">
-                   <img src="/factory-1.webp" alt="Showcase" className="w-full h-full object-cover opacity-60" />
+                   <img src="/showcase-sub2.webp" alt="Showcase" className="w-full h-full object-cover opacity-60" />
                    <div className="absolute bottom-8 left-8"><h4 className="text-xl font-black uppercase">Performance</h4></div>
                 </motion.div>
              </div>
@@ -139,7 +119,7 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：留言/联系 (Contact) - 植入暗色调高级感表单 */}
+      {/* 模块：联系我们 (Contact) */}
       <section id="contact" className="py-32 bg-white">
          <div className="container mx-auto px-6 lg:px-20">
             <div className="bg-slate-950 p-12 lg:p-32 relative overflow-hidden">

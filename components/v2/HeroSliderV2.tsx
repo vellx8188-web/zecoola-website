@@ -6,13 +6,13 @@ import { useLanguage } from '../../LanguageContext';
 
 const SLIDES = [
   {
-    image: '/factory-4.webp',
+    image: '/hero-lab.webp',
     tag: 'PRECISION R&D & ENGINEERING',
     title: { en: 'INNOVATION\nLAB', zh: '创新\n实验室' },
     sub: { en: 'Transforming complex design visions into high-performance technical products.', zh: '将复杂的设计愿景转化为高性能的技术产品。' }
   },
   {
-    image: '/factory-5.webp',
+    image: '/hero-factory.webp',
     tag: 'GLOBAL MANUFACTURING',
     title: { en: 'SMART\nFACTORY', zh: '智能\n工厂' },
     sub: { en: 'Scaling production with industrial precision and global standards.', zh: '以工业精度和国际标准实现规模化生产。' }
@@ -47,7 +47,12 @@ const HeroSliderV2: React.FC = () => {
             transition={{ duration: 10, ease: "linear" }}
             className="absolute inset-0"
           >
-             <img src={SLIDES[current].image} alt="Hero" className="h-full w-full object-cover grayscale brightness-[0.3]" />
+             <img 
+               src={SLIDES[current].image} 
+               alt="Hero" 
+               className="h-full w-full object-cover grayscale brightness-[0.3]" 
+               onError={(e) => (e.currentTarget.src = 'https://placehold.co/1920x1080?text=HERO+IMAGE')}
+             />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/20 to-transparent z-10" />
         </motion.div>
@@ -91,7 +96,6 @@ const HeroSliderV2: React.FC = () => {
         </div>
       </div>
 
-      {/* 底部装饰控制台 */}
       <div className="absolute bottom-12 left-6 lg:left-20 z-30 flex items-end gap-16">
          <div className="text-[10px] font-black text-white/30 tracking-[0.5em] uppercase hidden xl:block">
            EST. 2016 / DONGGUAN CHINA
@@ -107,7 +111,6 @@ const HeroSliderV2: React.FC = () => {
          </div>
       </div>
 
-      {/* 切换控制器 */}
       <div className="absolute bottom-12 right-6 lg:right-20 z-30 flex gap-1">
          <button onClick={() => setCurrent(prev => (prev - 1 + SLIDES.length) % SLIDES.length)} className="w-14 h-14 border border-white/10 text-white/50 flex items-center justify-center hover:text-white hover:bg-white/10 transition-all">
            <ChevronLeft size={24} strokeWidth={1} />

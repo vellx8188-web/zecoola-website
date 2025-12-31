@@ -10,10 +10,12 @@ const FooterV2: React.FC = () => {
     <footer className="bg-white border-t py-20">
       <div className="container mx-auto px-6 lg:px-20">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+          
+          {/* Logo Area */}
           <div className="flex items-center gap-4">
-             <img src="/logo.png" alt="Zecoola Icon" className="h-10 w-auto" />
+             <img src="/logo-icon.png" alt="Zecoola Icon" className="h-12 w-auto" />
              <div className="flex flex-col">
-                <div className="text-3xl font-black text-slate-900 tracking-tighter">ZECOOLA<span className="text-orange-600">.</span></div>
+                <img src="/logo-text.png" alt="ZECOOLA" className="h-5 w-auto mb-1" />
                 <div className="text-[8px] font-black text-slate-300 uppercase tracking-widest">Global Manufacturing</div>
              </div>
           </div>
