@@ -36,24 +36,30 @@ const NavbarV2: React.FC = () => {
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${isScrolled ? 'bg-white shadow-xl h-20' : 'bg-transparent h-28'}`}>
       <div className="max-w-[1440px] mx-auto px-6 h-full flex justify-between items-center">
         
-        {/* Logo Area - 增加固定容器防止错位 */}
+        {/* Logo Area - 严格保护容器，防止布局错乱 */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center h-full">
-           <div className={`h-10 md:h-12 w-auto flex items-center transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`}>
+           <div className={`h-10 md:h-12 w-10 md:w-12 flex items-center justify-center transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`}>
              <img 
                src="/logo-icon.png" 
                alt="ZA" 
-               className="h-full w-auto object-contain"
-               onError={(e) => e.currentTarget.classList.add('hidden')}
+               className="max-h-full max-w-full object-contain"
+               onError={(e) => {
+                 e.currentTarget.style.display = 'none';
+               }}
              />
            </div>
            
            <div className={`flex flex-col items-start border-l h-8 md:h-10 ml-4 pl-4 transition-colors duration-300 ${isScrolled ? 'border-slate-200' : 'border-white/20'}`}>
-              <img 
-                src="/logo-text.png" 
-                alt="ZECOOLA" 
-                className={`h-4 md:h-5 w-auto transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`}
-                onError={(e) => e.currentTarget.classList.add('hidden')}
-              />
+              <div className={`h-4 md:h-5 transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`}>
+                <img 
+                  src="/logo-text.png" 
+                  alt="ZECOOLA" 
+                  className="h-full w-auto object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
               <span className={`text-[8px] font-black uppercase tracking-[0.4em] mt-1 whitespace-nowrap ${isScrolled ? 'text-slate-400' : 'text-white/60'}`}>
                 Footwear Excellence
               </span>
@@ -77,7 +83,7 @@ const NavbarV2: React.FC = () => {
               onClick={toggleLanguage}
               className={`text-[10px] font-black w-10 h-10 border rounded-full transition-all flex items-center justify-center ${isScrolled ? 'border-slate-200 text-slate-900 hover:bg-slate-50' : 'border-white/20 text-white hover:bg-white/10'}`}
             >
-              <Globe size={14} className="mr-1" /> {language === 'en' ? 'CH' : 'EN'}
+               {language === 'en' ? 'CH' : 'EN'}
             </button>
             <button 
               onClick={() => scrollTo('contact')}
@@ -94,10 +100,10 @@ const NavbarV2: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Fullscreen Menu */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="xl:hidden fixed inset-0 z-[110] bg-slate-950 p-10 flex flex-col justify-center gap-6 overflow-y-auto">
-          <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors"><X size={40}/></button>
+        <div className="xl:hidden fixed inset-0 z-[110] bg-slate-950 p-10 flex flex-col justify-center gap-6">
+          <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-white/50"><X size={40}/></button>
           {CONTENT.nav.map((item) => (
             <button
               key={item.id}
