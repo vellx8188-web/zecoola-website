@@ -19,7 +19,7 @@ export interface MilestoneItem {
 
 export interface NavItem {
   label: LocalizedString;
-  href: string;
+  id: string; // Changed from href to id to match constants.ts
 }
 
 // Added BrandItem interface
@@ -36,6 +36,7 @@ export interface ContentData {
     publicKey: string;
   };
   nav: NavItem[];
+  // V1 Properties
   hero: {
     title: string;
     slogan: LocalizedString;
@@ -78,7 +79,7 @@ export interface ContentData {
   products: {
     title: LocalizedString;
     subtitle: LocalizedString;
-    image: string; // Changed from items array to single image
+    image: string;
   };
   gallery: {
     title: LocalizedString;
@@ -92,10 +93,14 @@ export interface ContentData {
     address: LocalizedString;
     callLabel: LocalizedString;
     emailLabel: LocalizedString;
-    emailAddress: string; // Added central email configuration
-    phoneNumber: string; // Added central phone configuration
+    emailAddress: string;
+    phoneNumber: string;
     mapLabel: LocalizedString;
     mapSub: LocalizedString;
+    // Satisfy V2 requirements
+    email?: string;
+    phone?: string;
+    whatsapp?: string;
     form: {
       name: LocalizedString;
       email: LocalizedString;
@@ -111,5 +116,56 @@ export interface ContentData {
   footer: {
     thankYou: LocalizedString;
     rights: LocalizedString;
+  };
+  // V2 Properties
+  home: {
+    hero: {
+      h1: LocalizedString;
+      h2: LocalizedString;
+      strengths: {
+        icon: any;
+        text: LocalizedString;
+      }[];
+      cta: LocalizedString;
+    };
+    whatWeDo: {
+      title: LocalizedString;
+      desc: LocalizedString;
+      categories: {
+        title: LocalizedString;
+        image: string;
+      }[];
+      note: LocalizedString;
+    };
+    whyUs: {
+      title: LocalizedString;
+      items: {
+        title: LocalizedString;
+        desc: LocalizedString;
+      }[];
+    };
+    howWeWork: {
+      title: LocalizedString;
+      steps: {
+        id: number;
+        title: LocalizedString;
+      }[];
+    };
+  };
+  aboutPage: {
+    whoWeAre: {
+      title: LocalizedString;
+      content: LocalizedString;
+    };
+    mission: {
+      title: LocalizedString;
+      mText: LocalizedString;
+      vText: LocalizedString;
+    };
+  };
+  capabilities: {
+    manufacturing: LocalizedString[];
+    materials: LocalizedString[];
+    qc: LocalizedString[];
   };
 }

@@ -1,129 +1,97 @@
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
+import { LanguageProvider } from './LanguageContext';
+
+// V1 组件 (现有版本)
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
+import Milestone from './components/Milestone';
+import Services from './components/Services';
+import Products from './components/Products';
+import Gallery from './components/Gallery';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ComingSoon from './components/ComingSoon';
-import { LanguageProvider } from './LanguageContext';
-import { CONTENT } from './constants';
 
-// ----------------------------------------------------------------------
-// 性能优化：懒加载 (Lazy Loading)
-// 只有当需要显示这些组件时，浏览器才会去下载它们的代码。
-// 这能显著提升网站打开速度。
-// ----------------------------------------------------------------------
-const About = React.lazy(() => import('./components/About'));
-const Milestone = React.lazy(() => import('./components/Milestone'));
-const Services = React.lazy(() => import('./components/Services'));
-const Products = React.lazy(() => import('./components/Products'));
-const Gallery = React.lazy(() => import('./components/Gallery'));
-const Contact = React.lazy(() => import('./components/Contact'));
-
-// 简单的加载占位符
-const LoadingFallback = () => (
-  <div className="py-20 flex justify-center items-center">
-    <div className="w-8 h-8 border-4 border-zecoola-orange border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
-
-// ==============================================================================
-// 网站状态控制 / WEBSITE STATUS CONTROL
-// ==============================================================================
-// true  = 默认显示 "Coming Soon"
-// false = 默认显示正式网站 (上线时改为 false)
-const DEFAULT_MAINTENANCE_MODE = true; 
+// V2 组件 (新开发的专业 B2B 版)
+import NavbarV2 from './components/v2/NavbarV2';
+import HomeV2 from './components/v2/HomeV2';
+import AboutV2 from './components/v2/AboutV2';
+import CapabilitiesV2 from './components/v2/CapabilitiesV2';
+import ServicesV2 from './components/v2/ServicesV2';
+import ContactV2 from './components/v2/ContactV2';
+import FooterV2 from './components/v2/FooterV2';
 
 function App() {
-  const [isMaintenance, setIsMaintenance] = useState(DEFAULT_MAINTENANCE_MODE);
-  const [isChecking, setIsChecking] = useState(true);
-
-  // ------------------------------------------------
-  // 强制修复 Favicon (浏览器标签页 Logo)
-  // Fix: Force browser to recognize the favicon by removing old links and adding a new one
-  // ------------------------------------------------
-  useEffect(() => {
-    const updateFavicon = () => {
-      // 1. 移除所有旧的 icon 标签
-      const oldLinks = document.querySelectorAll("link[rel*='icon']");
-      oldLinks.forEach(link => link.remove());
-
-      // 2. 创建一个新的 link 标签
-      const link = document.createElement('link');
-      link.type = 'image/png';
-      link.rel = 'icon';
-      // 3. 添加时间戳参数，强制浏览器不使用缓存 (?v=timestamp)
-      link.href = `/logo.png?v=${new Date().getTime()}`;
-      
-      document.getElementsByTagName('head')[0].appendChild(link);
-    };
-
-    updateFavicon();
-  }, [isMaintenance]); // 当维护模式切换时，再次执行以防丢失
+  const [isV2, setIsV2] = useState(false);
+  const [activePageV2, setActivePageV2] = useState('home');
 
   useEffect(() => {
-    // 1. 检查 URL 是否包含秘密钥匙 (?mode=admin)
+    // 检查 URL 参数是否包含 v=2
     const params = new URLSearchParams(window.location.search);
-    const mode = params.get('mode');
-
-    // 2. 检查 SessionStorage 是否已经解锁过
-    const isUnlocked = sessionStorage.getItem('site_unlocked') === 'true';
-
-    if (mode === 'admin' || isUnlocked) {
-      // 如果有钥匙，或者之前解锁过 -> 关闭维护模式，显示正式网站
-      setIsMaintenance(false);
-      sessionStorage.setItem('site_unlocked', 'true'); // 记住解锁状态
-    } else {
-      // 否则 -> 保持默认状态
-      setIsMaintenance(DEFAULT_MAINTENANCE_MODE);
+    if (params.get('v') === '2') {
+      setIsV2(true);
     }
-    
-    setIsChecking(false);
   }, []);
 
-  // 在检查完身份前，暂时显示空白或Loading，避免闪烁
-  if (isChecking) return null;
+  // 处理 V2 的平滑滚动到顶
+  useEffect(() => {
+    if (isV2) {
+      window.scrollTo(0, 0);
+    }
+  }, [activePageV2, isV2]);
 
-  // 如果处于维护模式，显示 Coming Soon 页面
-  if (isMaintenance) {
-    return <ComingSoon />;
-  }
+  // V2 页面路由逻辑
+  const renderV2Page = () => {
+    switch(activePageV2) {
+      case 'home': return <HomeV2 onNavigate={setActivePageV2} />;
+      case 'about': return <AboutV2 />;
+      case 'capabilities': return <CapabilitiesV2 />;
+      case 'services': return <ServicesV2 />;
+      case 'contact': return <ContactV2 />;
+      default: return <HomeV2 onNavigate={setActivePageV2} />;
+    }
+  };
 
-  // 否则显示正式网站
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-slate-50 font-sans">
-        <Navbar />
-        <main>
-          {/* Hero 部分通常是首屏，为了SEO和体验最好不要懒加载，或者保持原样 */}
+      {isV2 ? (
+        /* ================= V2: 全新专业 B2B 版 ================= */
+        <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-600">
+          <NavbarV2 activePage={activePageV2} onNavigate={setActivePageV2} />
+          <main className="pt-20">
+            {renderV2Page()}
+          </main>
+          <FooterV2 />
+          
+          {/* 版本切换悬浮提示 (仅预览用，生产环境可删除) */}
+          <div className="fixed bottom-6 right-6 z-[60]">
+            <a href="/" className="bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-full shadow-xl hover:bg-orange-600 transition-colors">
+              返回原版 V1
+            </a>
+          </div>
+        </div>
+      ) : (
+        /* ================= V1: 您目前的橙色版本 ================= */
+        <div className="min-h-screen bg-white">
+          <Navbar />
           <Hero />
+          <About />
+          <Milestone />
+          <Services />
+          <Products />
+          <Gallery />
+          <Contact />
+          <Footer />
           
-          {/* 以下部分开启懒加载，提升首屏速度 */}
-          <Suspense fallback={<LoadingFallback />}>
-            <About />
-          </Suspense>
-          
-          <Suspense fallback={<LoadingFallback />}>
-            <Milestone />
-          </Suspense>
-          
-          <Suspense fallback={<LoadingFallback />}>
-            <Services />
-          </Suspense>
-          
-          <Suspense fallback={<LoadingFallback />}>
-            <Products />
-          </Suspense>
-          
-          <Suspense fallback={<LoadingFallback />}>
-            <Gallery />
-          </Suspense>
-          
-          <Suspense fallback={<LoadingFallback />}>
-            <Contact />
-          </Suspense>
-        </main>
-        <Footer />
-      </div>
+          {/* 版本切换悬浮提示 */}
+          <div className="fixed bottom-6 right-6 z-[60]">
+            <a href="/?v=2" className="bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-xl hover:bg-slate-900 transition-colors">
+              预览新版 V2 (B2B模式)
+            </a>
+          </div>
+        </div>
+      )}
     </LanguageProvider>
   );
 }

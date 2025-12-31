@@ -56,8 +56,8 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <button
-              key={item.href}
-              onClick={(e) => scrollToSection(e, item.href)}
+              key={item.id}
+              onClick={(e) => scrollToSection(e, item.id)}
               className={`text-sm font-semibold uppercase tracking-wider hover:text-zecoola-orange transition-colors ${isScrolled ? 'text-slate-700' : 'text-white/90'}`}
             >
               {item.label[language]}
@@ -94,8 +94,8 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col px-6 py-4 space-y-4">
             {navItems.map((item) => (
               <button
-                key={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
+                key={item.id}
+                onClick={(e) => scrollToSection(e, item.id)}
                 className="text-slate-700 hover:text-zecoola-orange font-semibold text-left w-full py-2 border-b border-slate-100 last:border-0"
               >
                 {item.label[language]}
