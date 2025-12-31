@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Layers, Factory, Globe, Award, Microscope, Zap } from 'lucide-react';
-import { CONTENT } from '../../constants';
+import { ArrowRight, Globe, Award, Microscope, Zap, Factory } from 'lucide-react';
+import { CONTENT, BRANDS } from '../../constants';
 import { useLanguage } from '../../LanguageContext';
 
 const HomeV2: React.FC = () => {
@@ -14,35 +14,35 @@ const HomeV2: React.FC = () => {
     initial: { opacity: 0, y: 50 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.8, ease: "easeOut" as const }
+    transition: { duration: 0.8 }
   };
 
   return (
     <div className="bg-white">
       
-      {/* 模块：关于传承 (Heritage) */}
+      {/* 模块：品牌传承 (Heritage) */}
       <section id="about" className="py-32 bg-white">
         <div className="container mx-auto px-6 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-24 items-start">
             <motion.div {...fadeInUp} className="sticky top-32">
-              <div className="text-[12rem] font-black text-slate-50 leading-none -ml-8 select-none">01</div>
-              <h2 className="text-6xl lg:text-8xl font-black text-slate-950 -mt-20 leading-[1.1] tracking-tighter uppercase">
+              <div className="text-[14rem] font-black text-slate-50 leading-none -ml-12 select-none">01</div>
+              <h2 className="text-6xl lg:text-[7rem] font-black text-slate-950 -mt-24 leading-none tracking-tighter uppercase">
                 THE <br/> <span className="text-orange-600">HERITAGE.</span>
               </h2>
             </motion.div>
             <div className="space-y-12 lg:pt-32">
-               <div className="text-3xl font-bold text-slate-400 leading-relaxed border-l-8 border-orange-600 pl-12 py-4">
+               <div className="text-4xl font-bold text-slate-400 leading-[1.4] border-l-8 border-orange-600 pl-12 py-4">
                  {CONTENT.aboutPage.whoWeAre.content[language]}
                </div>
-               <img src="/about-vision.webp" alt="Heritage" className="w-full h-80 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700" />
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="bg-slate-50 p-12 rounded-sm border border-slate-100">
-                    <h3 className="text-xs font-black text-orange-600 uppercase tracking-widest mb-6">Our Mission</h3>
-                    <p className="text-slate-500 text-lg leading-relaxed">{CONTENT.aboutPage.mission.mText[language]}</p>
+                    <h3 className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-8">Global Mission</h3>
+                    <p className="text-slate-600 text-xl font-medium leading-relaxed">{CONTENT.aboutPage.mission.mText[language]}</p>
                   </div>
-                  <div className="bg-slate-950 p-12 rounded-sm text-white shadow-2xl">
-                    <h3 className="text-xs font-black text-orange-600 uppercase tracking-widest mb-6">Our Vision</h3>
-                    <p className="text-slate-400 text-lg leading-relaxed">{CONTENT.aboutPage.mission.vText[language]}</p>
+                  <div className="bg-slate-950 p-12 rounded-sm text-white shadow-2xl relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-8 text-white/5 group-hover:text-orange-600/10 transition-colors"><Globe size={150} /></div>
+                    <h3 className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-8">Brand Vision</h3>
+                    <p className="text-slate-400 text-xl font-medium leading-relaxed relative z-10">{CONTENT.aboutPage.mission.vText[language]}</p>
                   </div>
                </div>
             </div>
@@ -50,31 +50,40 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：核心实力 (Engineering) */}
-      <section id="capabilities" className="py-32 bg-slate-50 overflow-hidden">
+      {/* 模块：合作伙伴 (Brands) - 找回的模块 */}
+      <section className="py-32 bg-slate-50 border-y border-slate-100">
         <div className="container mx-auto px-6 lg:px-20">
-           <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <div className="max-w-3xl">
-                 <span className="text-orange-600 font-black text-xs uppercase tracking-[0.5em] block mb-4">Engineering Capabilities</span>
-                 <h2 className="text-6xl lg:text-[7rem] font-black text-slate-950 tracking-tighter leading-none uppercase">STRENGTHS.</h2>
-              </div>
-              <div className="w-full md:w-1/3 h-[2px] bg-slate-200 mb-4" />
-           </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+             <div className="max-w-xl">
+                <span className="text-orange-600 font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">Strategic Partnerships</span>
+                <h2 className="text-4xl lg:text-5xl font-black text-slate-950 tracking-tighter uppercase">TRUSTED BY LEADERS.</h2>
+             </div>
+             <p className="text-slate-400 font-medium text-sm lg:text-right max-w-xs">Serving the most demanding technical and lifestyle brands across the globe.</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-slate-200 border border-slate-200">
+             {BRANDS.map((brand, i) => (
+                <div key={i} className="bg-white p-12 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 aspect-video group">
+                   <img src={brand.image} alt="Partner" className="max-h-full max-w-full object-contain opacity-40 group-hover:opacity-100 transition-opacity" />
+                </div>
+             ))}
+          </div>
+        </div>
+      </section>
 
-           <div className="grid lg:grid-cols-3 gap-px bg-slate-200 shadow-2xl border border-slate-200">
+      {/* 模块：技术工程 (Capabilities) */}
+      <section id="capabilities" className="py-32 bg-white">
+        <div className="container mx-auto px-6 lg:px-20">
+           <div className="grid lg:grid-cols-3 gap-px bg-slate-200 shadow-2xl">
               {[
-                { icon: Award, title: 'Manufacturing', items: data.whyUs.items[0].desc[language] },
-                { icon: Microscope, title: 'Technical Lab', items: data.whyUs.items[1].desc[language] },
-                { icon: Zap, title: 'Efficiency', items: data.whyUs.items[2].desc[language] }
+                { icon: Award, title: 'Manufacturing', desc: 'Precise industrial assembly with ISO standards.' },
+                { icon: Microscope, title: 'Engineering', desc: 'Material innovation and blueprint translation.' },
+                { icon: Zap, title: 'Performance', desc: 'Scaling high-tech solutions for elite brands.' }
               ].map((item, i) => (
-                <motion.div 
-                  key={i} 
-                  {...fadeInUp}
-                  className="bg-white p-20 hover:bg-orange-600 group transition-all duration-700 cursor-default"
-                >
-                  <div className="text-orange-600 group-hover:text-white transition-colors mb-12"><item.icon size={56} strokeWidth={1} /></div>
-                  <h3 className="text-3xl font-black mb-8 uppercase group-hover:text-white transition-colors tracking-tighter">{item.title}</h3>
-                  <p className="text-slate-500 group-hover:text-white/70 transition-colors leading-relaxed text-xl font-medium">{item.items}</p>
+                <motion.div key={i} {...fadeInUp} className="bg-white p-20 hover:bg-slate-950 group transition-all duration-700">
+                   <div className="text-orange-600 mb-12 group-hover:scale-110 transition-transform"><item.icon size={64} strokeWidth={1} /></div>
+                   <h3 className="text-4xl font-black mb-6 uppercase tracking-tighter group-hover:text-white transition-colors">{item.title}</h3>
+                   <p className="text-slate-500 text-lg leading-relaxed group-hover:text-white/50 transition-colors">{item.desc}</p>
                 </motion.div>
               ))}
            </div>
@@ -82,96 +91,84 @@ const HomeV2: React.FC = () => {
       </section>
 
       {/* 模块：产品展厅 (Showcase) */}
-      <section id="showcase" className="py-32 bg-slate-950 text-white overflow-hidden">
+      <section id="showcase" className="py-32 bg-slate-950 text-white">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-8">
-            <div className="max-w-2xl">
-              <span className="text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-4 block">Archive Showcase</span>
-              <h2 className="text-6xl lg:text-8xl font-black leading-tight tracking-tighter">
-                PRODUCTS.
-              </h2>
-            </div>
-            <p className="text-slate-500 max-w-sm text-lg font-medium lg:text-right">
-              Precision manufactured functional footwear for high-performance and elite technical brands.
-            </p>
-          </div>
+           <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-12">
+              <div className="max-w-3xl">
+                 <span className="text-orange-600 font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">Archive Showcase</span>
+                 <h2 className="text-7xl lg:text-[10rem] font-black tracking-tighter leading-none uppercase">PRODUCTS.</h2>
+              </div>
+           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 h-[800px]">
-             <motion.div {...fadeInUp} className="md:col-span-8 group relative overflow-hidden rounded-sm bg-slate-900">
-                <img src="/showcase-main.webp" alt="Showcase" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2s]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-90" />
-                <div className="absolute bottom-12 left-12">
-                   <h3 className="text-4xl font-black mb-4">Functional Technical Series</h3>
-                   <div className="flex gap-4"><span className="px-4 py-2 border border-white/20 text-xs font-black uppercase tracking-widest">Alpine Tech</span></div>
-                </div>
-             </motion.div>
-             <div className="md:col-span-4 flex flex-col gap-10">
-                <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="h-1/2 group relative overflow-hidden rounded-sm bg-slate-900">
-                   <img src="/showcase-sub1.webp" alt="Showcase" className="w-full h-full object-cover opacity-60" />
-                   <div className="absolute bottom-8 left-8"><h4 className="text-xl font-black uppercase">Safety</h4></div>
-                </motion.div>
-                <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="h-1/2 group relative overflow-hidden rounded-sm bg-slate-900">
-                   <img src="/showcase-sub2.webp" alt="Showcase" className="w-full h-full object-cover opacity-60" />
-                   <div className="absolute bottom-8 left-8"><h4 className="text-xl font-black uppercase">Performance</h4></div>
-                </motion.div>
-             </div>
-          </div>
+           <div className="grid lg:grid-cols-12 gap-10">
+              <div className="lg:col-span-8 group relative overflow-hidden rounded-sm aspect-[16/9]">
+                 <img src="/showcase-main.webp" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2s]" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                 <div className="absolute bottom-12 left-12">
+                    <h3 className="text-5xl font-black mb-6 uppercase italic">Technical Innovation Series</h3>
+                    <button className="px-8 py-4 border border-white/20 text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all">View Specifications</button>
+                 </div>
+              </div>
+              <div className="lg:col-span-4 flex flex-col justify-center gap-12 p-12 border-l border-white/10">
+                 <div className="space-y-6">
+                    <h4 className="text-orange-600 font-black text-xs uppercase tracking-widest">R&D Focus</h4>
+                    <p className="text-2xl font-bold leading-relaxed text-slate-400 italic">"Engineering comfort and safety through material science and anatomical precision."</p>
+                 </div>
+                 <div className="grid grid-cols-2 gap-8">
+                    <div><div className="text-4xl font-black text-white mb-2 tracking-tighter">50+</div><div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Years Expertise</div></div>
+                    <div><div className="text-4xl font-black text-white mb-2 tracking-tighter">100%</div><div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">QC Fidelity</div></div>
+                 </div>
+              </div>
+           </div>
         </div>
       </section>
 
       {/* 模块：联系我们 (Contact) */}
       <section id="contact" className="py-32 bg-white">
-         <div className="container mx-auto px-6 lg:px-20">
-            <div className="bg-slate-950 p-12 lg:p-32 relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
-                  <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-               </div>
-               
-               <div className="grid lg:grid-cols-2 gap-32 relative z-10">
-                  <div>
-                     <h2 className="text-6xl lg:text-[6rem] font-black text-white mb-10 tracking-tighter leading-none uppercase">LET'S <br/> <span className="text-orange-600 text-transparent" style={{ WebkitTextStroke: '1px #FF6B00' }}>TALK.</span></h2>
-                     <p className="text-xl text-slate-400 mb-16 leading-relaxed">Our R&D department is ready to evaluate your blueprints. We respond to all professional manufacturing inquiries within 24 hours.</p>
-                     
-                     <div className="space-y-12">
-                        <div className="flex gap-8">
-                           <div className="w-16 h-16 bg-white/5 rounded-sm flex items-center justify-center text-orange-600"><Globe size={32} /></div>
-                           <div>
-                              <span className="text-[10px] font-black text-orange-600 uppercase tracking-widest block mb-2">Direct Mailbox</span>
-                              <a href={`mailto:${contact.email}`} className="text-2xl font-black text-white hover:text-orange-600 transition-colors tracking-tight">{contact.email}</a>
-                           </div>
-                        </div>
-                        <div className="flex gap-8">
-                           <div className="w-16 h-16 bg-white/5 rounded-sm flex items-center justify-center text-orange-600"><Factory size={32} /></div>
-                           <div>
-                              <span className="text-[10px] font-black text-orange-600 uppercase tracking-widest block mb-2">Technical Center</span>
-                              <div className="text-2xl font-black text-white tracking-tight">{contact.phone}</div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+        <div className="container mx-auto px-6 lg:px-20">
+           <div className="bg-slate-950 p-12 lg:p-32 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-full h-full opacity-[0.03] pointer-events-none">
+                 <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-32 relative z-10">
+                 <div>
+                    <h2 className="text-6xl lg:text-[8rem] font-black text-white mb-10 tracking-tighter leading-none uppercase">LET'S <br/> <span className="text-orange-600">TALK.</span></h2>
+                    <p className="text-xl text-slate-500 mb-16 leading-relaxed max-w-md">Our sales engineering team provides full technical evaluations for all global RFQs within 24 hours.</p>
+                    <div className="space-y-10">
+                       <div className="flex gap-8">
+                          <div className="w-16 h-16 bg-white/5 flex items-center justify-center text-orange-600"><Factory size={32} /></div>
+                          <div><span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block mb-2">Technical HQ</span><div className="text-2xl font-black text-white">{contact.phone}</div></div>
+                       </div>
+                       <div className="flex gap-8">
+                          <div className="w-16 h-16 bg-white/5 flex items-center justify-center text-orange-600"><Globe size={32} /></div>
+                          <div><span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block mb-2">Email Desk</span><div className="text-2xl font-black text-white underline underline-offset-8 decoration-orange-600">{contact.email}</div></div>
+                       </div>
+                    </div>
+                 </div>
 
-                  <div className="bg-white p-12 lg:p-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
-                     <form className="space-y-10" onSubmit={(e) => { e.preventDefault(); alert('Request sent successfully!'); }}>
-                        <div className="space-y-4">
-                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Full Name</label>
-                           <input type="text" required className="w-full border-b border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-lg" placeholder="e.g. Robert Smith" />
-                        </div>
-                        <div className="space-y-4">
-                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Email Address</label>
-                           <input type="email" required className="w-full border-b border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-lg" placeholder="your@brand.com" />
-                        </div>
-                        <div className="space-y-4">
-                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Project Description</label>
-                           <textarea rows={4} required className="w-full border-b border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-lg resize-none" placeholder="Tell us about your needs..." />
-                        </div>
-                        <button type="submit" className="w-full py-6 bg-orange-600 text-white font-black text-sm uppercase tracking-[0.2em] hover:bg-slate-900 transition-all flex items-center justify-center gap-3">
-                           SUBMIT RFQ <ArrowRight size={20} />
-                        </button>
-                     </form>
-                  </div>
-               </div>
-            </div>
-         </div>
+                 <div className="bg-white p-12 lg:p-20 shadow-2xl">
+                    <form className="space-y-12" onSubmit={(e) => { e.preventDefault(); alert('Request sent!'); }}>
+                       <div className="space-y-4">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Project Identity</label>
+                          <input type="text" placeholder="Your Name / Company" className="w-full border-b-2 border-slate-100 py-4 outline-none focus:border-orange-600 transition-colors font-black text-xl" required />
+                       </div>
+                       <div className="space-y-4">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Communication</label>
+                          <input type="email" placeholder="email@brand.com" className="w-full border-b-2 border-slate-100 py-4 outline-none focus:border-orange-600 transition-colors font-black text-xl" required />
+                       </div>
+                       <div className="space-y-4">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Project Details</label>
+                          <textarea placeholder="Describe your technical requirements..." className="w-full border-b-2 border-slate-100 py-4 outline-none focus:border-orange-600 transition-colors font-black text-xl resize-none" rows={3} required />
+                       </div>
+                       <button className="w-full py-6 bg-orange-600 text-white font-black text-sm uppercase tracking-widest hover:bg-slate-950 transition-all flex items-center justify-center gap-4">
+                          SUBMIT PROJECT RFQ <ArrowRight size={20} />
+                       </button>
+                    </form>
+                 </div>
+              </div>
+           </div>
+        </div>
       </section>
     </div>
   );

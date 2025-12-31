@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { CONTENT } from '../../constants';
 import { useLanguage } from '../../LanguageContext';
 
@@ -36,55 +36,62 @@ const NavbarV2: React.FC = () => {
     <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white shadow-sm h-20' : 'bg-transparent h-24'}`}>
       <div className="container mx-auto px-6 h-full flex justify-between items-center">
         
-        {/* Logo Area - 完全使用图片 */}
-        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 md:gap-4 group">
-           {/* 圆形图标 - logo-icon.png */}
-           <img 
-             src="/logo-icon.png" 
-             alt="Zecoola Icon" 
-             className={`h-8 md:h-10 w-auto transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`} 
-             onError={(e) => (e.currentTarget.src = 'https://placehold.co/100x100?text=ICON')}
-           />
-           {/* 英文文字部分 - logo-text.png */}
-           <img 
-             src="/logo-text.png" 
-             alt="ZECOOLA" 
-             className={`h-4 md:h-5 w-auto transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`} 
-             onError={(e) => (e.currentTarget.src = 'https://placehold.co/200x40?text=ZECOOLA')}
-           />
+        {/* Logo Area - 修复可见性 */}
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-4 group">
+           <div className="flex items-center gap-3">
+             <div className={`p-1.5 transition-all duration-500 ${isScrolled ? 'bg-slate-900' : 'bg-white'}`}>
+                <img 
+                  src="/logo-icon.png" 
+                  alt="Zecoola Icon" 
+                  className="h-8 md:h-9 w-auto object-contain"
+                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                />
+             </div>
+             <div className="flex flex-col items-start">
+                <img 
+                  src="/logo-text.png" 
+                  alt="ZECOOLA" 
+                  className={`h-4 md:h-5 w-auto transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`}
+                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                />
+                <span className={`text-[8px] font-black uppercase tracking-[0.2em] opacity-50 ${isScrolled ? 'text-slate-400' : 'text-white'}`}>
+                  Footwear Excellence
+                </span>
+             </div>
+           </div>
         </button>
 
-        {/* Links */}
+        {/* Desktop Menu */}
         <div className="hidden xl:flex items-center gap-8">
           {CONTENT.nav.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-orange-600 ${isScrolled ? 'text-slate-700' : 'text-white/90'}`}
+              className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-orange-600 ${isScrolled ? 'text-slate-700' : 'text-white'}`}
             >
               {item.label[language]}
             </button>
           ))}
           
-          <div className={`h-4 w-[1px] transition-colors ${isScrolled ? 'bg-slate-200' : 'bg-white/20'}`} />
+          <div className={`h-4 w-[1px] ${isScrolled ? 'bg-slate-200' : 'bg-white/20'}`} />
 
           <button 
             onClick={toggleLanguage}
-            className={`flex items-center gap-2 text-[10px] font-black border-2 px-3 py-1 rounded-sm transition-all ${isScrolled ? 'border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white' : 'border-white/50 text-white hover:bg-white hover:text-slate-900'}`}
+            className={`px-3 py-1 text-[10px] font-black border-2 transition-all ${isScrolled ? 'border-slate-900 text-slate-900' : 'border-white text-white'}`}
           >
             {language === 'en' ? 'CH' : 'EN'}
           </button>
           
           <button 
             onClick={() => scrollTo('contact')}
-            className="px-6 py-3 bg-orange-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-lg"
+            className="px-6 py-3 bg-orange-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all"
           >
             CONTACT US
           </button>
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`xl:hidden transition-colors ${isScrolled ? 'text-slate-900' : 'text-white'}`} onClick={() => setIsOpen(!isOpen)}>
+        <button className={`xl:hidden ${isScrolled ? 'text-slate-900' : 'text-white'}`} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
@@ -95,7 +102,7 @@ const NavbarV2: React.FC = () => {
           <div className="flex justify-between items-center mb-12">
             <div className="flex items-center gap-3">
                <img src="/logo-icon.png" alt="Icon" className="h-8 w-auto brightness-0 invert" />
-               <img src="/logo-text.png" alt="ZECOOLA" className="h-4 w-auto brightness-0 invert" />
+               <img src="/logo-text.png" alt="Text" className="h-4 w-auto brightness-0 invert" />
             </div>
             <button onClick={() => setIsOpen(false)} className="text-white"><X size={32}/></button>
           </div>
