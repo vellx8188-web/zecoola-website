@@ -1,6 +1,6 @@
 
 import { ContentData, BrandItem } from './types';
-import { Award, CheckCircle, PenTool, Factory, ShieldCheck, Users, Zap, Truck, ClipboardList, Microscope, Layers, Globe } from 'lucide-react';
+import { Award, CheckCircle, PenTool, Factory, ShieldCheck, Zap, Globe, Microscope, Layers, Truck, ClipboardList, Settings } from 'lucide-react';
 
 export const ASSET_URL: string = ''; 
 
@@ -38,10 +38,10 @@ export const CONTENT: ContentData = {
     { label: { en: 'Home', zh: '首页' }, id: 'home' },
     { label: { en: 'About Us', zh: '关于我们' }, id: 'about' },
     { label: { en: 'Capabilities', zh: '技术能力' }, id: 'capabilities' },
-    { label: { en: 'Services', zh: '代工服务' }, id: 'services' },
+    { label: { en: 'Services', zh: '服务项目' }, id: 'services' },
     { label: { en: 'Contact', zh: '联系我们' }, id: 'contact' },
   ],
-  // V1 Legacy Support
+  // V1 Legacy Support (保留原样)
   hero: {
     title: 'ZECOOLA',
     slogan: { en: 'OEM Footwear R&D & Manufacturing Partner', zh: '专业鞋类 OEM 研发与制造合作伙伴' },
@@ -80,9 +80,9 @@ export const CONTENT: ContentData = {
   gallery: {
     title: { en: 'Factory Gallery', zh: '工厂实景' },
     images: [getPath('factory-1.webp'), getPath('factory-2.webp'), getPath('factory-3.webp')],
-    brandsTitle: { en: 'Our Strategic Partners', zh: '战略合作伙伴' }
+    brandsTitle: { en: 'Strategic Partners', zh: '战略合作伙伴' }
   },
-  // V2 Properties
+  // V2 Properties (严格按照 PDF 更新)
   home: {
     hero: {
       h1: { en: 'OEM Footwear R&D & Manufacturing Partner', zh: '专业鞋类 OEM 研发与制造合作伙伴' },
@@ -96,18 +96,18 @@ export const CONTENT: ContentData = {
         { icon: Zap, text: { en: 'Flexible MOQ with scalable production', zh: '灵活起订量与规模化生产' } },
         { icon: Globe, text: { en: 'Serving brands across the US and Europe', zh: '服务于欧美及全球知名品牌' } },
       ],
-      cta: { en: 'Request a Quote', zh: '获取报价' }
+      cta: { en: 'Request a Quote', zh: '联系我们' }
     },
     whatWeDo: {
       title: { en: 'Functional Footwear Solutions for Global Brands', zh: '为全球品牌提供功能性鞋类方案' },
       desc: { en: 'ZECOOLA specializes in OEM and ODM footwear manufacturing with a strong focus on functionality, durability, and commercial viability.', zh: '我们专注于 OEM/ODM 制造，致力于提升产品的功能性、耐用性和市场商业价值。' },
       categories: [
-        { title: { en: 'Waterproof Footwear', zh: '专业防水鞋类' }, image: getPath('factory-1.webp') },
+        { title: { en: 'Waterproof & Water-Repellent', zh: '专业防水鞋类' }, image: getPath('factory-1.webp') },
         { title: { en: 'Slip-Resistant & Winter Boots', zh: '防滑与冬季靴款' }, image: getPath('factory-2.webp') },
         { title: { en: 'Casual & Lifestyle', zh: '休闲与时尚系列' }, image: getPath('factory-3.webp') },
-        { title: { en: 'Custom OEM/ODM', zh: '定制化研发项目' }, image: getPath('factory-4.webp') },
+        { title: { en: 'Custom OEM/ODM Developments', zh: '定制化研发项目' }, image: getPath('factory-4.webp') },
       ],
-      note: { en: 'Each project is developed with a clear understanding of market positioning and performance requirements.', zh: '每个项目都基于对市场定位和性能要求的深度理解进行开发。' }
+      note: { en: 'Each project is developed with a clear understanding of market positioning, performance requirements, and brand identity.', zh: '每个项目都基于对市场定位、性能要求和品牌标识的深度理解。' }
     },
     whyUs: {
       title: { en: 'A Manufacturing Partner Focused on Value Creation', zh: '专注于创造价值的制造伙伴' },
@@ -118,23 +118,27 @@ export const CONTENT: ContentData = {
         },
         { 
           title: { en: 'Materials & Technology', zh: '材料与技术' }, 
-          desc: { en: 'Extensive experience with functional materials including TPU, rubber, and Hypalon.', zh: '在 TPU、橡胶和 Hypalon 等功能性材料方面拥有丰富经验。' } 
+          desc: { en: 'Extensive experience with functional materials including TPU, rubber, Hypalon, and performance textiles.', zh: '在 TPU、橡胶、Hypalon 和高性能纺织品等功能材料方面拥有丰富经验。' } 
         },
         { 
           title: { en: 'Supply Chain Strength', zh: '供应链优势' }, 
-          desc: { en: 'Optimized cost structure, stable capacity, and reliable lead times.', zh: '优化的成本结构、稳定的产能和可靠的交货期。' } 
+          desc: { en: 'Optimized cost structure, stable capacity, and reliable lead times for global supply chains.', zh: '优化的成本结构、稳定的产能和可靠的全球供应链交期。' } 
+        },
+        { 
+          title: { en: 'OEM Partnership Mindset', zh: 'OEM 合作理念' }, 
+          desc: { en: 'We respect confidentiality, protect your designs, and focus on long-term cooperation.', zh: '我们尊重机密性，保护您的设计，并专注于长期合作。' } 
         }
       ]
     },
     howWeWork: {
       title: { en: 'Our OEM Development Process', zh: 'OEM 开发流程' },
       steps: [
-        { id: 1, title: { en: 'Requirement Alignment', zh: '需求对接' } },
-        { id: 2, title: { en: 'Material Selection', zh: '材料筛选' } },
-        { id: 3, title: { en: 'Sample Testing', zh: '样品开发' } },
+        { id: 1, title: { en: 'Requirement & Design Alignment', zh: '需求与设计对接' } },
+        { id: 2, title: { en: 'Material Selection & Cost Evaluation', zh: '材料筛选与成本评估' } },
+        { id: 3, title: { en: 'Sample Development & Testing', zh: '样品开发与测试' } },
         { id: 4, title: { en: 'Order Confirmation', zh: '订单确认' } },
-        { id: 5, title: { en: 'Mass Production', zh: '规模量产' } },
-        { id: 6, title: { en: 'Shipping & Support', zh: '物流售后' } },
+        { id: 5, title: { en: 'Mass Production & Quality Control', zh: '大规模生产与质控' } },
+        { id: 6, title: { en: 'Shipping & After-Sales Support', zh: '物流配送与售后支持' } },
       ]
     }
   },
@@ -143,30 +147,30 @@ export const CONTENT: ContentData = {
       title: { en: 'Who We Are', zh: '我们是谁' },
       content: {
         en: 'ZECOOLA is not just a factory. We are a footwear R&D and manufacturing partner committed to supporting our clients\' long-term growth. We work closely with brand owners, designers, and product teams to turn concepts into market-ready footwear.',
-        zh: 'ZECOOLA 不仅仅是一家工厂。我们是致力于支持客户长期增长的研发制造伙伴。我们与品牌方、设计师及产品团队紧密合作，将创意转化为具备市场竞争力的鞋类产品。'
+        zh: 'ZECOOLA 不仅仅是一家工厂。我们是致力于支持客户长期增长的鞋类研发和制造伙伴。我们与品牌所有者、设计师和产品团队紧密合作，将概念转化为市场化产品。'
       }
     },
     mission: {
       title: { en: 'Mission & Vision', zh: '使命与愿景' },
-      mText: { en: 'To create value for our clients through reliable manufacturing and technical expertise.', zh: '通过可靠的制造和技术专业知识为客户创造价值。' },
-      vText: { en: 'To become a globally trusted footwear manufacturing partner.', zh: '成为全球信赖的鞋类制造合作伙伴。' }
+      mText: { en: 'To create value for our clients through reliable manufacturing, technical expertise, and professional OEM solutions.', zh: '通过可靠的制造、技术专长和专业的 OEM 解决方案为客户创造价值。' },
+      vText: { en: 'To become a globally trusted footwear manufacturing partner, enabling brands to compete with confidence.', zh: '成为全球信赖的鞋类制造合作伙伴，助力品牌自信竞争。' }
     }
   },
   capabilities: {
     manufacturing: [
-      { en: 'OEM & ODM production', zh: 'OEM 与 ODM 全面代工' },
-      { en: 'Small batch to large-scale', zh: '从小批量到大规模生产' },
-      { en: 'Stable capacity planning', zh: '稳定的产能规划' }
+      { en: 'OEM & ODM footwear production', zh: 'OEM 与 ODM 全面生产' },
+      { en: 'Small batch to large-scale manufacturing', zh: '从小批量到大规模制造' },
+      { en: 'Stable capacity with flexible planning', zh: '稳定产能与灵活规划' }
     ],
     materials: [
-      { en: 'Waterproof textiles', zh: '防水透气面料' },
-      { en: 'TPU & Functional compounds', zh: 'TPU 与功能性复合材料' },
-      { en: 'Slip-resistant outsoles', zh: '防滑大底配方' }
+      { en: 'Waterproof and water-repellent textiles', zh: '防水透气与防泼水面料' },
+      { en: 'TPU, rubber, Hypalon, functional compounds', zh: 'TPU、橡胶、Hypalon 及功能性复合材料' },
+      { en: 'Slip-resistant outsole formulations', zh: '防滑大底特殊配方' }
     ],
     qc: [
-      { en: 'Incoming material inspection', zh: '原材料入库检测' },
-      { en: 'In-process monitoring', zh: '生产过程实时监控' },
-      { en: 'Final inspection', zh: '出货前成品全检' }
+      { en: 'Incoming material inspection', zh: '原材料进场检测' },
+      { en: 'In-process quality monitoring', zh: '生产过程实时品质监控' },
+      { en: 'Final inspection before shipment', zh: '发货前成品终检' }
     ]
   },
   contact: {
@@ -176,7 +180,7 @@ export const CONTENT: ContentData = {
     phone: '(0769) 8121-1559',
     whatsapp: '+86 138-XXXX-XXXX',
     addressLabel: { en: 'Office Address', zh: '办公地址' },
-    address: { en: 'Houjie Town, Dongguan City, Guangdong Province, China', zh: '中国广东省东莞市厚街镇' },
+    address: { en: 'Houjie Town, Dongguan City, China', zh: '中国广东省东莞市厚街镇' },
     callLabel: { en: 'Call Us', zh: '致电我们' },
     emailLabel: { en: 'Email Us', zh: '邮件联系' },
     emailAddress: 'info@zecoola.com',
@@ -187,10 +191,10 @@ export const CONTENT: ContentData = {
       name: { en: 'Full Name', zh: '全名' },
       email: { en: 'Email Address', zh: '邮箱地址' },
       phone: { en: 'Phone Number', zh: '电话号码' },
-      message: { en: 'Message Details', zh: '详细信息' },
-      submit: { en: 'Send Inquiry', zh: '发送询盘' },
+      message: { en: 'Message Details', zh: '需求详情' },
+      submit: { en: 'Send Message', zh: '发送消息' },
       submitting: { en: 'Processing...', zh: '正在处理...' },
-      successMessage: { en: 'Thank you! We will contact you shortly.', zh: '谢谢！我们将很快与您联系。' },
+      successMessage: { en: 'Thank you! We will contact you shortly.', zh: '谢谢！我们将尽快与您联系。' },
       errorMessage: { en: 'Something went wrong. Please try again.', zh: '出错了，请稍后再试。' },
       validationContact: { en: 'Please provide either email or phone.', zh: '请提供邮箱或电话。' }
     }
