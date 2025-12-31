@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Award, Microscope, Factory, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Globe, Factory, Microscope, ShieldCheck } from 'lucide-react';
 import { CONTENT, BRANDS } from '../../constants';
 import { useLanguage } from '../../LanguageContext';
 
@@ -10,115 +10,111 @@ const HomeV2: React.FC = () => {
   const contact = CONTENT.contact;
 
   const fadeInUp = {
-    initial: { opacity: 0, y: 50 },
+    initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.8 }
+    transition: { duration: 0.6 }
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white w-full overflow-hidden">
       
-      {/* Heritage Section */}
-      <section id="about" className="py-40 bg-white">
+      {/* 模块：品牌传承 */}
+      <section id="about" className="py-32 lg:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-32 items-start">
-            <motion.div {...fadeInUp} className="sticky top-40">
-              <span className="text-orange-600 font-black text-sm uppercase tracking-[0.6em] mb-6 block">Legacy of Excellence</span>
-              <h2 className="text-8xl lg:text-[12rem] font-black text-slate-950 leading-[0.8] tracking-tighter uppercase italic">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            <motion.div {...fadeInUp}>
+              <span className="text-orange-600 font-black text-xs uppercase tracking-[0.6em] mb-6 block">Section 01 / Profile</span>
+              <h2 className="text-7xl md:text-[10rem] font-black text-slate-950 leading-[0.8] tracking-tighter uppercase italic mb-12">
                 THE <br/> <span className="text-orange-600">HERITAGE.</span>
               </h2>
-            </motion.div>
-            <div className="space-y-20 lg:pt-40">
-               <div className="text-4xl font-bold text-slate-400 leading-tight border-l-12 border-orange-600 pl-12 italic">
+              <div className="text-3xl font-bold text-slate-400 leading-tight italic border-l-8 border-orange-600 pl-8 max-w-xl">
                  {CONTENT.aboutPage.whoWeAre.content[language]}
+              </div>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:mt-32">
+               <div className="bg-slate-50 p-12 aspect-square flex flex-col justify-between group hover:bg-orange-600 transition-all duration-500">
+                  <h3 className="text-[10px] font-black text-orange-600 group-hover:text-white uppercase tracking-widest">Global Mission</h3>
+                  <p className="text-3xl font-black text-slate-950 group-hover:text-white uppercase italic leading-none">{CONTENT.aboutPage.mission.mText[language]}</p>
                </div>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div className="bg-slate-50 p-16 aspect-square flex flex-col justify-between group hover:bg-orange-600 transition-colors duration-700">
-                    <h3 className="text-xs font-black text-orange-600 group-hover:text-white uppercase tracking-widest">01 / Mission</h3>
-                    <p className="text-slate-950 group-hover:text-white text-4xl font-black uppercase leading-tight italic tracking-tighter">{CONTENT.aboutPage.mission.mText[language]}</p>
-                  </div>
-                  <div className="bg-slate-950 p-16 aspect-square text-white flex flex-col justify-between relative overflow-hidden group">
-                    <Globe size={180} className="absolute -right-20 -bottom-20 opacity-5 group-hover:scale-110 transition-transform duration-1000" />
-                    <h3 className="text-xs font-black text-orange-600 uppercase tracking-widest">02 / Vision</h3>
-                    <p className="text-white text-4xl font-black uppercase leading-tight italic tracking-tighter relative z-10">{CONTENT.aboutPage.mission.vText[language]}</p>
-                  </div>
+               <div className="bg-slate-950 p-12 aspect-square flex flex-col justify-between group relative overflow-hidden">
+                  <Globe size={150} className="absolute -right-10 -bottom-10 opacity-5" />
+                  <h3 className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Global Vision</h3>
+                  <p className="text-3xl font-black text-white uppercase italic leading-none relative z-10">{CONTENT.aboutPage.mission.vText[language]}</p>
                </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Strategic Partners Logo Wall */}
-      <section className="py-32 bg-slate-50 border-y border-slate-100 overflow-hidden">
+      {/* 模块：合作伙伴 */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-10">
-             <div className="max-w-3xl">
-                <span className="text-orange-600 font-black text-xs uppercase tracking-[0.6em] mb-4 block">Trusted Archive 2016-2025</span>
-                <h2 className="text-6xl lg:text-8xl font-black text-slate-950 tracking-tighter uppercase italic leading-none">STRATEGIC <br/>PARTNERSHIPS.</h2>
-             </div>
-             <p className="text-slate-400 font-medium text-xl lg:text-right max-w-sm">Built on 50 years of collective footwear intelligence and global supply chain excellence.</p>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
+             <h2 className="text-5xl lg:text-7xl font-black text-slate-950 tracking-tighter uppercase italic">STRATEGIC <br/>PARTNERS.</h2>
+             <p className="text-slate-400 font-medium text-lg max-w-sm lg:text-right italic">Trusted by the industry's most innovative footwear brands for over 50 years.</p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-slate-200 border border-slate-200">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-slate-200 border border-slate-200 shadow-xl overflow-hidden rounded-sm">
              {BRANDS.map((brand, i) => (
-                <div key={i} className="bg-white p-12 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 aspect-[3/2] group relative">
-                   <img src={brand.image} alt="Partner" className="max-h-full max-w-full object-contain opacity-30 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                <div key={i} className="bg-white p-8 lg:p-12 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 aspect-video group bg-white">
+                   <img src={brand.image} alt="Brand" className="max-h-full max-w-full object-contain opacity-30 group-hover:opacity-100 transition-all duration-500" />
                 </div>
              ))}
           </div>
         </div>
       </section>
 
-      {/* Technical Capabilities */}
-      <section id="capabilities" className="py-40 bg-white">
+      {/* 模块：技术核心 */}
+      <section id="capabilities" className="py-32 bg-white">
         <div className="container mx-auto px-6 lg:px-20">
-           <div className="grid lg:grid-cols-3 gap-px bg-slate-100 shadow-2xl border border-slate-100">
+           <div className="grid lg:grid-cols-3 gap-8">
               {[
-                { icon: Factory, title: 'ENGINEERING', desc: 'Precision industrial assembly lines adhering to global ISO protocols.' },
-                { icon: Microscope, title: 'R&D FACILITY', desc: 'Advanced material science and technical prototyping laboratory.' },
-                { icon: ShieldCheck, title: 'FIDELITY QC', desc: 'Multi-stage validation testing ensuring 100% production fidelity.' }
+                { icon: Factory, title: 'ENGINEERING', desc: 'State-of-the-art production lines optimized for high-performance output.' },
+                { icon: Microscope, title: 'R&D CENTER', desc: 'Dedicated facility for material innovation and technical prototyping.' },
+                { icon: ShieldCheck, title: 'FIDELITY QC', desc: 'Comprehensive testing protocols ensuring zero-defect production cycles.' }
               ].map((item, i) => (
-                <motion.div key={i} {...fadeInUp} className="bg-white p-20 hover:bg-slate-950 group transition-all duration-700 cursor-default">
-                   <div className="text-orange-600 mb-16 group-hover:scale-110 transition-transform duration-500"><item.icon size={80} strokeWidth={1} /></div>
-                   <h3 className="text-4xl font-black mb-8 uppercase tracking-tighter group-hover:text-white transition-colors italic">{item.title}</h3>
-                   <p className="text-slate-500 text-xl leading-relaxed group-hover:text-white/40 transition-colors font-medium">{item.desc}</p>
+                <motion.div key={i} {...fadeInUp} className="bg-slate-50 p-16 hover:bg-slate-950 group transition-all duration-700 cursor-default border border-slate-100">
+                   <div className="text-orange-600 mb-12 group-hover:scale-110 transition-transform"><item.icon size={60} strokeWidth={1} /></div>
+                   <h3 className="text-3xl font-black mb-6 uppercase italic group-hover:text-white transition-colors">{item.title}</h3>
+                   <p className="text-slate-500 text-lg font-medium leading-relaxed group-hover:text-white/40 transition-colors">{item.desc}</p>
                 </motion.div>
               ))}
            </div>
         </div>
       </section>
 
-      {/* Technical Showcase */}
-      <section id="showcase" className="py-40 bg-slate-950 text-white relative">
+      {/* 模块：产品展示区 */}
+      <section id="showcase" className="py-32 bg-slate-950 text-white overflow-hidden relative">
         <div className="container mx-auto px-6 lg:px-20">
-           <div className="mb-32">
-              <span className="text-orange-600 font-black text-xs uppercase tracking-[0.6em] mb-6 block">Project Archive</span>
-              <h2 className="text-[12rem] lg:text-[18rem] font-black tracking-tighter leading-[0.7] uppercase text-white/5 select-none -ml-10 italic">PRODUCTS.</h2>
+           <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-12">
+              <h2 className="text-[10rem] md:text-[18rem] font-black tracking-tighter leading-none uppercase text-white/5 select-none -ml-12 italic">ARCHIVE.</h2>
+              <div className="max-w-md text-right relative z-10">
+                 <h3 className="text-5xl font-black mb-6 uppercase italic">PRODUCT SHOWCASE.</h3>
+                 <p className="text-slate-500 text-lg font-medium italic">High-performance technical gear engineered for global standards.</p>
+              </div>
            </div>
 
-           <div className="grid lg:grid-cols-12 gap-12 items-center">
-              <motion.div {...fadeInUp} className="lg:col-span-8 group relative overflow-hidden rounded-sm aspect-[16/10] shadow-2xl">
-                 <img src="/showcase-main.webp" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[4s]" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                 <div className="absolute bottom-20 left-20">
-                    <h3 className="text-6xl font-black mb-10 uppercase italic tracking-tighter leading-none">HIGH-PERFORMANCE <br/>TECHNICAL GEAR</h3>
-                    <button className="px-12 py-6 border-2 border-white/20 text-[11px] font-black uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all">VIEW SPECIFICATIONS</button>
+           <div className="grid lg:grid-cols-12 gap-10">
+              <div className="lg:col-span-7 relative overflow-hidden bg-slate-900 aspect-video rounded-sm border border-white/5 group">
+                 <img src="/showcase-main.webp" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[5s]" />
+                 <div className="absolute bottom-10 left-10">
+                    <h4 className="text-3xl font-black mb-4 uppercase italic">Precision Craft</h4>
+                    <button className="px-8 py-4 border border-white/20 text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 hover:border-orange-600 transition-all">Details</button>
                  </div>
-              </motion.div>
-              <div className="lg:col-span-4 space-y-20 p-12 bg-slate-900/50 border border-white/5 backdrop-blur-sm">
-                 <div className="space-y-10">
-                    <div className="w-20 h-1 bg-orange-600" />
-                    <p className="text-4xl font-black leading-tight text-white uppercase italic tracking-tighter">"Extreme precision at the intersection of tech and style."</p>
+              </div>
+              <div className="lg:col-span-5 flex flex-col gap-10">
+                 <div className="bg-orange-600 p-12 flex-1 flex flex-col justify-end rounded-sm shadow-2xl">
+                    <h4 className="text-4xl font-black mb-4 uppercase italic leading-none">50+ YEARS EXPERIENCE.</h4>
+                    <p className="text-white/80 text-lg font-medium italic">Legacy of footwear excellence.</p>
                  </div>
-                 <div className="grid grid-cols-1 gap-10">
-                    <div className="border-l-4 border-white/10 pl-10">
-                       <div className="text-6xl font-black text-white mb-2 tracking-tighter italic">50+</div>
-                       <div className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Years Industry Expertise</div>
+                 <div className="grid grid-cols-2 gap-10">
+                    <div className="bg-slate-900 p-10 border border-white/5 text-center">
+                       <div className="text-5xl font-black mb-2 tracking-tighter text-white italic">100%</div>
+                       <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">QC PASS</div>
                     </div>
-                    <div className="border-l-4 border-white/10 pl-10">
-                       <div className="text-6xl font-black text-white mb-2 tracking-tighter italic">100%</div>
-                       <div className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Quality Fidelity Rate</div>
+                    <div className="bg-slate-900 p-10 border border-white/5 text-center">
+                       <div className="text-5xl font-black mb-2 tracking-tighter text-white italic">24H</div>
+                       <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">RESPONSE</div>
                     </div>
                  </div>
               </div>
@@ -126,41 +122,40 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-40 bg-white">
+      {/* 模块：联系我们 */}
+      <section id="contact" className="py-32 lg:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-6 lg:px-20">
            <div className="grid lg:grid-cols-2 gap-32">
               <div>
-                 <h2 className="text-8xl lg:text-[11rem] font-black text-slate-950 mb-16 tracking-tighter leading-[0.8] uppercase italic">LET'S <br/> <span className="text-orange-600 underline underline-offset-[20px] decoration-12">TALK.</span></h2>
-                 <p className="text-2xl text-slate-400 mb-20 leading-relaxed font-medium italic">Our technical headquarters in Dongguan responds to all RFQs within 24 hours.</p>
+                 <h2 className="text-8xl lg:text-[11rem] font-black text-slate-950 mb-12 tracking-tighter leading-[0.8] uppercase italic">LET'S <br/> <span className="text-orange-600">TALK.</span></h2>
+                 <p className="text-2xl text-slate-400 mb-16 leading-relaxed font-medium italic">Technical headquarters in Dongguan. Response within 24 hours.</p>
                  <div className="space-y-12">
-                    <div className="flex gap-10 group cursor-pointer">
-                       <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all duration-500 shadow-sm"><Factory size={36} /></div>
-                       <div><span className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Technical HQ</span><div className="text-3xl font-black text-slate-950 tracking-tighter italic">{contact.phone}</div></div>
+                    <div className="flex gap-8 group cursor-pointer">
+                       <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all"><Factory size={30} /></div>
+                       <div><span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Direct Line</span><div className="text-2xl font-black text-slate-950 italic">{contact.phone}</div></div>
                     </div>
-                    <div className="flex gap-10 group cursor-pointer">
-                       <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all duration-500 shadow-sm"><Globe size={36} /></div>
-                       <div><span className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">Global Inquiry</span><div className="text-3xl font-black text-slate-950 underline decoration-orange-600/30 group-hover:decoration-orange-600 transition-all tracking-tighter italic">{contact.email}</div></div>
+                    <div className="flex gap-8 group cursor-pointer">
+                       <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all"><Globe size={30} /></div>
+                       <div><span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Email Office</span><div className="text-2xl font-black text-slate-950 underline decoration-orange-600 underline-offset-8 italic">{contact.email}</div></div>
                     </div>
                  </div>
               </div>
-              <div className="bg-slate-950 p-16 lg:p-24 shadow-2xl relative overflow-hidden">
-                 <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
-                 <form className="space-y-12 relative z-10" onSubmit={(e) => { e.preventDefault(); alert('Inquiry Sent!'); }}>
-                    <div className="space-y-4">
-                       <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.5em]">Project Identity</label>
-                       <input type="text" placeholder="Full Name / Brand" className="w-full bg-transparent border-b-2 border-slate-800 py-6 outline-none focus:border-orange-600 transition-colors font-black text-2xl text-white placeholder:text-slate-800" required />
+              <div className="bg-slate-50 p-12 lg:p-20 shadow-2xl rounded-sm">
+                 <form className="space-y-10" onSubmit={(e) => { e.preventDefault(); alert('Sent!'); }}>
+                    <div className="space-y-2">
+                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Identity</label>
+                       <input type="text" placeholder="Full Name / Brand" className="w-full bg-transparent border-b-2 border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-2xl" required />
                     </div>
-                    <div className="space-y-4">
-                       <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.5em]">Communication</label>
-                       <input type="email" placeholder="email@brand.com" className="w-full bg-transparent border-b-2 border-slate-800 py-6 outline-none focus:border-orange-600 transition-colors font-black text-2xl text-white placeholder:text-slate-800" required />
+                    <div className="space-y-2">
+                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Contact</label>
+                       <input type="email" placeholder="email@example.com" className="w-full bg-transparent border-b-2 border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-2xl" required />
                     </div>
-                    <div className="space-y-4">
-                       <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.5em]">Engineering Brief</label>
-                       <textarea placeholder="Technical details..." className="w-full bg-transparent border-b-2 border-slate-800 py-6 outline-none focus:border-orange-600 transition-colors font-black text-2xl text-white placeholder:text-slate-800 resize-none" rows={3} required />
+                    <div className="space-y-2">
+                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Details</label>
+                       <textarea placeholder="Technical brief..." className="w-full bg-transparent border-b-2 border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-2xl resize-none" rows={3} required />
                     </div>
-                    <button className="w-full py-8 bg-orange-600 text-white font-black text-sm uppercase tracking-[0.5em] hover:bg-white hover:text-slate-950 transition-all flex items-center justify-center gap-6 shadow-2xl">
-                       SUBMIT INQUIRY <ArrowRight size={22} />
+                    <button className="w-full py-6 bg-orange-600 text-white font-black text-sm uppercase tracking-[0.4em] hover:bg-slate-950 transition-all flex items-center justify-center gap-4 shadow-xl">
+                       SUBMIT RFQ <ArrowRight size={20} />
                     </button>
                  </form>
               </div>
