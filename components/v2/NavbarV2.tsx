@@ -19,14 +19,23 @@ const NavbarV2: React.FC = () => {
     setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 80; // Navbar height
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-sm h-20' : 'bg-transparent h-24'}`}>
       <div className="container mx-auto px-6 h-full flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo - 点击回滚顶部 */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 group">
            <div className={`text-2xl font-black tracking-tighter transition-colors ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
              ZECOOLA<span className="text-orange-600">.</span>
@@ -62,7 +71,7 @@ const NavbarV2: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-slate-900 fixed inset-0 z-40 p-12 flex flex-col gap-8 animate-in slide-in-from-top duration-500">
+        <div className="lg:hidden bg-slate-900 fixed inset-0 z-[100] p-12 flex flex-col gap-8">
           <div className="flex justify-between items-center mb-12">
             <div className="text-2xl font-black text-white">ZECOOLA<span className="text-orange-600">.</span></div>
             <button onClick={() => setIsOpen(false)} className="text-white"><X size={32}/></button>
