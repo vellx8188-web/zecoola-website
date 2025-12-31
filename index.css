@@ -1,4 +1,5 @@
-@import url('https://fonts.font.im/css2?family=Jost:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+@import url('https://fonts.font.im/css2?family=Jost:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +10,7 @@ html {
 }
 
 body {
-  background-color: #f9fafb;
+  background-color: #ffffff;
   color: #1e293b;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,4 +18,26 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* 高级版文字描边效果 */
+.stroke-text {
+  -webkit-text-stroke: 1px rgba(255,255,255,0.4);
+  color: transparent;
+}
+
+/* 隐藏滚动条但保留功能 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 自定义选色 */
+::selection {
+  background-color: #FF6B00;
+  color: white;
 }
