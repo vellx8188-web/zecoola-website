@@ -29,7 +29,7 @@ export const BRANDS: BrandItem[] = [
 
 export const SLIDER_DATA = [
   {
-    image: '/hero-1.webp',
+    image: getPath('hero-1.webp'),
     tag: 'STRATEGIC MANUFACTURING PARTNER',
     titleLine1: { en: 'WORLD-', zh: '世界级' },
     titleLine2: { en: 'CLASS', zh: '智造' },
@@ -37,7 +37,7 @@ export const SLIDER_DATA = [
     sub: { en: 'Empowering global brands with precision engineering and industrial intelligence for over 50 years.', zh: '五十余载深耕，以精密工程与工业智慧赋能全球鞋类品牌。' }
   },
   {
-    image: '/hero-2.webp',
+    image: getPath('hero-2.webp'),
     tag: 'ENGINEERING EXCELLENCE',
     titleLine1: { en: 'R&D', zh: '领先' },
     titleLine2: { en: 'DRIVEN', zh: '研发' },
@@ -45,7 +45,7 @@ export const SLIDER_DATA = [
     sub: { en: 'Translating complex material science into high-performance technical footwear solutions.', zh: '将复杂的材料科学转化为高性能的技术鞋类解决方案。' }
   },
   {
-    image: '/hero-3.webp',
+    image: getPath('hero-3.webp'),
     tag: 'SCALABLE PRODUCTION',
     titleLine1: { en: 'SMART', zh: '智能' },
     titleLine2: { en: 'FACTORY', zh: '制造' },
