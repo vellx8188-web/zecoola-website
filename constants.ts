@@ -27,6 +27,16 @@ export const BRANDS: BrandItem[] = [
   { image: getPath('brand-11.png'), url: 'https://uniwork.it/' },
 ];
 
+// 新增：自动轮播的鞋子展示数据
+export const PARTNER_SHOES = [
+  { image: getPath('partner-shoe-1.webp'), tag: '@Instagram_Partner' },
+  { image: getPath('partner-shoe-2.webp'), tag: 'Performance Tech' },
+  { image: getPath('partner-shoe-3.webp'), tag: 'Limited Edition' },
+  { image: getPath('partner-shoe-4.webp'), tag: 'Industrial Safety' },
+  { image: getPath('partner-shoe-5.webp'), tag: 'R&D Prototype' },
+  { image: getPath('partner-shoe-6.webp'), tag: 'Outdoor Extreme' },
+];
+
 export const SLIDER_DATA = [
   {
     image: getPath('hero-1.webp'),
