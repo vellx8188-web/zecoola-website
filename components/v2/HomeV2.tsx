@@ -47,67 +47,66 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：合作伙伴 (错落、紧凑、微灰背景增强白色可见度) */}
-      <section className="py-24 lg:py-40 bg-[#F9F9F9] overflow-hidden border-y border-slate-100">
+      {/* 模块：合作伙伴 (优化可见度与宽阔排版) */}
+      <section className="py-32 lg:py-56 bg-slate-50 overflow-hidden border-y border-slate-200/50">
         <div className="container mx-auto px-6 lg:px-20">
           
-          {/* Section Heading */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8">
-             <div className="max-w-4xl">
-               <span className="text-orange-600 font-black text-[10px] uppercase tracking-[0.6em] mb-6 block">Section 02 / Partnerships</span>
-               <h2 className="text-7xl lg:text-[8rem] font-black text-slate-950 tracking-tighter leading-[0.85] uppercase italic">
-                 STRATEGIC <br/> PARTNERS.
-               </h2>
-             </div>
-             <div className="lg:text-right max-w-xs pb-4">
-                <div className="w-12 h-1 bg-orange-600 mb-6 lg:ml-auto"></div>
-                <p className="text-slate-400 font-bold text-sm leading-relaxed italic uppercase tracking-wider">
-                  Trusted by industry leaders for over 50 years of excellence.
-                </p>
-             </div>
+          {/* Header - Left Aligned for Editorial Look */}
+          <div className="mb-32">
+             <span className="text-orange-600 font-black text-[11px] uppercase tracking-[0.8em] mb-6 block">Section 02 / Strategic Alliance</span>
+             <h2 className="text-7xl lg:text-[10rem] font-black text-slate-950 tracking-tighter leading-[0.8] uppercase italic">
+               STRATEGIC <br/> <span className="text-slate-300">PARTNERS.</span>
+             </h2>
           </div>
 
-          {/* Staggered Grid - 紧凑型错落布局 */}
-          <div className="relative max-w-6xl mx-auto">
-             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-16 lg:gap-x-20 lg:gap-y-24">
+          {/* Staggered Logo Cloud - 实现您参考图中那种“分布在宽阔空间”的感觉 */}
+          <div className="relative w-full max-w-[1600px] mx-auto">
+             <div className="flex flex-wrap justify-between items-center gap-x-12 gap-y-20 lg:gap-x-24 lg:gap-y-32 px-4">
                 {BRANDS.map((brand, i) => {
-                  // 计算错落：更小的偏移值让排版更紧凑
-                  const offset = i % 2 === 0 ? 'mt-0' : 'mt-8 lg:mt-12';
-                  const delay = (i % 5) * 0.1;
+                  // 通过索引精细控制每个 Logo 的“漂浮”高度
+                  // 实现“错落有致”：有些向上偏，有些向下偏，有些大一点
+                  const yOffset = [0, -40, 30, -10, 50, -20, 15, -45, 10, -30, 0][i % 11];
+                  const xOffset = [0, 10, -20, 15, -10, 20, -15, 5, -5, 12, 0][i % 11];
+                  const delay = (i % 6) * 0.15;
 
                   return (
                     <motion.div 
                       key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: yOffset }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: delay }}
-                      className={`relative flex items-center justify-center transition-all duration-500 ${offset}`}
+                      transition={{ duration: 0.8, delay: delay, ease: "easeOut" }}
+                      style={{ transform: `translateX(${xOffset}px)` }}
+                      className="flex-shrink-0 flex items-center justify-center min-w-[140px] md:min-w-[200px]"
                     >
                        {brand.url ? (
                           <a 
                             href={brand.url} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="group relative flex items-center justify-center h-16 md:h-20 lg:h-24 px-4"
+                            className="group relative block"
                           >
                             <img 
                               src={brand.image} 
                               alt={`Brand ${i}`} 
-                              className="max-h-full w-auto object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                              className="h-10 md:h-14 lg:h-16 w-auto object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
                               style={{ 
-                                // 添加细微投影，确保在极亮背景下白色边缘依旧清晰
-                                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05)) grayscale(1)' 
+                                // 核心解决方案：
+                                // 1. 使用较明显的 drop-shadow 为白色字体提供轮廓感
+                                // 2. 初始 grayscale(1) 确保统一感，悬停恢复色彩
+                                filter: 'drop-shadow(0px 0px 3px rgba(0,0,0,0.15)) grayscale(1)' 
                               }}
                             />
-                            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-orange-600 group-hover:w-full transition-all duration-500 opacity-50"></div>
+                            {/* 悬停时的品牌指示线 */}
+                            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-0 h-1 bg-orange-600 group-hover:w-full transition-all duration-500 rounded-full opacity-60"></div>
                           </a>
                        ) : (
-                          <div className="h-16 md:h-20 flex items-center justify-center px-4 opacity-20 grayscale">
+                          <div className="opacity-20 grayscale hover:opacity-100 transition-opacity duration-500">
                              <img 
                               src={brand.image} 
                               alt={`Brand ${i}`} 
-                              className="max-h-full w-auto object-contain"
+                              className="h-10 md:h-14 lg:h-16 w-auto object-contain"
+                              style={{ filter: 'drop-shadow(0px 0px 2px rgba(0,0,0,0.1))' }}
                             />
                           </div>
                        )}
@@ -117,12 +116,15 @@ const HomeV2: React.FC = () => {
              </div>
           </div>
 
-          {/* Footer Recognition */}
-          <div className="mt-32 flex flex-col items-center">
-             <div className="flex items-center gap-6">
-                <div className="w-8 h-px bg-slate-200"></div>
-                <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.5em]">Global Industry Leaders Recognition</span>
-                <div className="w-8 h-px bg-slate-200"></div>
+          {/* Footer Decoration */}
+          <div className="mt-48 flex items-center justify-between border-t border-slate-200 pt-10">
+             <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">
+               Industry standard compliance verified
+             </p>
+             <div className="flex gap-4">
+                <div className="w-3 h-3 rounded-full bg-orange-600/20"></div>
+                <div className="w-3 h-3 rounded-full bg-orange-600/40"></div>
+                <div className="w-3 h-3 rounded-full bg-orange-600"></div>
              </div>
           </div>
         </div>
