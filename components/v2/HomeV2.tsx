@@ -16,10 +16,6 @@ const HomeV2: React.FC = () => {
     transition: { duration: 0.6 }
   };
 
-  // 为了保持网格完整性，我们可以确保网格总数是 6 的倍数（针对桌面端）
-  const gridTotal = Math.ceil(BRANDS.length / 6) * 6;
-  const emptyCells = Array(gridTotal - BRANDS.length).fill(null);
-
   return (
     <div className="bg-white w-full overflow-hidden">
       
@@ -51,14 +47,14 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：合作伙伴 (参考图排版重构) */}
-      <section className="py-24 lg:py-32 bg-[#F8F9FA] overflow-hidden">
+      {/* 模块：合作伙伴 (精准参考图 2 的“自然融合”排版) */}
+      <section className="py-24 lg:py-40 bg-white overflow-hidden border-t border-slate-50">
         <div className="container mx-auto px-6 lg:px-20">
           
           {/* Header Area */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
-             <div className="max-w-2xl">
-               <h2 className="text-6xl lg:text-[7.5rem] font-black text-slate-950 tracking-tighter leading-none uppercase italic">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-28 gap-8">
+             <div className="max-w-3xl">
+               <h2 className="text-7xl lg:text-[9rem] font-black text-slate-950 tracking-tighter leading-[0.85] uppercase italic">
                  STRATEGIC <br/> PARTNERS.
                </h2>
              </div>
@@ -69,54 +65,56 @@ const HomeV2: React.FC = () => {
              </div>
           </div>
 
-          {/* Grid Area - Precision Grid Styling */}
-          <div className="relative bg-[#E9ECEF] border border-[#E9ECEF] shadow-sm overflow-hidden">
-             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px">
-                {/* 遍历品牌 Logo */}
+          {/* Logo 网格：无边框、无底色，实现自然融合 */}
+          <div className="relative">
+             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-12 gap-y-24 items-center justify-items-center">
                 {BRANDS.map((brand, i) => (
-                  <div key={i} className="bg-white aspect-[3/2] flex items-center justify-center p-6 lg:p-10 group relative transition-colors duration-500">
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.05 }}
+                    className="w-full max-w-[160px] h-20 flex items-center justify-center group"
+                  >
                      {brand.url ? (
                         <a 
                           href={brand.url} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="w-full h-full flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500"
+                          className="w-full h-full flex items-center justify-center transition-all duration-700"
                         >
                           <img 
                             src={brand.image} 
                             alt={`Partner Brand ${i}`} 
-                            className="max-h-full max-w-full object-contain opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                            className="max-h-full max-w-full object-contain filter grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
                           />
                         </a>
                      ) : (
-                        <div className="w-full h-full flex items-center justify-center grayscale opacity-20">
+                        <div className="w-full h-full flex items-center justify-center">
                            <img 
                             src={brand.image} 
                             alt={`Partner Brand ${i}`} 
-                            className="max-h-full max-w-full object-contain"
+                            className="max-h-full max-w-full object-contain filter grayscale opacity-10"
                           />
                         </div>
                      )}
-                  </div>
-                ))}
-
-                {/* 填充空白网格以保持对齐 */}
-                {emptyCells.map((_, i) => (
-                  <div key={`empty-${i}`} className="bg-white aspect-[3/2] hidden lg:block opacity-50"></div>
+                  </motion.div>
                 ))}
              </div>
           </div>
 
           {/* Footer Label */}
-          <div className="mt-8 flex items-center gap-4">
-             <div className="w-8 h-px bg-slate-300"></div>
-             <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Global Industry Leaders Recognition</span>
+          <div className="mt-32 flex items-center gap-6 justify-center">
+             <div className="w-12 h-px bg-slate-200"></div>
+             <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.5em]">Global Industry Leaders Recognition</span>
+             <div className="w-12 h-px bg-slate-200"></div>
           </div>
         </div>
       </section>
 
       {/* 模块：技术核心 */}
-      <section id="capabilities" className="py-32 bg-white">
+      <section id="capabilities" className="py-32 bg-slate-50">
         <div className="container mx-auto px-6 lg:px-20">
            <div className="grid lg:grid-cols-3 gap-8">
               {[
@@ -124,7 +122,7 @@ const HomeV2: React.FC = () => {
                 { icon: Microscope, title: 'R&D CENTER', desc: 'Dedicated facility for material innovation and technical prototyping.' },
                 { icon: ShieldCheck, title: 'FIDELITY QC', desc: 'Comprehensive testing protocols ensuring zero-defect production cycles.' }
               ].map((item, i) => (
-                <motion.div key={i} {...fadeInUp} className="bg-slate-50 p-16 hover:bg-slate-950 group transition-all duration-700 cursor-default border border-slate-100">
+                <motion.div key={i} {...fadeInUp} className="bg-white p-16 hover:bg-slate-950 group transition-all duration-700 cursor-default border border-slate-100 shadow-sm">
                    <div className="text-orange-600 mb-12 group-hover:scale-110 transition-transform"><item.icon size={60} strokeWidth={1} /></div>
                    <h3 className="text-3xl font-black mb-6 uppercase italic group-hover:text-white transition-colors">{item.title}</h3>
                    <p className="text-slate-500 text-lg font-medium leading-relaxed group-hover:text-white/40 transition-colors">{item.desc}</p>
