@@ -47,59 +47,69 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：合作伙伴 (错落有致、自然融合重构) */}
-      <section className="py-24 lg:py-48 bg-white overflow-hidden border-t border-slate-50">
+      {/* 模块：合作伙伴 (错落、紧凑、微灰背景增强白色可见度) */}
+      <section className="py-24 lg:py-40 bg-[#F9F9F9] overflow-hidden border-y border-slate-100">
         <div className="container mx-auto px-6 lg:px-20">
           
-          {/* Section Heading - Clean & Editorial */}
-          <div className="text-center mb-32">
-             <span className="text-[10px] font-black text-orange-600 uppercase tracking-[0.8em] mb-8 block">Worldwide Recognition</span>
-             <h2 className="text-6xl lg:text-9xl font-black text-slate-950 tracking-tighter leading-none uppercase italic mb-8">
-               STRATEGIC <br className="lg:hidden"/> PARTNERS.
-             </h2>
-             <div className="w-12 h-1 bg-slate-900 mx-auto"></div>
+          {/* Section Heading */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8">
+             <div className="max-w-4xl">
+               <span className="text-orange-600 font-black text-[10px] uppercase tracking-[0.6em] mb-6 block">Section 02 / Partnerships</span>
+               <h2 className="text-7xl lg:text-[8rem] font-black text-slate-950 tracking-tighter leading-[0.85] uppercase italic">
+                 STRATEGIC <br/> PARTNERS.
+               </h2>
+             </div>
+             <div className="lg:text-right max-w-xs pb-4">
+                <div className="w-12 h-1 bg-orange-600 mb-6 lg:ml-auto"></div>
+                <p className="text-slate-400 font-bold text-sm leading-relaxed italic uppercase tracking-wider">
+                  Trusted by industry leaders for over 50 years of excellence.
+                </p>
+             </div>
           </div>
 
-          {/* Staggered Logo Layout - 错落布局的核心实现 */}
+          {/* Staggered Grid - 紧凑型错落布局 */}
           <div className="relative max-w-6xl mx-auto">
-             <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-24 lg:gap-x-24 lg:gap-y-32">
+             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-16 lg:gap-x-20 lg:gap-y-24">
                 {BRANDS.map((brand, i) => {
-                  // 通过索引计算不同的偏移和大小，营造错落感
-                  const isEven = i % 2 === 0;
-                  const isThird = i % 3 === 0;
-                  const offset = isEven ? 'mt-0' : 'mt-12 lg:mt-24';
-                  const scale = isThird ? 'scale-110' : 'scale-90';
+                  // 计算错落：更小的偏移值让排版更紧凑
+                  const offset = i % 2 === 0 ? 'mt-0' : 'mt-8 lg:mt-12';
+                  const delay = (i % 5) * 0.1;
 
                   return (
                     <motion.div 
                       key={i}
-                      initial={{ opacity: 0, y: 40 }}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: i * 0.1, ease: [0.21, 0.45, 0.32, 0.9] }}
-                      className={`relative flex items-center justify-center transition-all duration-700 ${offset} ${scale}`}
+                      transition={{ duration: 0.6, delay: delay }}
+                      className={`relative flex items-center justify-center transition-all duration-500 ${offset}`}
                     >
                        {brand.url ? (
                           <a 
                             href={brand.url} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="group block"
+                            className="group relative flex items-center justify-center h-16 md:h-20 lg:h-24 px-4"
                           >
                             <img 
                               src={brand.image} 
-                              alt={`Partner ${i}`} 
-                              className="h-12 md:h-16 lg:h-20 w-auto object-contain filter grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                              alt={`Brand ${i}`} 
+                              className="max-h-full w-auto object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                              style={{ 
+                                // 添加细微投影，确保在极亮背景下白色边缘依旧清晰
+                                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05)) grayscale(1)' 
+                              }}
                             />
-                            {/* 悬停时的品牌装饰线下划线 */}
-                            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-orange-600 group-hover:w-full transition-all duration-500"></div>
+                            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-orange-600 group-hover:w-full transition-all duration-500 opacity-50"></div>
                           </a>
                        ) : (
-                          <img 
-                            src={brand.image} 
-                            alt={`Partner ${i}`} 
-                            className="h-10 md:h-14 lg:h-16 w-auto object-contain filter grayscale opacity-10"
-                          />
+                          <div className="h-16 md:h-20 flex items-center justify-center px-4 opacity-20 grayscale">
+                             <img 
+                              src={brand.image} 
+                              alt={`Brand ${i}`} 
+                              className="max-h-full w-auto object-contain"
+                            />
+                          </div>
                        )}
                     </motion.div>
                   );
@@ -107,22 +117,19 @@ const HomeV2: React.FC = () => {
              </div>
           </div>
 
-          {/* Bottom Labeling */}
-          <div className="mt-48 flex flex-col items-center">
-             <p className="text-slate-400 font-medium italic text-center max-w-sm mb-8">
-               Collaborating with the world's most innovative brands to redefine high-performance footwear.
-             </p>
-             <div className="flex items-center gap-4">
-                <div className="w-20 h-px bg-slate-200"></div>
-                <span className="text-[9px] font-black text-slate-300 uppercase tracking-[0.5em]">Industry Alliance</span>
-                <div className="w-20 h-px bg-slate-200"></div>
+          {/* Footer Recognition */}
+          <div className="mt-32 flex flex-col items-center">
+             <div className="flex items-center gap-6">
+                <div className="w-8 h-px bg-slate-200"></div>
+                <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.5em]">Global Industry Leaders Recognition</span>
+                <div className="w-8 h-px bg-slate-200"></div>
              </div>
           </div>
         </div>
       </section>
 
       {/* 模块：技术核心 */}
-      <section id="capabilities" className="py-32 bg-slate-50">
+      <section id="capabilities" className="py-32 bg-white">
         <div className="container mx-auto px-6 lg:px-20">
            <div className="grid lg:grid-cols-3 gap-8">
               {[
@@ -130,7 +137,7 @@ const HomeV2: React.FC = () => {
                 { icon: Microscope, title: 'R&D CENTER', desc: 'Dedicated facility for material innovation and technical prototyping.' },
                 { icon: ShieldCheck, title: 'FIDELITY QC', desc: 'Comprehensive testing protocols ensuring zero-defect production cycles.' }
               ].map((item, i) => (
-                <motion.div key={i} {...fadeInUp} className="bg-white p-16 hover:bg-slate-950 group transition-all duration-700 cursor-default border border-slate-100 shadow-sm">
+                <motion.div key={i} {...fadeInUp} className="bg-slate-50 p-16 hover:bg-slate-950 group transition-all duration-700 cursor-default border border-slate-100 shadow-sm">
                    <div className="text-orange-600 mb-12 group-hover:scale-110 transition-transform"><item.icon size={60} strokeWidth={1} /></div>
                    <h3 className="text-3xl font-black mb-6 uppercase italic group-hover:text-white transition-colors">{item.title}</h3>
                    <p className="text-slate-500 text-lg font-medium leading-relaxed group-hover:text-white/40 transition-colors">{item.desc}</p>
