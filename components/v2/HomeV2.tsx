@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Factory, Microscope, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, Globe, Factory, Microscope, ShieldCheck, Zap, Layers } from 'lucide-react';
 import { CONTENT, BRANDS } from '../../constants';
 import { useLanguage } from '../../LanguageContext';
 
@@ -51,7 +51,7 @@ const HomeV2: React.FC = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-               <div className="bg-slate-50 p-8 aspect-square flex flex-col justify-between group hover:bg-orange-600 transition-all duration-700 rounded-sm">
+               <div className="bg-slate-50 p-8 aspect-square flex flex-col justify-between group hover:bg-orange-600 transition-all duration-700 rounded-sm shadow-sm">
                   <div className="flex justify-between items-start">
                     <h3 className="text-[9px] font-black text-orange-600 group-hover:text-white uppercase tracking-widest">Global Mission</h3>
                     <Zap className="text-orange-600 group-hover:text-white opacity-20" size={24} />
@@ -68,7 +68,7 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块 02：技术工程 (ENGINEERING) - 调换至此，解决“反了”的问题 */}
+      {/* 模块 02：技术工程 (ENGINEERING) */}
       <section id="capabilities" className="py-24 bg-white relative">
         <div className="absolute top-0 right-0 w-1/4 h-full bg-slate-50 -z-0"></div>
         <div className="container mx-auto px-6 lg:px-20 relative z-10">
@@ -76,7 +76,7 @@ const HomeV2: React.FC = () => {
               <span className="text-orange-600 font-black text-[10px] uppercase tracking-[0.6em] mb-4 block">Section 02 / Tech Core</span>
               <h2 className="text-5xl lg:text-7xl font-black text-slate-950 tracking-tighter leading-[0.9] uppercase italic">ENGINEERING <br/> <span className="text-slate-300">EXCELLENCE.</span></h2>
            </div>
-           <div className="grid lg:grid-cols-3 gap-px bg-slate-200 shadow-xl rounded-sm overflow-hidden">
+           <div className="grid lg:grid-cols-3 gap-px bg-slate-200 shadow-xl rounded-sm overflow-hidden border border-slate-200">
               {[
                 { icon: Factory, title: 'ENGINEERING', desc: 'Next-generation industrial workflows for complex tech-shoe production.' },
                 { icon: Microscope, title: 'R&D CENTER', desc: 'Material science laboratories focused on technical durability and comfort.' },
@@ -94,7 +94,7 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块 03：服务项目/合作伙伴 (COMPETENCIES) - 调换至此 */}
+      {/* 模块 03：服务项目/合作伙伴 (COMPETENCIES) */}
       <section id="services" className="py-24 bg-slate-50 overflow-hidden border-y border-slate-200/50 relative">
         <div className="container mx-auto px-6 lg:px-20">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
@@ -110,13 +110,14 @@ const HomeV2: React.FC = () => {
                    <span className="text-xs font-black text-slate-950 uppercase italic">Verified v2.5</span>
                 </div>
                 <div className="flex flex-col">
-                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Coverage</span>
-                   <span className="text-xs font-black text-slate-950 uppercase italic">Global Supply</span>
+                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Capacity</span>
+                   <span className="text-xs font-black text-slate-950 uppercase italic">High Volume</span>
                 </div>
              </div>
           </div>
 
-          <div className="relative w-full">
+          {/* Logo 墙 */}
+          <div className="relative w-full mb-20">
              <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-12">
                 {BRANDS.map((brand, i) => (
                   <motion.div key={i} className="flex-shrink-0 flex items-center justify-center min-w-[120px]">
@@ -127,10 +128,30 @@ const HomeV2: React.FC = () => {
                 ))}
              </div>
           </div>
+
+          {/* 新增：合作伙伴产品展示图 (partner-products.webp) */}
+          <motion.div {...fadeInUp} className="relative group rounded-sm overflow-hidden border border-slate-200 shadow-2xl bg-white">
+             <div className="absolute top-8 left-8 z-20 pointer-events-none">
+                <div className="flex items-center gap-3 mb-2">
+                   <div className="w-8 h-[1px] bg-orange-600"></div>
+                   <span className="text-[8px] font-black text-orange-600 uppercase tracking-[0.4em]">Portfolio Highlight</span>
+                </div>
+                <h3 className="text-3xl font-black text-slate-950 uppercase italic tracking-tighter">PARTNER COLLECTIONS.</h3>
+             </div>
+             <div className="aspect-[21/9] w-full relative overflow-hidden bg-slate-100">
+                <img 
+                  src="/partner-products.webp" 
+                  alt="Partner Shoes Collection" 
+                  className="w-full h-full object-cover transition-transform duration-[15s] group-hover:scale-110"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
+             </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 模块 04：产品展厅 (SHOWCASE) - 修复跳转失效 */}
+      {/* 模块 04：产品展厅 (SHOWCASE) - 图片：showcase-main.webp */}
       <section id="showcase" className="py-24 bg-slate-950 text-white overflow-hidden relative">
         <div className="container mx-auto px-6 lg:px-20 relative z-10">
            <div className="flex flex-col lg:flex-row items-start justify-between mb-16">
@@ -142,7 +163,14 @@ const HomeV2: React.FC = () => {
 
            <div className="grid lg:grid-cols-12 gap-8">
               <div className="lg:col-span-7 relative group min-h-[450px] overflow-hidden rounded-sm border border-white/5 bg-slate-900 shadow-2xl">
-                 <div className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center pointer-events-none bg-gradient-to-br from-slate-900 to-black">
+                 {/* 核心展厅图：showcase-main.webp */}
+                 <img 
+                   src="/showcase-main.webp" 
+                   alt="Technical Showcase" 
+                   className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-[10s]"
+                   onError={(e) => { e.currentTarget.style.opacity = '0'; }}
+                 />
+                 <div className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center pointer-events-none bg-gradient-to-br from-slate-900/40 to-black/80">
                     <div className="text-[8rem] font-black opacity-[0.02] select-none absolute tracking-tighter">ARCHIVE</div>
                     <Factory className="text-white/5 mb-6" size={48} />
                     <span className="text-orange-600/30 text-[7px] font-black uppercase tracking-[1em] animate-pulse">Engineering Vault</span>
@@ -177,7 +205,7 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块 05：智造工厂 (FACTORY) - 补全实际模块 */}
+      {/* 模块 05：智造工厂 (FACTORY) - 图片：factory-main.webp */}
       <section id="factory" className="py-24 bg-white border-t border-slate-100">
         <div className="container mx-auto px-6 lg:px-20">
            <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -189,9 +217,18 @@ const HomeV2: React.FC = () => {
                     EXPLORE FACILITY <ArrowRight size={18} />
                  </button>
               </div>
-              <div className="bg-slate-50 aspect-video flex items-center justify-center rounded-sm border border-slate-200">
-                 <Factory size={64} className="text-slate-200" />
-              </div>
+              {/* 核心工厂图：factory-main.webp (替换了原本的灰色图标盒) */}
+              <motion.div {...fadeInUp} className="relative aspect-video rounded-sm border border-slate-200 overflow-hidden shadow-2xl group">
+                 <img 
+                   src="/factory-main.webp" 
+                   alt="Factory Infrastructure" 
+                   className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-105"
+                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                 />
+                 <div className="absolute inset-0 bg-slate-100 flex items-center justify-center -z-10">
+                    <Factory size={64} className="text-slate-200" />
+                 </div>
+              </motion.div>
            </div>
         </div>
       </section>
