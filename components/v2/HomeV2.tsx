@@ -16,6 +16,10 @@ const HomeV2: React.FC = () => {
     transition: { duration: 0.6 }
   };
 
+  // 为了保持网格完整性，我们可以确保网格总数是 6 的倍数（针对桌面端）
+  const gridTotal = Math.ceil(BRANDS.length / 6) * 6;
+  const emptyCells = Array(gridTotal - BRANDS.length).fill(null);
+
   return (
     <div className="bg-white w-full overflow-hidden">
       
@@ -47,19 +51,66 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：合作伙伴 */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100">
+      {/* 模块：合作伙伴 (参考图排版重构) */}
+      <section className="py-24 lg:py-32 bg-[#F8F9FA] overflow-hidden">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
-             <h2 className="text-5xl lg:text-7xl font-black text-slate-950 tracking-tighter uppercase italic">STRATEGIC <br/>PARTNERS.</h2>
-             <p className="text-slate-400 font-medium text-lg max-w-sm lg:text-right italic">Trusted by the industry's most innovative footwear brands for over 50 years.</p>
+          
+          {/* Header Area */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
+             <div className="max-w-2xl">
+               <h2 className="text-6xl lg:text-[7.5rem] font-black text-slate-950 tracking-tighter leading-none uppercase italic">
+                 STRATEGIC <br/> PARTNERS.
+               </h2>
+             </div>
+             <div className="lg:text-right max-w-xs">
+                <p className="text-slate-400 font-medium text-lg leading-snug italic">
+                  Trusted by the industry's most innovative footwear brands for over 50 years.
+                </p>
+             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-slate-200 border border-slate-200 shadow-xl overflow-hidden rounded-sm">
-             {BRANDS.map((brand, i) => (
-                <div key={i} className="bg-white p-8 lg:p-12 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 aspect-video group bg-white">
-                   <img src={brand.image} alt="Brand" className="max-h-full max-w-full object-contain opacity-30 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-             ))}
+
+          {/* Grid Area - Precision Grid Styling */}
+          <div className="relative bg-[#E9ECEF] border border-[#E9ECEF] shadow-sm overflow-hidden">
+             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px">
+                {/* 遍历品牌 Logo */}
+                {BRANDS.map((brand, i) => (
+                  <div key={i} className="bg-white aspect-[3/2] flex items-center justify-center p-6 lg:p-10 group relative transition-colors duration-500">
+                     {brand.url ? (
+                        <a 
+                          href={brand.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="w-full h-full flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500"
+                        >
+                          <img 
+                            src={brand.image} 
+                            alt={`Partner Brand ${i}`} 
+                            className="max-h-full max-w-full object-contain opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                          />
+                        </a>
+                     ) : (
+                        <div className="w-full h-full flex items-center justify-center grayscale opacity-20">
+                           <img 
+                            src={brand.image} 
+                            alt={`Partner Brand ${i}`} 
+                            className="max-h-full max-w-full object-contain"
+                          />
+                        </div>
+                     )}
+                  </div>
+                ))}
+
+                {/* 填充空白网格以保持对齐 */}
+                {emptyCells.map((_, i) => (
+                  <div key={`empty-${i}`} className="bg-white aspect-[3/2] hidden lg:block opacity-50"></div>
+                ))}
+             </div>
+          </div>
+
+          {/* Footer Label */}
+          <div className="mt-8 flex items-center gap-4">
+             <div className="w-8 h-px bg-slate-300"></div>
+             <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Global Industry Leaders Recognition</span>
           </div>
         </div>
       </section>
