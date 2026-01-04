@@ -47,68 +47,76 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块：合作伙伴 (精准参考图 2 的“自然融合”排版) */}
-      <section className="py-24 lg:py-40 bg-white overflow-hidden border-t border-slate-50">
+      {/* 模块：合作伙伴 (错落有致、自然融合重构) */}
+      <section className="py-24 lg:py-48 bg-white overflow-hidden border-t border-slate-50">
         <div className="container mx-auto px-6 lg:px-20">
           
-          {/* Header Area */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-28 gap-8">
-             <div className="max-w-3xl">
-               <h2 className="text-7xl lg:text-[9rem] font-black text-slate-950 tracking-tighter leading-[0.85] uppercase italic">
-                 STRATEGIC <br/> PARTNERS.
-               </h2>
-             </div>
-             <div className="lg:text-right max-w-xs">
-                <p className="text-slate-400 font-medium text-lg leading-snug italic">
-                  Trusted by the industry's most innovative footwear brands for over 50 years.
-                </p>
-             </div>
+          {/* Section Heading - Clean & Editorial */}
+          <div className="text-center mb-32">
+             <span className="text-[10px] font-black text-orange-600 uppercase tracking-[0.8em] mb-8 block">Worldwide Recognition</span>
+             <h2 className="text-6xl lg:text-9xl font-black text-slate-950 tracking-tighter leading-none uppercase italic mb-8">
+               STRATEGIC <br className="lg:hidden"/> PARTNERS.
+             </h2>
+             <div className="w-12 h-1 bg-slate-900 mx-auto"></div>
           </div>
 
-          {/* Logo 网格：无边框、无底色，实现自然融合 */}
-          <div className="relative">
-             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-12 gap-y-24 items-center justify-items-center">
-                {BRANDS.map((brand, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: i * 0.05 }}
-                    className="w-full max-w-[160px] h-20 flex items-center justify-center group"
-                  >
-                     {brand.url ? (
-                        <a 
-                          href={brand.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="w-full h-full flex items-center justify-center transition-all duration-700"
-                        >
+          {/* Staggered Logo Layout - 错落布局的核心实现 */}
+          <div className="relative max-w-6xl mx-auto">
+             <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-24 lg:gap-x-24 lg:gap-y-32">
+                {BRANDS.map((brand, i) => {
+                  // 通过索引计算不同的偏移和大小，营造错落感
+                  const isEven = i % 2 === 0;
+                  const isThird = i % 3 === 0;
+                  const offset = isEven ? 'mt-0' : 'mt-12 lg:mt-24';
+                  const scale = isThird ? 'scale-110' : 'scale-90';
+
+                  return (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: i * 0.1, ease: [0.21, 0.45, 0.32, 0.9] }}
+                      className={`relative flex items-center justify-center transition-all duration-700 ${offset} ${scale}`}
+                    >
+                       {brand.url ? (
+                          <a 
+                            href={brand.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="group block"
+                          >
+                            <img 
+                              src={brand.image} 
+                              alt={`Partner ${i}`} 
+                              className="h-12 md:h-16 lg:h-20 w-auto object-contain filter grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                            />
+                            {/* 悬停时的品牌装饰线下划线 */}
+                            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-orange-600 group-hover:w-full transition-all duration-500"></div>
+                          </a>
+                       ) : (
                           <img 
                             src={brand.image} 
-                            alt={`Partner Brand ${i}`} 
-                            className="max-h-full max-w-full object-contain filter grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                            alt={`Partner ${i}`} 
+                            className="h-10 md:h-14 lg:h-16 w-auto object-contain filter grayscale opacity-10"
                           />
-                        </a>
-                     ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                           <img 
-                            src={brand.image} 
-                            alt={`Partner Brand ${i}`} 
-                            className="max-h-full max-w-full object-contain filter grayscale opacity-10"
-                          />
-                        </div>
-                     )}
-                  </motion.div>
-                ))}
+                       )}
+                    </motion.div>
+                  );
+                })}
              </div>
           </div>
 
-          {/* Footer Label */}
-          <div className="mt-32 flex items-center gap-6 justify-center">
-             <div className="w-12 h-px bg-slate-200"></div>
-             <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.5em]">Global Industry Leaders Recognition</span>
-             <div className="w-12 h-px bg-slate-200"></div>
+          {/* Bottom Labeling */}
+          <div className="mt-48 flex flex-col items-center">
+             <p className="text-slate-400 font-medium italic text-center max-w-sm mb-8">
+               Collaborating with the world's most innovative brands to redefine high-performance footwear.
+             </p>
+             <div className="flex items-center gap-4">
+                <div className="w-20 h-px bg-slate-200"></div>
+                <span className="text-[9px] font-black text-slate-300 uppercase tracking-[0.5em]">Industry Alliance</span>
+                <div className="w-20 h-px bg-slate-200"></div>
+             </div>
           </div>
         </div>
       </section>
