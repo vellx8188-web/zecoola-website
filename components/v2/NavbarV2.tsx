@@ -19,16 +19,17 @@ const NavbarV2: React.FC = () => {
     setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100; // 导航栏高度预留
+      const offset = 100; // 导航栏高度补给
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: elementPosition - offset,
         behavior: 'smooth'
       });
+    } else {
+      console.warn(`Anchor #${id} not found.`);
     }
   };
 
@@ -39,20 +40,11 @@ const NavbarV2: React.FC = () => {
         {/* Logo Area */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center group">
            <div className="h-10 md:h-12 w-10 md:w-12 flex items-center justify-center transition-all duration-500">
-             <img 
-               src="/logo-icon.png" 
-               alt="ZA" 
-               className={`max-h-full max-w-full object-contain ${!isScrolled ? 'drop-shadow-[0_0_15px_rgba(255,107,0,0.4)]' : ''}`}
-             />
+             <img src="/logo-icon.png" alt="ZA" className={`max-h-full max-w-full object-contain ${!isScrolled ? 'drop-shadow-[0_0_15px_rgba(255,107,0,0.4)]' : ''}`} />
            </div>
-           
            <div className={`flex flex-col items-start border-l h-8 md:h-10 ml-6 pl-6 transition-colors duration-500 ${isScrolled ? 'border-slate-200' : 'border-white/10'}`}>
               <div className={`h-4 md:h-5 transition-all duration-500 ${!isScrolled ? 'brightness-0 invert' : ''}`}>
-                <img 
-                  src="/logo-text.png" 
-                  alt="ZECOOLA" 
-                  className="h-full w-auto object-contain"
-                />
+                <img src="/logo-text.png" alt="ZECOOLA" className="h-full w-auto object-contain" />
               </div>
               <span className={`text-[9px] font-black uppercase tracking-[0.5em] mt-1.5 whitespace-nowrap ${isScrolled ? 'text-slate-400' : 'text-white/40'}`}>
                 Precision Manufacturing
@@ -72,18 +64,11 @@ const NavbarV2: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-500 group-hover:w-full"></span>
             </button>
           ))}
-          
           <div className="flex items-center gap-6 ml-4">
-            <button 
-              onClick={toggleLanguage}
-              className={`text-[8px] font-black w-9 h-9 border rounded-full transition-all duration-500 flex items-center justify-center ${isScrolled ? 'border-slate-200 text-slate-900 hover:bg-slate-950 hover:text-white' : 'border-white/10 text-white hover:bg-white/10'}`}
-            >
+            <button onClick={toggleLanguage} className={`text-[8px] font-black w-9 h-9 border rounded-full transition-all duration-500 flex items-center justify-center ${isScrolled ? 'border-slate-200 text-slate-900 hover:bg-slate-950 hover:text-white' : 'border-white/10 text-white hover:bg-white/10'}`}>
                {language === 'en' ? 'CH' : 'EN'}
             </button>
-            <button 
-              onClick={() => scrollTo('contact')}
-              className="px-8 py-3 bg-orange-600 text-white text-[9px] font-black uppercase tracking-[0.4em] hover:bg-slate-950 transition-all shadow-xl hover:-translate-y-0.5"
-            >
+            <button onClick={() => scrollTo('contact')} className="px-8 py-3 bg-orange-600 text-white text-[9px] font-black uppercase tracking-[0.4em] hover:bg-slate-950 transition-all shadow-xl">
               START PROJECT
             </button>
           </div>
@@ -100,17 +85,10 @@ const NavbarV2: React.FC = () => {
         <div className="xl:hidden fixed inset-0 z-[110] bg-slate-950 p-10 flex flex-col justify-center gap-8">
           <button onClick={() => setIsOpen(false)} className="absolute top-10 right-10 text-white/30 hover:text-white"><X size={40}/></button>
           {CONTENT.nav.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollTo(item.id)}
-              className="text-4xl font-black text-white/20 hover:text-orange-600 transition-all text-left uppercase italic tracking-tighter"
-            >
+            <button key={item.id} onClick={() => scrollTo(item.id)} className="text-4xl font-black text-white/20 hover:text-orange-600 transition-all text-left uppercase italic tracking-tighter">
               {item.label[language]}
             </button>
           ))}
-          <div className="mt-8 pt-8 border-t border-white/5">
-             <button onClick={toggleLanguage} className="text-orange-600 font-black tracking-widest uppercase text-sm">Switch Language ({language === 'en' ? '中文' : 'English'})</button>
-          </div>
         </div>
       )}
     </nav>
