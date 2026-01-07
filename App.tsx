@@ -1,68 +1,59 @@
-
 import React, { useState, useEffect } from 'react';
-import { LanguageProvider } from './LanguageContext';
+import { LanguageProvider } from './LanguageContext.tsx';
 
-// 1. 基础组件
-import ComingSoon from './components/ComingSoon';
+// 基础组件 - 补齐 .tsx
+import ComingSoon from './components/ComingSoon.tsx';
 
-// 2. 旧版 V2 组件 (修正路径：必须包含 components/ 前缀)
-import NavbarV2Old from './components/v2/NavbarV2'; 
-import HeroSliderV2Old from './components/v2/HeroSliderV2';
-import HomeV2Old from './components/v2/HomeV2';
-import FooterV2Old from './components/v2/FooterV2';
+// V2 旧版组件 - 补齐 .tsx
+import NavbarV2Old from './components/v2/NavbarV2.tsx'; 
+import HeroSliderV2Old from './components/v2/HeroSliderV2.tsx';
+import HomeV2Old from './components/v2/HomeV2.tsx';
+import FooterV2Old from './components/v2/FooterV2.tsx';
 
-// 3. 全新 V2 入口 (位于根目录的 v2_new 文件夹)
-import AppV2New from './v2_new/AppV2New';
+// V2 全新入口 - 补齐 .tsx 并加版本号
+import AppV2New from './v2_new/AppV2New.tsx?v=final_v2';
 
-/**
- * 强化版路由识别
- * 使用最稳健的字符串搜索，确保在任何浏览器环境下都能捕捉到 v=2
- */
-const detectCurrentViewMode = (): 'maintenance' | 'admin' | 'v2_new' => {
+const detectViewMode = (): 'maintenance' | 'admin' | 'v2_new' => {
   if (typeof window === 'undefined') return 'maintenance';
   
-  const fullUrl = window.location.href.toLowerCase();
-  const search = window.location.search.toLowerCase();
-  const hash = window.location.hash.toLowerCase();
+  const url = window.location.href.toLowerCase();
   
-  // 打印诊断日志，你可以在控制台查看
-  console.log('%c[ZECOOLA DEBUG] Current URL:', 'color: #FF6B00; font-weight: bold', fullUrl);
+  // 1. 如果 URL 包含 v=2，强制开启并保存状态
+  if (url.includes('v=2')) {
+    localStorage.setItem('zecoola_lab_mode', 'v2');
+    return 'v2_new';
+  }
 
-  // 优先级最高：V2 实验室模式
-  if (fullUrl.includes('v=2') || search.includes('v=2') || hash.includes('v=2')) {
-    console.log('[Zecoola Router] Success: V2 New mode activated.');
+  // 2. 如果之前保存过状态，维持状态
+  if (localStorage.getItem('zecoola_lab_mode') === 'v2') {
     return 'v2_new';
   }
   
-  // 优先级中等：管理员预览模式
-  if (fullUrl.includes('mode=admin') || search.includes('mode=admin') || hash.includes('mode=admin')) {
-    console.log('[Zecoola Router] Success: Admin mode activated.');
-    return 'admin';
-  }
+  // 3. 其他模式检测
+  if (url.includes('mode=admin')) return 'admin';
   
-  console.log('[Zecoola Router] Default: Maintenance mode active.');
   return 'maintenance';
 };
 
 function App() {
-  const [viewMode, setViewMode] = useState<'maintenance' | 'admin' | 'v2_new'>(() => detectCurrentViewMode());
+  const [viewMode, setViewMode] = useState<'maintenance' | 'admin' | 'v2_new'>(() => detectViewMode());
 
   useEffect(() => {
-    const handleLocationChange = () => setViewMode(detectCurrentViewMode());
-    window.addEventListener('popstate', handleLocationChange);
-    return () => window.removeEventListener('popstate', handleLocationChange);
-  }, []);
+    // 每秒检测一次 URL，防止 hash 改变但组件不刷新的情况
+    const timer = setInterval(() => {
+      const current = detectViewMode();
+      if (current !== viewMode) setViewMode(current);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [viewMode]);
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-white font-sans text-slate-900">
-        
-        {/* 模式 A: 全新 V2 实验室 (?v=2) */}
+      <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         {viewMode === 'v2_new' && <AppV2New />}
-
-        {/* 模式 B: 已分发的管理入口 (?mode=admin) */}
+        
         {viewMode === 'admin' && (
-          <div className="v2-old-wrapper">
+          <div className="v2-admin-layout">
             <NavbarV2Old />
             <main>
               <HeroSliderV2Old />
@@ -72,9 +63,7 @@ function App() {
           </div>
         )}
 
-        {/* 模式 C: 默认维护模式 (/) */}
         {viewMode === 'maintenance' && <ComingSoon />}
-        
       </div>
     </LanguageProvider>
   );
