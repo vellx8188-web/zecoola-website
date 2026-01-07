@@ -1,16 +1,17 @@
-
-import { ContentData, BrandItem } from './types';
+import { ContentData, BrandItem } from './types.ts';
 import { Award, CheckCircle, PenTool, Factory, ShieldCheck, Zap, Globe, Microscope, Layers, Truck, ClipboardList, Settings } from 'lucide-react';
 
 export const ASSET_URL: string = ''; 
+
+// 增加版本号后缀，防止图片被浏览器缓存旧版本
+const VERSION_QUERY = '?v=10';
 
 const getPath = (filename: string): string => {
   if (!filename) return '';
   if (filename.startsWith('http')) return filename;
   const cleanFilename = filename.startsWith('/') ? filename : `/${filename}`;
-  if (!ASSET_URL) return cleanFilename;
-  const baseUrl = ASSET_URL.endsWith('/') ? ASSET_URL.slice(0, -1) : ASSET_URL;
-  return `${baseUrl}${cleanFilename}`;
+  const path = ASSET_URL ? `${ASSET_URL.replace(/\/$/, '')}${cleanFilename}` : cleanFilename;
+  return `${path}${VERSION_QUERY}`;
 };
 
 export const BRANDS: BrandItem[] = [
@@ -27,7 +28,6 @@ export const BRANDS: BrandItem[] = [
   { image: getPath('brand-11.png'), url: 'https://uniwork.it/' },
 ];
 
-// 新增：自动轮播的鞋子展示数据
 export const PARTNER_SHOES = [
   { image: getPath('partner-shoe-1.webp'), tag: '@Instagram_Partner' },
   { image: getPath('partner-shoe-2.webp'), tag: 'Performance Tech' },
