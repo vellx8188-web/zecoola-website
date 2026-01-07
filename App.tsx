@@ -2,48 +2,56 @@
 import React, { useEffect, useState } from 'react';
 import { LanguageProvider } from './LanguageContext';
 
-// 导入维护模式组件
+// 1. 导入维护模式
 import ComingSoon from './components/ComingSoon';
 
-// 导入 V2 旗舰版组件
-import NavbarV2 from './components/v2/NavbarV2';
-import HeroSliderV2 from './components/v2/HeroSliderV2';
-import HomeV2 from './components/v2/HomeV2';
-import FooterV2 from './components/v2/FooterV2';
+// 2. 导入【旧版 V2】(用于 ?mode=admin)
+import NavbarV2Old from './components/v2/NavbarV2';
+import HeroSliderV2Old from './components/v2/HeroSliderV2';
+import HomeV2Old from './components/v2/HomeV2';
+import FooterV2Old from './components/v2/FooterV2';
 
-/**
- * 访问控制逻辑：
- * 1. 默认状态：显示 ComingSoon 维护页面
- * 2. 授权状态：URL 携带 ?mode=admin 时，显示 V2 旗舰版
- */
+// 3. 导入【全新 V2 开发实验室】(用于 ?v=2) - 还原自本地代码
+import AppV2New from './components/v2_new/AppV2New';
+
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [viewMode, setViewMode] = useState<'maintenance' | 'admin' | 'v2_new'>('maintenance');
 
   useEffect(() => {
-    // 检测 URL 参数
     const params = new URLSearchParams(window.location.search);
-    if (params.get('mode') === 'admin') {
-      setIsAdmin(true);
+    const v = params.get('v');
+    const mode = params.get('mode');
+
+    if (v === '2') {
+      setViewMode('v2_new');
+    } else if (mode === 'admin') {
+      setViewMode('admin');
+    } else {
+      setViewMode('maintenance');
     }
   }, []);
 
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-600">
-        {isAdmin ? (
+        
+        {/* 默认维护页 */}
+        {viewMode === 'maintenance' && <ComingSoon />}
+        
+        {/* 已分发给别人的 admin 入口 (旧版 V2) */}
+        {viewMode === 'admin' && (
           <>
-            <NavbarV2 />
+            <NavbarV2Old />
             <main>
-              {/* V2 旗舰版核心流程 */}
-              <HeroSliderV2 />
-              <HomeV2 />
+              <HeroSliderV2Old />
+              <HomeV2Old />
             </main>
-            <FooterV2 />
+            <FooterV2Old />
           </>
-        ) : (
-          /* 默认维护模式 */
-          <ComingSoon />
         )}
+
+        {/* 还原自本地代码的全新 V2 (?v=2) */}
+        {viewMode === 'v2_new' && <AppV2New />}
       </div>
     </LanguageProvider>
   );

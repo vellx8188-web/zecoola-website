@@ -30,7 +30,6 @@ const HomeV2: React.FC = () => {
     }
   };
 
-  // 无限轮播逻辑：将数组加倍以实现无缝对接
   const extendedShoes = [...PARTNER_SHOES, ...PARTNER_SHOES];
 
   return (
@@ -155,7 +154,7 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块 04：产品展厅 (SHOWCASE) - 优化图片明显度 */}
+      {/* 模块 04：产品展厅 (SHOWCASE) - 极致优化版 */}
       <section id="showcase" className="py-32 bg-slate-950 text-white overflow-hidden relative">
         <div className="container mx-auto px-6 lg:px-24 relative z-10">
            <div className="flex flex-col lg:flex-row items-start justify-between mb-20">
@@ -167,26 +166,25 @@ const HomeV2: React.FC = () => {
 
            <div className="grid lg:grid-cols-12 gap-10">
               <div className="lg:col-span-7 relative group min-h-[500px] overflow-hidden rounded-sm border border-white/10 bg-slate-900 shadow-2xl transition-all duration-500 hover:border-orange-600/50">
-                 {/* 显著提升图片可见度：基础不透明度 90%，悬停 100% */}
+                 {/* 显著提升图片可见度：不再使用 grayscale，保持原色且增加亮度 */}
                  <img 
                    src="/showcase-main.webp" 
                    alt="Technical Reference" 
-                   className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[10s] ease-out filter brightness-110"
-                   onError={(e) => { e.currentTarget.style.opacity = '0'; }}
+                   className="absolute inset-0 w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[10s] ease-out filter brightness-110 saturate-[1.1]"
+                   onError={(e) => { e.currentTarget.style.opacity = '0.3'; }}
                  />
                  
-                 {/* 渐变遮罩优化：仅保留底部和侧边的轻微阴影，中心区域完全通透 */}
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity pointer-events-none"></div>
-                 <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent pointer-events-none"></div>
+                 {/* 渐变遮罩优化：移除了覆盖全图的黑膜，仅保留底部文字背景 */}
+                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent opacity-80 pointer-events-none"></div>
 
-                 {/* 信息卡片：增加背景模糊感，减少对图片的干扰 */}
-                 <div className="absolute bottom-8 left-8 p-10 bg-black/40 backdrop-blur-3xl border-l-4 border-orange-600 z-20 max-w-sm transform group-hover:-translate-y-2 transition-transform duration-500">
+                 {/* 信息卡片：增加对比度 */}
+                 <div className="absolute bottom-8 left-8 p-10 bg-black/60 backdrop-blur-xl border-l-4 border-orange-600 z-20 max-w-sm transform group-hover:-translate-y-2 transition-transform duration-500 shadow-2xl">
                     <div className="flex items-center gap-3 mb-3">
                        <span className="w-6 h-[1px] bg-orange-600"></span>
                        <span className="text-orange-500 text-[8px] font-black uppercase tracking-[0.5em]">Live Prototype</span>
                     </div>
                     <h4 className="text-2xl font-black mb-2 uppercase italic tracking-tighter text-white">Precision Craft v2.0</h4>
-                    <p className="text-white/60 mb-8 text-[10px] font-bold uppercase tracking-widest leading-relaxed">System: R&D Reference <br/> Environment: Industrial Performance</p>
+                    <p className="text-white/80 mb-8 text-[10px] font-bold uppercase tracking-widest leading-relaxed">System: R&D Reference <br/> Environment: Industrial Performance</p>
                     <button onClick={scrollToContact} className="px-10 py-4 bg-orange-600 text-white text-[9px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-orange-600 transition-all shadow-2xl">
                       REQUEST DATA SHEET
                     </button>
