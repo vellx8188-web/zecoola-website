@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { CONTENT } from '../../constants';
-import { useLanguage } from '../../LanguageContext';
+import { CONTENT } from '../../constants.ts';
+import { useLanguage } from '../../LanguageContext.tsx';
 
 const NavbarV2: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +18,7 @@ const NavbarV2: React.FC = () => {
     setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100; // 导航栏高度补给
+      const offset = 100;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -28,8 +27,6 @@ const NavbarV2: React.FC = () => {
         top: elementPosition - offset,
         behavior: 'smooth'
       });
-    } else {
-      console.warn(`Anchor #${id} not found.`);
     }
   };
 
@@ -37,16 +34,16 @@ const NavbarV2: React.FC = () => {
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-2xl h-20' : 'bg-transparent h-28'}`}>
       <div className="max-w-[1800px] mx-auto px-8 lg:px-12 h-full flex justify-between items-center">
         
-        {/* Logo Area */}
+        {/* Logo Area - Fixed to use existing logo.png via CONTENT.logo */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center group">
-           <div className="h-10 md:h-12 w-10 md:w-12 flex items-center justify-center transition-all duration-500">
-             <img src="/logo-icon.png" alt="ZA" className={`max-h-full max-w-full object-contain ${!isScrolled ? 'drop-shadow-[0_0_15px_rgba(255,107,0,0.4)]' : ''}`} />
+           <div className="h-10 md:h-12 w-auto flex items-center justify-center transition-all duration-500">
+             <img src={CONTENT.logo} alt="ZECOOLA" className={`max-h-full w-auto object-contain ${!isScrolled ? 'drop-shadow-[0_0_15px_rgba(255,107,0,0.4)]' : ''}`} />
            </div>
-           <div className={`flex flex-col items-start border-l h-8 md:h-10 ml-6 pl-6 transition-colors duration-500 ${isScrolled ? 'border-slate-200' : 'border-white/10'}`}>
-              <div className={`h-4 md:h-5 transition-all duration-500 ${!isScrolled ? 'brightness-0 invert' : ''}`}>
-                <img src="/logo-text.png" alt="ZECOOLA" className="h-full w-auto object-contain" />
-              </div>
-              <span className={`text-[9px] font-black uppercase tracking-[0.5em] mt-1.5 whitespace-nowrap ${isScrolled ? 'text-slate-400' : 'text-white/40'}`}>
+           <div className={`hidden md:flex flex-col items-start border-l h-8 md:h-10 ml-6 pl-6 transition-colors duration-500 ${isScrolled ? 'border-slate-200' : 'border-white/10'}`}>
+              <span className={`text-[12px] font-black uppercase tracking-[0.4em] ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
+                ZECOOLA
+              </span>
+              <span className={`text-[8px] font-black uppercase tracking-[0.5em] mt-1 whitespace-nowrap ${isScrolled ? 'text-slate-400' : 'text-white/40'}`}>
                 Precision Manufacturing
               </span>
            </div>
