@@ -10,21 +10,16 @@ html {
 }
 
 body {
+  /* V2 采用明亮、干净的工业背景色 */
   background-color: #ffffff;
-  color: #1e293b;
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
-  letter-spacing: -0.02em;
-}
-
-/* 高级版文字描边效果 */
-.stroke-text {
-  -webkit-text-stroke: 1px rgba(255,255,255,0.4);
-  color: transparent;
+  letter-spacing: -0.04em;
 }
 
 /* 隐藏滚动条但保留功能 */
@@ -36,8 +31,13 @@ h1, h2, h3, h4, h5, h6 {
   scrollbar-width: none;
 }
 
-/* 自定义选色 */
+/* 优质的文字选中色 */
 ::selection {
   background-color: #FF6B00;
   color: white;
+}
+
+/* V2 专属的卡片悬浮提升感 */
+.v2-card-shadow {
+  box-shadow: 0 10px 50px -12px rgba(0, 0, 0, 0.05);
 }
