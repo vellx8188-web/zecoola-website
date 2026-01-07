@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { MemoryRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// 根据提供的文件列表，组件位于 components/v2_new/ 目录下
+// 修正：从 v2_new/ 文件夹向上一级回到根目录，再进入 components/v2_new/
 import Header from '../components/v2_new/components/Header';
 import Footer from '../components/v2_new/components/Footer';
 import Home from '../components/v2_new/pages/Home';
