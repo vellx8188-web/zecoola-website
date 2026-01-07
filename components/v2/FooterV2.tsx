@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { CONTENT } from '../../constants';
-import { useLanguage } from '../../LanguageContext';
+import { CONTENT } from '../../constants.ts';
+import { useLanguage } from '../../LanguageContext.tsx';
 
 const FooterV2: React.FC = () => {
   const { language } = useLanguage();
@@ -11,11 +10,11 @@ const FooterV2: React.FC = () => {
       <div className="container mx-auto px-6 lg:px-20">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
           
-          {/* Logo Area */}
+          {/* Logo Area - 统一使用已有的 CONTENT.logo */}
           <div className="flex items-center gap-4">
-             <img src="/logo-icon.png" alt="Zecoola Icon" className="h-12 w-auto" />
-             <div className="flex flex-col">
-                <img src="/logo-text.png" alt="ZECOOLA" className="h-5 w-auto mb-1" />
+             <img src={CONTENT.logo} alt="ZECOOLA" className="h-10 w-auto" />
+             <div className="flex flex-col border-l border-slate-100 pl-4">
+                <span className="text-xl font-black text-slate-900 italic tracking-tighter">ZECOOLA</span>
                 <div className="text-[8px] font-black text-slate-300 uppercase tracking-widest">Global Manufacturing</div>
              </div>
           </div>

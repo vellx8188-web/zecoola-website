@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Globe, Factory, Microscope, ShieldCheck, Zap } from 'lucide-react';
-import { CONTENT, BRANDS, PARTNER_SHOES } from '../../constants';
-import { useLanguage } from '../../LanguageContext';
+import { CONTENT, BRANDS, PARTNER_SHOES } from '../../constants.ts';
+import { useLanguage } from '../../LanguageContext.tsx';
 
 const HomeV2: React.FC = () => {
   const { language } = useLanguage();
@@ -95,7 +94,7 @@ const HomeV2: React.FC = () => {
         </div>
       </section>
 
-      {/* 模块 03：合作伙伴产品自动轮播 */}
+      {/* 模块 03：合作伙伴轮播 */}
       <section id="services" className="py-32 bg-white overflow-hidden relative">
         <div className="container mx-auto px-6 lg:px-24 mb-20">
            <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
@@ -104,9 +103,6 @@ const HomeV2: React.FC = () => {
                  <h2 className="text-5xl lg:text-8xl font-black text-slate-950 tracking-tighter leading-[0.85] uppercase italic">
                    COLLECTION <br/> <span className="text-orange-600">ARCHIVE.</span>
                  </h2>
-              </div>
-              <div className="max-w-md border-l-4 border-slate-950 pl-8 py-2">
-                 <p className="text-sm font-bold text-slate-400 italic uppercase tracking-wider">Showcasing high-performance footwear developed in collaboration with leading global brands.</p>
               </div>
            </div>
         </div>
@@ -125,66 +121,37 @@ const HomeV2: React.FC = () => {
                         src={shoe.image} 
                         alt="Product Exhibit" 
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
-                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
                          <span className="text-orange-500 text-[9px] font-black uppercase tracking-widest mb-1">Authenticated</span>
-                         <h4 className="text-white text-xl font-black uppercase italic tracking-tighter">TECHNICAL SPEC v2.5</h4>
+                         <h4 className="text-white text-xl font-black uppercase italic tracking-tighter">{shoe.tag}</h4>
                       </div>
-                   </div>
-                   <div className="mt-6 flex justify-between items-center px-2">
-                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{shoe.tag}</span>
-                      <ArrowRight size={14} className="text-orange-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                    </div>
                 </div>
               ))}
            </motion.div>
         </div>
-
-        <div className="container mx-auto px-6 lg:px-24 mt-32">
-           <div className="pt-16 border-t border-slate-100 flex flex-wrap justify-center items-center gap-x-16 gap-y-12">
-              {BRANDS.map((brand, i) => (
-                <motion.div key={i} className="flex-shrink-0 group">
-                   <a href={brand.url || '#'} target="_blank" className="opacity-30 hover:opacity-100 transition-all duration-500">
-                      <img src={brand.image} alt="Logo" className="h-7 md:h-9 w-auto object-contain grayscale group-hover:grayscale-0 transition-all" />
-                   </a>
-                </motion.div>
-              ))}
-           </div>
-        </div>
       </section>
 
-      {/* 模块 04：产品展厅 (SHOWCASE) - 极致优化版 */}
+      {/* 模块 04：产品展厅 */}
       <section id="showcase" className="py-32 bg-slate-950 text-white overflow-hidden relative">
         <div className="container mx-auto px-6 lg:px-24 relative z-10">
-           <div className="flex flex-col lg:flex-row items-start justify-between mb-20">
-              <div>
+           <div className="mb-20">
                  <span className="text-orange-600 font-black text-[11px] uppercase tracking-[0.7em] mb-6 block">Section 04 / Dossier</span>
                  <h2 className="text-5xl lg:text-8xl font-black tracking-tighter leading-[0.85] uppercase italic">TECHNICAL <br/> <span className="text-orange-600">DOSSIER.</span></h2>
-              </div>
            </div>
 
            <div className="grid lg:grid-cols-12 gap-10">
               <div className="lg:col-span-7 relative group min-h-[500px] overflow-hidden rounded-sm border border-white/10 bg-slate-900 shadow-2xl transition-all duration-500 hover:border-orange-600/50">
-                 {/* 显著提升图片可见度：不再使用 grayscale，保持原色且增加亮度 */}
                  <img 
-                   src="/showcase-main.webp" 
+                   src={CONTENT.products.image} // 使用 constants.ts 中已配置的存在的图片
                    alt="Technical Reference" 
                    className="absolute inset-0 w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[10s] ease-out filter brightness-110 saturate-[1.1]"
-                   onError={(e) => { e.currentTarget.style.opacity = '0.3'; }}
                  />
-                 
-                 {/* 渐变遮罩优化：移除了覆盖全图的黑膜，仅保留底部文字背景 */}
                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent opacity-80 pointer-events-none"></div>
 
-                 {/* 信息卡片：增加对比度 */}
-                 <div className="absolute bottom-8 left-8 p-10 bg-black/60 backdrop-blur-xl border-l-4 border-orange-600 z-20 max-w-sm transform group-hover:-translate-y-2 transition-transform duration-500 shadow-2xl">
-                    <div className="flex items-center gap-3 mb-3">
-                       <span className="w-6 h-[1px] bg-orange-600"></span>
-                       <span className="text-orange-500 text-[8px] font-black uppercase tracking-[0.5em]">Live Prototype</span>
-                    </div>
+                 <div className="absolute bottom-8 left-8 p-10 bg-black/60 backdrop-blur-xl border-l-4 border-orange-600 z-20 max-w-sm">
                     <h4 className="text-2xl font-black mb-2 uppercase italic tracking-tighter text-white">Precision Craft v2.0</h4>
-                    <p className="text-white/80 mb-8 text-[10px] font-bold uppercase tracking-widest leading-relaxed">System: R&D Reference <br/> Environment: Industrial Performance</p>
                     <button onClick={scrollToContact} className="px-10 py-4 bg-orange-600 text-white text-[9px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-orange-600 transition-all shadow-2xl">
                       REQUEST DATA SHEET
                     </button>
@@ -195,51 +162,35 @@ const HomeV2: React.FC = () => {
                  <div className="bg-orange-600 p-12 flex-1 flex flex-col justify-end rounded-sm relative overflow-hidden group shadow-2xl">
                     <Zap size={80} className="absolute top-8 right-8 text-white/10 group-hover:rotate-12 transition-transform" />
                     <h4 className="text-4xl lg:text-5xl font-black mb-4 uppercase italic leading-[0.8] tracking-tighter">50+ YEARS <br/>EXPERIENCE.</h4>
-                    <p className="text-white font-black text-[9px] uppercase tracking-[0.3em] opacity-80">Industrial Legacy & Advanced IP Portfolio</p>
-                 </div>
-                 <div className="grid grid-cols-2 gap-10">
-                    <div className="bg-slate-900 p-10 border border-white/5 hover:border-orange-600/30 transition-colors">
-                       <div className="text-4xl font-black mb-3 text-white italic tracking-tighter">100%</div>
-                       <div className="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Quality Validation</div>
-                    </div>
-                    <div className="bg-slate-900 p-10 border border-white/5 hover:border-orange-600/30 transition-colors">
-                       <div className="text-4xl font-black mb-3 text-white italic tracking-tighter">24H</div>
-                       <div className="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Global Support</div>
-                    </div>
                  </div>
               </div>
            </div>
         </div>
       </section>
 
-      {/* 模块 05：智造工厂 (FACTORY) */}
+      {/* 模块 05：智造工厂 */}
       <section id="factory" className="py-32 bg-white">
         <div className="container mx-auto px-6 lg:px-24">
            <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div>
                  <span className="text-orange-600 font-black text-[11px] uppercase tracking-[0.7em] mb-6 block">Section 05 / Manufacturing</span>
                  <h2 className="text-5xl lg:text-8xl font-black text-slate-950 mb-10 tracking-tighter leading-[0.85] uppercase italic">SMART <br/> <span className="text-orange-600">FACTORY.</span></h2>
-                 <p className="text-xl text-slate-400 font-bold italic mb-10 border-l-4 border-orange-600 pl-8 leading-relaxed max-w-lg">Deployment of high-precision assembly lines and zero-defect quality protocols for global markets.</p>
                  <button onClick={scrollToContact} className="px-12 py-6 bg-slate-950 text-white font-black text-[11px] uppercase tracking-[0.5em] flex items-center gap-6 hover:bg-orange-600 transition-all shadow-2xl">
                     EXPLORE FACILITY <ArrowRight size={20} />
                  </button>
               </div>
               <motion.div {...fadeInUp} className="relative aspect-video rounded-sm border border-slate-100 overflow-hidden shadow-2xl group bg-slate-50">
                  <img 
-                   src="/factory-main.webp" 
+                   src={CONTENT.services.oem.image} 
                    alt="Factory Infrastructure" 
                    className="w-full h-full object-cover transition-transform duration-[12s] group-hover:scale-105"
-                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
                  />
-                 <div className="absolute inset-0 bg-slate-50 flex items-center justify-center -z-10">
-                    <Factory size={80} className="text-slate-100" />
-                 </div>
               </motion.div>
            </div>
         </div>
       </section>
 
-      {/* 模块 06：联系我们 (CONTACT) */}
+      {/* 联系我们 */}
       <section id="contact" className="py-32 bg-white overflow-hidden border-t border-slate-50">
         <div className="container mx-auto px-6 lg:px-24">
            <div className="grid lg:grid-cols-2 gap-20 lg:gap-40">
@@ -269,10 +220,6 @@ const HomeV2: React.FC = () => {
                     <div className="space-y-4">
                        <label className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Official Email</label>
                        <input type="email" placeholder="official@domain.com" className="w-full bg-transparent border-b-2 border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-2xl tracking-tighter" required />
-                    </div>
-                    <div className="space-y-4">
-                       <label className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Message Content</label>
-                       <textarea placeholder="Describe requirements..." className="w-full bg-transparent border-b-2 border-slate-200 py-4 outline-none focus:border-orange-600 transition-colors font-black text-2xl tracking-tighter resize-none" rows={2} required />
                     </div>
                     <button className="w-full py-6 bg-orange-600 text-white font-black text-[11px] uppercase tracking-[0.5em] hover:bg-slate-950 transition-all flex items-center justify-center gap-6 shadow-2xl shadow-orange-100 group">
                        INITIALIZE RFQ <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />

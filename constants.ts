@@ -3,15 +3,15 @@ import { Award, CheckCircle, PenTool, Factory, ShieldCheck, Zap, Globe, Microsco
 
 export const ASSET_URL: string = ''; 
 
-// 强制刷新指纹
-const VERSION_QUERY = '?v=v11_match';
+// 强制刷新指纹，确保浏览器不使用旧缓存
+const VERSION_QUERY = '?v=v12_fix';
 
 const getPath = (filename: string): string => {
   if (!filename) return '';
   if (filename.startsWith('http')) return filename;
-  // 统一使用相对路径 ./ 以获得最佳兼容性
+  // 统一使用绝对根路径 / 确保在任何 URL 下都能正确读取 public 文件夹
   const cleanFilename = filename.startsWith('/') ? filename.substring(1) : filename;
-  return `./${cleanFilename}${VERSION_QUERY}`;
+  return `/${cleanFilename}${VERSION_QUERY}`;
 };
 
 export const BRANDS: BrandItem[] = [
@@ -28,19 +28,19 @@ export const BRANDS: BrandItem[] = [
   { image: getPath('brand-11.png'), url: 'https://uniwork.it/' },
 ];
 
-// 截图显示有 factory-1 到 factory-7，我们优先使用这些存在的图片
+// 截图显示实际文件名为 factory-1.webp 到 factory-7.webp
 export const PARTNER_SHOES = [
   { image: getPath('factory-1.webp'), tag: 'Performance Tech' },
   { image: getPath('factory-2.webp'), tag: 'Industrial Safety' },
   { image: getPath('factory-3.webp'), tag: 'R&D Prototype' },
-  { image: getPath('factory-4.webp'), tag: 'Advanced Molding' },
+  { image: getPath('factory-4.webp'), tag: 'Advanced Tech' },
   { image: getPath('factory-5.webp'), tag: 'Precision QC' },
   { image: getPath('factory-7.webp'), tag: 'Global Logistics' },
 ];
 
 export const SLIDER_DATA = [
   {
-    image: getPath('factory-1.webp'), // 截图确认存在的文件
+    image: getPath('factory-1.webp'), // 使用已确认存在的 factory 图片
     tag: 'STRATEGIC MANUFACTURING PARTNER',
     titleLine1: { en: 'WORLD-', zh: '世界级' },
     titleLine2: { en: 'CLASS', zh: '智造' },
@@ -66,7 +66,7 @@ export const SLIDER_DATA = [
 ];
 
 export const CONTENT: ContentData = {
-  logo: getPath('logo.png'), // 截图确认存在
+  logo: getPath('logo.png'), 
   emailJS: {
     serviceId: 'service_icrvr8v',
     templateId: 'template_ftpxyzs',
@@ -88,7 +88,7 @@ export const CONTENT: ContentData = {
   },
   about: {
     title: { en: 'Our Heritage', zh: '关于我们' },
-    image: getPath('factory-4.webp'), // 使用存在的 factory 图作为备选
+    image: getPath('factory-4.webp'), 
     mainText: {
       p1: { en: 'ZECOOLA stands as a definitive authority in technical footwear development.', zh: 'ZECOOLA 是技术性鞋类开发领域的权威机构。' },
       p2: { en: 'We specialize in industrial-grade performance and high-performance R&D.', zh: '我们专注于工业级性能和高性能研发。' },
@@ -114,7 +114,7 @@ export const CONTENT: ContentData = {
   products: {
     title: { en: 'Showcase', zh: '产品展示' },
     subtitle: { en: 'Technical Portfolio', zh: '品质展示' },
-    image: getPath('factory-3.webp') // 备选
+    image: getPath('factory-3.webp') 
   },
   gallery: {
     title: { en: 'Facility Insights', zh: '工厂实景' },
