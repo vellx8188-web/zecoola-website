@@ -1,17 +1,16 @@
-import { ContentData, BrandItem } from './types.ts';
+
+import { ContentData, BrandItem } from './types';
 import { Award, CheckCircle, PenTool, Factory, ShieldCheck, Zap, Globe, Microscope, Layers, Truck, ClipboardList, Settings } from 'lucide-react';
 
 export const ASSET_URL: string = ''; 
 
-// 强制刷新指纹，确保浏览器不使用旧缓存
-const VERSION_QUERY = '?v=v12_fix';
-
 const getPath = (filename: string): string => {
   if (!filename) return '';
   if (filename.startsWith('http')) return filename;
-  // 统一使用绝对根路径 / 确保在任何 URL 下都能正确读取 public 文件夹
-  const cleanFilename = filename.startsWith('/') ? filename.substring(1) : filename;
-  return `/${cleanFilename}${VERSION_QUERY}`;
+  const cleanFilename = filename.startsWith('/') ? filename : `/${filename}`;
+  if (!ASSET_URL) return cleanFilename;
+  const baseUrl = ASSET_URL.endsWith('/') ? ASSET_URL.slice(0, -1) : ASSET_URL;
+  return `${baseUrl}${cleanFilename}`;
 };
 
 export const BRANDS: BrandItem[] = [
@@ -28,45 +27,45 @@ export const BRANDS: BrandItem[] = [
   { image: getPath('brand-11.png'), url: 'https://uniwork.it/' },
 ];
 
-// 截图显示实际文件名为 factory-1.webp 到 factory-7.webp
+// 新增：自动轮播的鞋子展示数据
 export const PARTNER_SHOES = [
-  { image: getPath('factory-1.webp'), tag: 'Performance Tech' },
-  { image: getPath('factory-2.webp'), tag: 'Industrial Safety' },
-  { image: getPath('factory-3.webp'), tag: 'R&D Prototype' },
-  { image: getPath('factory-4.webp'), tag: 'Advanced Tech' },
-  { image: getPath('factory-5.webp'), tag: 'Precision QC' },
-  { image: getPath('factory-7.webp'), tag: 'Global Logistics' },
+  { image: getPath('partner-shoe-1.webp'), tag: '@Instagram_Partner' },
+  { image: getPath('partner-shoe-2.webp'), tag: 'Performance Tech' },
+  { image: getPath('partner-shoe-3.webp'), tag: 'Limited Edition' },
+  { image: getPath('partner-shoe-4.webp'), tag: 'Industrial Safety' },
+  { image: getPath('partner-shoe-5.webp'), tag: 'R&D Prototype' },
+  { image: getPath('partner-shoe-6.webp'), tag: 'Outdoor Extreme' },
 ];
 
 export const SLIDER_DATA = [
   {
-    image: getPath('factory-1.webp'), // 使用已确认存在的 factory 图片
+    image: getPath('hero-1.webp'),
     tag: 'STRATEGIC MANUFACTURING PARTNER',
     titleLine1: { en: 'WORLD-', zh: '世界级' },
     titleLine2: { en: 'CLASS', zh: '智造' },
     titleLine3: { en: 'PARTNER', zh: '合作伙伴' },
-    sub: { en: 'Empowering global brands with precision engineering for over 50 years.', zh: '五十余载深耕，以精密工程赋能全球鞋类品牌。' }
+    sub: { en: 'Empowering global brands with precision engineering and industrial intelligence for over 50 years.', zh: '五十余载深耕，以精密工程与工业智慧赋能全球鞋类品牌。' }
   },
   {
-    image: getPath('factory-2.webp'),
+    image: getPath('hero-2.webp'),
     tag: 'ENGINEERING EXCELLENCE',
     titleLine1: { en: 'R&D', zh: '领先' },
     titleLine2: { en: 'DRIVEN', zh: '研发' },
     titleLine3: { en: 'FUTURES', zh: '驱动' },
-    sub: { en: 'Translating complex material science into high-performance footwear solutions.', zh: '将复杂的材料科学转化为高性能的鞋类解决方案。' }
+    sub: { en: 'Translating complex material science into high-performance technical footwear solutions.', zh: '将复杂的材料科学转化为高性能的技术鞋类解决方案。' }
   },
   {
-    image: getPath('factory-3.webp'),
+    image: getPath('hero-3.webp'),
     tag: 'SCALABLE PRODUCTION',
     titleLine1: { en: 'SMART', zh: '智能' },
     titleLine2: { en: 'FACTORY', zh: '制造' },
     titleLine3: { en: 'SOLUTIONS', zh: '方案' },
-    sub: { en: 'Optimized supply chain integration with zero-defect quality assurance.', zh: '优化的供应链整合，提供零缺陷质量保证。' }
+    sub: { en: 'Optimized supply chain integration with zero-defect quality assurance for global markets.', zh: '优化的供应链整合，为全球市场提供零缺陷质量保证。' }
   }
 ];
 
 export const CONTENT: ContentData = {
-  logo: getPath('logo.png'), 
+  logo: getPath('logo.png'),
   emailJS: {
     serviceId: 'service_icrvr8v',
     templateId: 'template_ftpxyzs',
@@ -83,12 +82,12 @@ export const CONTENT: ContentData = {
   ],
   hero: {
     title: 'ZECOOLA',
-    slogan: { en: 'Global Footwear R&D & Manufacturing Partner', zh: '全球鞋类研发与规模化制造合作伙伴' },
+    slogan: { en: 'Global Footwear R&D & Scalable Manufacturing Partner', zh: '全球鞋类研发与规模化制造合作伙伴' },
     cta: { en: 'Inquire Now', zh: '获取报价' }
   },
   about: {
     title: { en: 'Our Heritage', zh: '关于我们' },
-    image: getPath('factory-4.webp'), 
+    image: getPath('about.webp'),
     mainText: {
       p1: { en: 'ZECOOLA stands as a definitive authority in technical footwear development.', zh: 'ZECOOLA 是技术性鞋类开发领域的权威机构。' },
       p2: { en: 'We specialize in industrial-grade performance and high-performance R&D.', zh: '我们专注于工业级性能和高性能研发。' },
@@ -114,7 +113,7 @@ export const CONTENT: ContentData = {
   products: {
     title: { en: 'Showcase', zh: '产品展示' },
     subtitle: { en: 'Technical Portfolio', zh: '品质展示' },
-    image: getPath('factory-3.webp') 
+    image: getPath('products.webp')
   },
   gallery: {
     title: { en: 'Facility Insights', zh: '工厂实景' },
@@ -125,8 +124,8 @@ export const CONTENT: ContentData = {
     hero: {
       h1: { en: 'Strategic R&D & Manufacturing Partner', zh: '专业鞋类 OEM 研发与制造合作伙伴' },
       h2: { 
-        en: 'Built on over 50 years of industry expertise, delivering precision for world-class brands.',
-        zh: '凭借50多年的行业专业知识，为全球顶级品牌提供精密制造。'
+        en: 'Built on over 50 years of collective industry expertise, delivering precision for the world\'s most demanding footwear brands.',
+        zh: '凭借50多年的行业专业知识，为全球最严苛的鞋类品牌提供精密制造。'
       },
       strengths: [
         { icon: Award, text: { en: 'Industrial Legacy', zh: '50+年行业经验' } },
