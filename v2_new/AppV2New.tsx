@@ -1,14 +1,15 @@
+
 import React, { useEffect } from 'react';
 import { MemoryRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// 补齐 .tsx 扩展名
-import Header from '../components/v2_new/components/Header.tsx';
-import Footer from '../components/v2_new/components/Footer.tsx';
-import Home from '../components/v2_new/pages/Home.tsx';
-import About from '../components/v2_new/pages/About.tsx';
-import Capabilities from '../components/v2_new/pages/Capabilities.tsx';
-import Services from '../components/v2_new/pages/Services.tsx';
-import Contact from '../components/v2_new/pages/Contact.tsx';
+// 修正：从 v2_new/ 文件夹向上一级回到根目录，再进入 components/v2_new/
+import Header from '../components/v2_new/components/Header';
+import Footer from '../components/v2_new/components/Footer';
+import Home from '../components/v2_new/pages/Home';
+import About from '../components/v2_new/pages/About';
+import Capabilities from '../components/v2_new/pages/Capabilities';
+import Services from '../components/v2_new/pages/Services';
+import Contact from '../components/v2_new/pages/Contact';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
